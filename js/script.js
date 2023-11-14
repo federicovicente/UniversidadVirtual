@@ -1,4 +1,22 @@
-if (location.href.includes("index.html")){
+$(document).ready(() =>{
+    $('#form-registro').hide();
+    $('#form-acceso').show();
+
+    $('#registro').click(() =>{
+        $('#form-registro').fadeIn(500);
+        $('#form-acceso').hide();
+    })
+
+    $('#acceder').click(() =>{
+        $('#form-registro').hide();
+        $('#form-acceso').fadeIn(500);
+    })
+})
+
+
+
+
+if (location.href.includes("index.php")){
 const wrapper = document.querySelector(".wrapperfv");
 const carousel = document.querySelector(".carouselfv");
 const firstCardWidth = carousel.querySelector(".cardfv").offsetWidth;
@@ -71,42 +89,6 @@ carousel.addEventListener("scroll", infiniteScroll);
 wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
 wrapper.addEventListener("mouseleave", autoPlay);
 }
-
-
-let loguin
-
-function verificarLoguin() {
-    let loguinEstado = document.getElementById('btniniciarsesion')
-
-    if (loguin === 1) {
-        loguinEstado.textContent = 'Bienvenido'
-    } else {
-        loguinEstado.textContent = 'Iniciar sesión'
-    }
-}
-
-let nombreUsuario
-let passUsuario
-
-function IniciarSesion() {
-    nombreUsuario = document.getElementById('emailuser').value
-    passUsuario = document.getElementById('contraseniauser').value
-    if (nombreUsuario === 'federicov@gmail.com' && passUsuario === '123') {
-        loguin = 1
-        cerrarLoguin()
-        alert('Bienvenido')
-    } else {
-        alert('Usuario o contraseña incorrectos')
-        loguin = 0
-    }
-    verificarLoguin()
-}
-
-
-function cerrarLoguin() {
-    $('#modalLoguin').modal('hide');
-}
-
 
 
 function panelCupon(){

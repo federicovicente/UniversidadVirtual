@@ -683,3 +683,11 @@ footer li {
         margin: 10px 0px 0px 5px !important;
     }
   }
+
+#acceder, #registro{
+    color:blue;
+}
+
+#acceder, #registro:hover{
+    cursor:pointer;
+}

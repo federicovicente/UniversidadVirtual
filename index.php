@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -12,7 +13,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -20,7 +21,7 @@
   <!-- navbar -->
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="index.php">
         <img src="images/logoCompleto.png" alt="Bootstrap" height="40" style="margin: 0 0 0 0;">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -64,19 +65,6 @@
   </nav>
 
 
-  <?php
-  // Iniciar o reanudar la sesión
-  session_start();
-
-  // Verificar si hay un mensaje de inicio de sesión
-  if (isset($_SESSION['mensaje'])) {
-      echo '<script>alert("' . $_SESSION['mensaje'] . '");</script>';
-      // Limpiar el mensaje después de mostrarlo
-      unset($_SESSION['mensaje']);
-  }
-  ?>
-
-
   <!-- loguin Offcanvas -->
   <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
     aria-labelledby="offcanvasWithBothOptionsLabel">
@@ -84,25 +72,52 @@
       <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Acceder</h5>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body">
-      <form action="loguin.php" method="post" class="needs-validation" novalidate>
-        <div class="mb-3">
-          <input type="email" class="form-control" name="usuario" id="usuario" aria-describedby="emailHelp" placeholder="Correo electrónico">
+    <div class="offcanvas-body" id="form-offcanvas">
+      <!-- Formulario de registro -->
+      <div class="card-body" id="form-registro">
+        <h5 class="mt-3 mb-5 text-center">Registrarse<span id="acceder"> o Iniciar sesión</span></h5>
+        <form action="./controllers/signup.php" method="POST">
+            <input class="form-control mb-3" type="text" name="name" placeholder="Nombre" required>
+            <input class="form-control mb-3" type="text" name="surname" placeholder="Apellido" required>
+            <input class="form-control mb-3" type="email" name="email" placeholder="Email" required>
+            <input class="form-control mb-3" type="password" name="password" placeholder="Contraseña" required>
+            <button class="btn btn-primary mb-3" type="submit">Crear usuario</button>
+        </form>
         </div>
-        <div class="invalid-feedback">
-          Debe ingresar su email
-      </div>
-        <div class="mb-3">
-          <input type="password" class="form-control" name="pass" id="pass" placeholder="contraseña">
+        <!-- Formulario iniciar sesión -->
+        <div class="card-body" id="form-acceso">
+          <h5 class="mt-3 mb-5 text-center">Iniciar sesión<span id="registro"> o Registrarse</span></h5>
+          <!-- pregunto si la variable de sesión está disponible -->
+          <?php if(isset($_SESSION['registro'])){?>
+            <script>
+              $(document).ready(function() {
+              $('#offcanvasWithBothOptions').offcanvas('show');
+              });
+            </script>
+              <div class="alert alert-success" role="alert">
+                  <?= $_SESSION['registro'] ?>
+              </div>
+          <?php } 
+              unset($_SESSION['registro']);
+          ?>
+          <?php if(isset($_SESSION['login'])){
+            echo '';
+            ?>
+              <div class="alert alert-danger" role="alert">
+                  <?= $_SESSION['login'] ?>
+              </div>
+          <?php } 
+              unset($_SESSION['login']);
+          ?>
+          <form action="./controllers/signin.php" method="POST">
+              <input class="form-control mb-3" type="email" name="email" placeholder="Email" required>
+              <input class="form-control mb-3" type="password" name="password" placeholder="Contraseña" required>
+              <button class="btn btn-primary mb-3" type="submit">Iniciar sesión</button>
+          </form>
         </div>
-        <div class="invalid-feedback">
-          Debe ingresar su contraseña
-      </div>
-        <button type="submit" class="btn btn-primary" value="Iniciar Sesión" >Enviar</button>
-      </form>
     </div>
   </div>
-
+  
   <!-- Carousel -->
   <div class="flexbox-margin-auto">
     <div class="flexbox-margin-auto_content">
@@ -260,6 +275,8 @@
   </div>
   </footer>
 
+
+  <script src="js/script.js"></script>
 </body>
 
 </html>
