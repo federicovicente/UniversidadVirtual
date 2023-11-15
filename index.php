@@ -103,6 +103,11 @@
           <?php if(isset($_SESSION['login'])){
             echo '';
             ?>
+            <script>
+              $(document).ready(function() {
+              $('#offcanvasWithBothOptions').offcanvas('show');
+              });
+            </script>
               <div class="alert alert-danger" role="alert">
                   <?= $_SESSION['login'] ?>
               </div>
@@ -213,7 +218,6 @@
       <i id="right" class="fa-solid fa-angle-right"></i>
     </div>
   </div>
-  <script src="js/script.js"></script>
 
   <!-- Footer -->
   <footer class="footer">

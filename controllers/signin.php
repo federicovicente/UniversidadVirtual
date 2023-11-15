@@ -18,20 +18,29 @@
     //cargo las variables del usuario si es que existe
     $results = $userData->fetch(PDO::FETCH_ASSOC);
 
-    //verifico si me devuelve algo y verifico la contraseña
-    if(count($results) > 0 && password_verify($_POST['password'], $results['contrasenia'])) {
-        $_SESSION['user_id'] = $results['idUsuario'];
-        $_SESSION['user_nombre'] = $results['nombre'];
-        $_SESSION['user_apellido'] = $results['apellido'];
-        $_SESSION['user_email'] = $results['email'];
-        $_SESSION['user_administrador'] = $results['administrador'];
-        $_SESSION['user_activo'] = $results['activo'];
-        header('Location: ../menu.php');
+    //Si $result viene vacío es que el mail no está registrado. Si me devuelve algo es que el mail existe y si existe verifico la contraseña
+    if($results) {
+        if(password_verify($_POST['password'], $results['contrasenia'])) {
+                $_SESSION['user_id'] = $results['idUsuario'];
+                $_SESSION['user_nombre'] = $results['nombre'];
+                $_SESSION['user_apellido'] = $results['apellido'];
+                $_SESSION['user_email'] = $results['email'];
+                $_SESSION['user_administrador'] = $results['administrador'];
+                $_SESSION['user_activo'] = $results['activo'];
+                header('Location: ../menu.php');
+        }else{
+                $message = 'Email y/o contraseña incorrectos. Por favor vuelva a intentarlo.';
+                $_SESSION['login'] =$message;
+                header('Location: ../index.php');
+        }
     }else{
-        $message = 'Mail o contraseña incorrectos';
+        $message = 'El email ingresado no está registrado.';
         $_SESSION['login'] =$message;
         header('Location: ../index.php');
     }
 
-    
+
+
+
+
 ?>

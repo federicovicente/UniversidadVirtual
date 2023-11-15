@@ -13,9 +13,6 @@ $(document).ready(() =>{
     })
 })
 
-
-
-
 if (location.href.includes("index.php")){
 const wrapper = document.querySelector(".wrapperfv");
 const carousel = document.querySelector(".carouselfv");
