@@ -1,9 +1,9 @@
-const wrapper = document.querySelector(".wrapper");
-const carousel = document.querySelector(".carousel");
-const firstCardWidth = carousel.querySelector(".card").offsetWidth;
-const arrowBtns = document.querySelectorAll(".wrapper i");
+const wrapper = document.querySelector(".wrapperfv");
+const carousel = document.querySelector(".carouselfv");
+const firstCardWidth = carousel.querySelector(".cardfv").offsetWidth;
+const arrowBtns = document.querySelectorAll(".wrapperfv i");
 const carouselChildrens = [...carousel.children];
-let isDragging = false, isAutoPlay = true, startX, startScrollLeft, timeoutId;
+let isDragging = false, isAutoPlay = false, startX, startScrollLeft, timeoutId;
 // Get the number of cards that can fit in the carousel at once
 let cardPerView = Math.round(carousel.offsetWidth / firstCardWidth);
 // Insert copies of the last few cards to beginning of carousel for infinite scrolling
@@ -55,7 +55,7 @@ const infiniteScroll = () => {
     }
     // Clear existing timeout & start autoplay if mouse is not hovering over carousel
     clearTimeout(timeoutId);
-    if (!wrapper.matches(":hover")) autoPlay();
+    if (!wrapper.matches(":hover"));
 }
 const autoPlay = () => {
     if (window.innerWidth < 800 || !isAutoPlay) return; // Return if window is smaller than 800 or isAutoPlay is false

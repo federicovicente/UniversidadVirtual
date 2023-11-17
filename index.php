@@ -17,7 +17,6 @@
 </head>
 
 <body>
-  
   <!-- navbar -->
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
@@ -75,18 +74,19 @@
     <div class="offcanvas-body" id="form-offcanvas">
       <!-- Formulario de registro -->
       <div class="card-body" id="form-registro">
-        <h5 class="mt-3 mb-5 text-center">Registrarse<span id="acceder"> o Iniciar sesión</span></h5>
+        <h5 class="mt-3 mb-5 text-center">Regístrate</h5>
         <form action="./controllers/signup.php" method="POST">
             <input class="form-control mb-3" type="text" name="name" placeholder="Nombre" required>
             <input class="form-control mb-3" type="text" name="surname" placeholder="Apellido" required>
             <input class="form-control mb-3" type="email" name="email" placeholder="Email" required>
             <input class="form-control mb-3" type="password" name="password" placeholder="Contraseña" required>
             <button class="btn btn-primary mb-3" type="submit">Crear usuario</button>
+            <div style="margin-left: 5px;"><span id="acceder">Ya tengo un usuario</span></div>
         </form>
         </div>
         <!-- Formulario iniciar sesión -->
         <div class="card-body" id="form-acceso">
-          <h5 class="mt-3 mb-5 text-center">Iniciar sesión<span id="registro"> o Registrarse</span></h5>
+          <h5 class="mt-3 mb-5 text-center">Iniciar sesión</h5>
           <!-- pregunto si la variable de sesión está disponible -->
           <?php if(isset($_SESSION['registro'])){?>
             <script>
@@ -118,6 +118,7 @@
               <input class="form-control mb-3" type="email" name="email" placeholder="Email" required>
               <input class="form-control mb-3" type="password" name="password" placeholder="Contraseña" required>
               <button class="btn btn-primary mb-3" type="submit">Iniciar sesión</button>
+              <div style="margin-left: 5px;"><span id="registro">Aún no tengo un usuario creado</span></div>
           </form>
         </div>
     </div>
@@ -279,7 +280,18 @@
   </div>
   </footer>
 
+  <script>
+    $(document).ready(function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const mostrarLogin = urlParams.get('mostrarLogin');
 
+        if (mostrarLogin === 'true') {
+            $('#offcanvasWithBothOptions').offcanvas('show');
+        }
+    });
+  </script>
+
+  <script src="js/carousel.js"></script>
   <script src="js/script.js"></script>
 </body>
 
