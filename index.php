@@ -54,21 +54,26 @@
           <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>
-        <div class="separadornav" >
+        <div class="iniciar-sesion-nav" id="iniciar-sesion-nav">
           <button id="btniniciarsesion" class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"
-            style="background-color: #4285F4;;">Iniciar sesión</button>
+            style="background-color: #4285F4;">Iniciar sesión</button>
+        </div>
+        <div class="mi-cuenta-nav" id="mi-cuenta-nav">
+          <button id="btnIniciales" class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"
+            style="background-color: #4285F4;"><?= isset($_SESSION['user_iniciales']) ? $_SESSION['user_iniciales'] : ''?></button>
         </div>
       </div>
     </div>
   </nav>
 
 
-  <!-- loguin Offcanvas -->
+  <!-- Panel Offcanvas -->
   <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
     aria-labelledby="offcanvasWithBothOptionsLabel">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Acceder</h5>
+      <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"></h5>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body" id="form-offcanvas">
@@ -121,6 +126,18 @@
               <div style="margin-left: 5px;"><span id="registro">Aún no tengo un usuario creado</span></div>
           </form>
         </div>
+        <!-- Formulario Mi cuenta -->
+      <div class="card-body" id="form-micuenta">
+        <h3 class=""><?= $_SESSION['user_nombre'] . ' ' . $_SESSION['user_apellido'] ?></h3>
+        <p style="color:#6d6d6d !important;" class=""><?= $_SESSION['user_email']?></p>
+        <hr>
+        <div class="items-menu" ><span id="acceder">Configuración de mi cuenta</span></div>
+        <div class="items-menu" ><span id="acceder">Mis cursos</span></div>
+        <div class="cerrarSesion">
+          <button onclick="location='./controllers/logout.php'" type="button" class="btn btn-outline-danger" >Cerrar sesión</button>
+        </div>
+      </div>  
+      </div>
     </div>
   </div>
   
@@ -183,7 +200,7 @@
           <div class="img"><img src="images/I_tecnicas_negociacion.jpg" alt="img" draggable="false"></div>
           <h5>Técnicas de negociación</h5>
           <h6>Breve descripción del curso de Técnicas de negociación</h6>
-          <a href="tecnicasnegociacion.html" class="card-link">Más información...</a>
+          <a href="tecnicasnegociacion.php" class="card-link">Más información...</a>
         </li>
         <li class="cardfv">
           <div class="img"><img src="images/I_big_data.jpg" alt="img" draggable="false"></div>

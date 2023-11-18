@@ -13,9 +13,10 @@ body {
 
 nav.navbar {
     background-color: #f1f1f1 !important;
+    padding: 0px !important;
 }
 
-.separadornav{
+.iniciar-sesion-nav{
     border-left:3px groove rgb(107, 107, 116); 
     margin: 10px 10px 10px 10px; 
     padding: 0 10px 0 10px;
@@ -23,12 +24,90 @@ nav.navbar {
 }
 
 @media screen and (max-width:990px) {
-    .separadornav {
+    .iniciar-sesion-nav {
         border-left: none !important;
         padding: 0 10px 0 0px;
         margin: 20px 10px 10px 2px;
     }
 }
+
+.mi-cuenta-nav{
+    border-left:3px groove rgb(107, 107, 116); 
+    margin: 10px 10px 10px 10px; 
+    padding: 0 10px 0 10px;
+    
+}
+
+@media screen and (max-width:990px) {
+    .mi-cuenta-nav {
+        border-left: none !important;
+        padding: 0 10px 0 0px;
+        margin: 20px 10px 10px 2px;
+    }
+}
+
+
+
+/*canvas*/
+
+.offcanvas-body{
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    
+}
+
+.card-body h5{
+    color: #5A36DB !important;
+}
+
+.offcanvas-header{
+    padding: 10px 20px 10px 20px !important;
+}
+
+#form-micuenta h3{
+    color: #5A36DB !important;
+    margin-bottom: 0px !important;
+}
+
+.card-body span{
+    color: #5A36DB !important;
+}
+
+.items-menu span{
+    color: #181818 !important;
+}
+
+.items-menu span:hover{
+    color: #7e3ffd !important;
+}
+
+.items-menu{
+    margin: 10px 0px 10px 15px;
+}
+
+
+.cerrarSesion{
+    display: flex;
+}
+
+.cerrarSesion:last-child{
+    justify-content: flex-end;
+}
+
+.cerrarSesion .btn-outline-danger{
+    border-color: rgba(228, 31, 31, 0.822) !important;
+    margin-top: 100px !important; 
+    border-radius: 0%;
+    right: 0px !important;
+}
+
+.cerrarSesion .btn-outline-danger:hover{
+    background-color: rgba(228, 31, 31, 0.822) !important;
+}
+
+
+
+/*FIN canvas*/
 
 /*carrousel Imagenes*/
 .carousel {

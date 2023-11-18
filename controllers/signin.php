@@ -23,11 +23,15 @@
         if(password_verify($_POST['password'], $results['contrasenia'])) {
                 $_SESSION['user_id'] = $results['idUsuario'];
                 $_SESSION['user_nombre'] = $results['nombre'];
+                $inicial_nombre = isset($_SESSION['user_nombre']) ? $_SESSION['user_nombre'][0] : '';
                 $_SESSION['user_apellido'] = $results['apellido'];
+                $inicial_apellido = isset($_SESSION['user_apellido']) ? $_SESSION['user_apellido'][0] : '';
                 $_SESSION['user_email'] = $results['email'];
                 $_SESSION['user_administrador'] = $results['administrador'];
                 $_SESSION['user_activo'] = $results['activo'];
-                header('Location: ../menu.php');
+                $_SESSION['user_iniciales'] = $inicial_nombre . $inicial_apellido;
+                // header('Location: ../menu.php');
+                header('Location: ../index.php');
         }else{
                 $message = 'Email y/o contraseña incorrectos. Por favor vuelva a intentarlo.';
                 $_SESSION['login'] =$message;
@@ -42,5 +46,5 @@
 
 
 
-
 ?>
+
