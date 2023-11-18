@@ -58,7 +58,7 @@
         <div class="mi-cuenta-nav" id="mi-cuenta-nav">
           <button id="btnIniciales" class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"
-            style="background-color: #4285F4;"><?= isset($_SESSION['user_iniciales']) ? $_SESSION['user_iniciales'] : ''?></button>
+            style="background-color: #4285F4;" onclick="cerrarcanvas()"><?= isset($_SESSION['user_iniciales']) ? $_SESSION['user_iniciales'] : ''?></button>
         </div>
       </div>
     </div>

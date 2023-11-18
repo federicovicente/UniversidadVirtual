@@ -7,9 +7,10 @@ body {
     background: linear-gradient(to left top, #102497, #7e3ffd) !important;
 }
 
-.imgOscura {
+.carousel-item img{
     filter: brightness(50%);
 }
+
 
 nav.navbar {
     background-color: #f1f1f1 !important;

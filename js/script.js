@@ -28,6 +28,8 @@ $(document).ready(() =>{
     })
 })
 
+
+
 function panelCupon(){
     const panel = document.getElementsByClassName("panel_cupon")[0];
     if (panel.style.visibility == "hidden") {
