@@ -547,9 +547,6 @@ footer li {
   .comprar-curso h6{
     margin: 0px 0px 5px 0px;
   }
-
-
-  
   
   @media (max-width:1200px) {
     .comprar-curso {
@@ -771,3 +768,36 @@ footer li {
 #acceder, #registro:hover{
     cursor:pointer;
 }
+
+/*Modificar Perfil*/
+.contenedor-perfil {
+    width: 100%;
+    display: grid;
+    align-items: center !important;
+  }
+  
+  .perfil {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 5px 40px 5px;
+    justify-content: center;
+  }
+
+
+.panel-perfil {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    width: 100%;
+    min-width: 100px;
+    max-width: 500px;
+    height: auto;
+    min-height: 400px;
+    max-height: 600px;
+    border-radius: 1%;
+    background-image: linear-gradient(to bottom right, #ffffff, #f5f2f2);
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px 0px, rgba(0, 0, 0, 0.514) 0px 2px 16px 0px;
+    padding: 20px 10px 20px 10px;
+  }
