@@ -7,7 +7,6 @@ body {
     background: linear-gradient(to left top, #102497, #7e3ffd) !important;
 }
 
-
 .carousel-item img{
     filter: brightness(50%);
 }
@@ -18,11 +17,17 @@ nav.navbar {
     padding: 0px !important;
 }
 
+
+
 .iniciar-sesion-nav{
     border-left:3px groove rgb(107, 107, 116); 
     margin: 10px 10px 10px 10px; 
     padding: 0 10px 0 10px;
     
+}
+
+.iniciar-sesion-nav .btn-primary{
+    border-radius: 4px !important;
 }
 
 @media screen and (max-width:990px) {
@@ -75,11 +80,12 @@ nav.navbar {
     color: #5A36DB !important;
 }
 
-.items-menu span{
+.items-menu a{
     color: #181818 !important;
+    text-decoration: none !important;
 }
 
-.items-menu span:hover{
+.items-menu a:hover{
     color: #7e3ffd !important;
 }
 
@@ -99,7 +105,7 @@ nav.navbar {
 .cerrarSesion .btn-outline-danger{
     border-color: rgba(228, 31, 31, 0.822) !important;
     margin-top: 100px !important; 
-    border-radius: 0%;
+    border-radius: 2px !important;
     right: 0px !important;
 }
 
@@ -153,7 +159,7 @@ nav.navbar {
 }
 
 .carousel-inner {
-    border-radius: 1% !important;
+    border-radius: 4px !important;
 }
 
 .card-text {
@@ -500,7 +506,7 @@ footer li {
     aspect-ratio: 15/9;
     min-width: 450px;
     max-width: 850px;
-    border-radius: 1%;
+    border-radius: 4px;
     overflow: hidden;
     margin-right: 40px;
     background-image: linear-gradient(to bottom right, #000000, #292929);
@@ -537,7 +543,7 @@ footer li {
     height: auto;
     min-height: 250px;
     max-height: 600px;
-    border-radius: 1%;
+    border-radius: 4px;
     background-image: linear-gradient(to bottom right, #ffffff, #f5f2f2);
     box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px 0px, rgba(0, 0, 0, 0.514) 0px 2px 16px 0px;
     padding: 20px 10px 20px 10px;
@@ -668,7 +674,7 @@ footer li {
     width: 100% !important;
     box-shadow: rgba(0, 0, 0, 0.514) 0px 0px 8px !important;
     margin-top: 10px !important;
-    border-radius: 0% !important;
+    border-radius: 2px !important;
   
   }
   .btn-outline-dark:hover{
@@ -695,7 +701,7 @@ footer li {
     height: 35px !important;
     margin: 0px !important;
     padding: 0%;
-    border-radius: 0% !important;
+    border-radius: 0px !important;
     box-shadow: none !important;
     bottom: 0 !important;
   }
@@ -790,12 +796,17 @@ footer li {
     min-width: 100px;
     max-width: 800px;
     height: auto;
-    border-radius: 10%;
+    border-radius: 10px 10px 0px 0px;
     background-image: linear-gradient(to bottom right, #ffffff, #f5f2f2);
     box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px 0px, rgba(0, 0, 0, 0.514) 0px 2px 16px 0px;
-    padding: 20px 10px 20px 10px;
+    padding: 20px 10px 20px 20px;
     margin: 0px 0px 20px 0px;
   }
+
+.encabezado-perfil .display-6{
+    color: #5A36DB;
+    font-weight: 400;
+}
   
 .panel-perfil {
     display: flex;
@@ -808,7 +819,7 @@ footer li {
     max-width: 800px;
     height: auto;
     min-height: 400px;
-    border-radius: 1%;
+    border-radius: 0px 0px 10px 10px;
     background-image: linear-gradient(to bottom right, #ffffff, #f5f2f2);
     box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px 0px, rgba(0, 0, 0, 0.514) 0px 2px 16px 0px;
     padding: 20px 10px 20px 10px;

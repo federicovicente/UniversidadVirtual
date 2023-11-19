@@ -6,6 +6,7 @@
     require('../database/database.php');
 
     // comprobar si existe el usuario
+    
     // preparo la consulta
     $userData = $conn->prepare("SELECT * FROM usuarios WHERE email =:email");
 
