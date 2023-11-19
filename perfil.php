@@ -130,6 +130,9 @@
     </div>
 
     <div class="perfil">
+        <div class="encabezado-perfil">
+           <h1 class="">Mi perfil</h1>     
+        </div>
         <div class="panel-perfil">
             <div class="accordion" id="accordionPanelsStayOpenExample">
                 <div class="accordion-item">
