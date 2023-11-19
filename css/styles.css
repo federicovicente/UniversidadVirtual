@@ -7,6 +7,7 @@ body {
     background: linear-gradient(to left top, #102497, #7e3ffd) !important;
 }
 
+
 .carousel-item img{
     filter: brightness(50%);
 }
@@ -356,8 +357,8 @@ footer {
     display: grid;
     background-color: #f1f1f1;
     color: var(--second-c);
-    position: relative;
-    bottom: 0;
+    position:relative;
+    bottom: 0 !important;
     width: 100%;
     align-items: center !important;
     justify-content: center !important;
@@ -770,16 +771,10 @@ footer li {
 }
 
 /*Modificar Perfil*/
-.contenedor-perfil {
-    width: 100%;
-    display: grid;
-    align-items: center !important;
-  }
-  
   .perfil {
     display: flex;
     flex-wrap: wrap;
-    margin: 20px 5px 40px 5px;
+    margin: 40px 5px 60px 5px;
     justify-content: center;
   }
 
@@ -792,10 +787,9 @@ footer li {
     flex-grow: 1;
     width: 100%;
     min-width: 100px;
-    max-width: 500px;
+    max-width: 800px;
     height: auto;
     min-height: 400px;
-    max-height: 600px;
     border-radius: 1%;
     background-image: linear-gradient(to bottom right, #ffffff, #f5f2f2);
     box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px 0px, rgba(0, 0, 0, 0.514) 0px 2px 16px 0px;

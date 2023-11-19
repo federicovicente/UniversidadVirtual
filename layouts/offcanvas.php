@@ -76,7 +76,7 @@
         <h3 class=""><?= $_SESSION['user_nombre'] . ' ' . $_SESSION['user_apellido'] ?></h3>
         <p style="color:#6d6d6d !important;" class=""><?= $_SESSION['user_email']?></p>
         <hr>
-        <div class="items-menu" ><span id="acceder">Configuración de mi cuenta</span></div>
+        <div class="items-menu" ><span id="acceder" onclick="location='./perfil.php'">Configuración de mi cuenta</span></div>
         <div class="items-menu" ><span id="acceder">Mis cursos</span></div>
         <div class="cerrarSesion">
           <button onclick="location='./controllers/logout.php'" type="button" class="btn btn-outline-danger" >Cerrar sesión</button>
