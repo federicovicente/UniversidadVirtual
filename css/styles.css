@@ -579,46 +579,9 @@ footer li {
         margin-left: 10px;
     }
   }
-  @media (max-width:1200px) {
-    .descripcion-curso {
-        position: relative;
-        width: 100%;
-        min-width: 450px;
-        max-width: 700px;
-        margin-right: 10px;
-        margin-left: 10px;
-    }
-  }
-  @media (max-width:1200px) {
-    .descripcion-curso {
-        position: relative;
-        width: 100%;
-        min-width: 450px;
-        max-width: 700px;
-        margin-right: 10px;
-        margin-left: 10px;
-    }
-  }
-  @media (max-width:1200px) {
-    .descripcion-curso {
-        position: relative;
-        width: 100%;
-        min-width: 450px;
-        max-width: 700px;
-        margin-right: 10px;
-        margin-left: 10px;
-    }
-  }
-  @media (max-width:1200px) {
-    .descripcion-curso {
-        position: relative;
-        width: 100%;
-        min-width: 450px;
-        max-width: 700px;
-        margin-right: 10px;
-        margin-left: 10px;
-    }
-  }
+
+
+
   @media (max-width:600px) {
     .comprar-curso{
       padding: 10px;
@@ -777,16 +740,20 @@ footer li {
 }
 
 /*Modificar Perfil*/
-  .perfil {
+  .wrap-perfil {
     display: flex;
-    flex-wrap: wrap;
-    margin: 40px 5px 60px 5px;
     justify-content: center;
-    width: 100%;
-
+    margin: 40px 5px 60px 5px;
   }
 
+  .perfil {
+    margin: 20px 5px 40px 5px;
+    justify-content: center;
+    width: 800px;
+  }
+ 
 .encabezado-perfil {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -809,6 +776,7 @@ footer li {
 }
   
 .panel-perfil {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
