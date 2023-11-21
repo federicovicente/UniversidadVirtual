@@ -5,15 +5,11 @@
     // aceder a la base de datos
     require('../database/database.php');
 
-    // comprobar si existe el usuario
-    
-    // preparo la consulta
     $userData = $conn->prepare("SELECT * FROM usuarios WHERE email =:email");
 
     // recoger la informacion (el email)
     $userData->bindParam(':email', $_POST['email']);
 
-    //Ejecuto la consulta
     $userData->execute();
     
     //cargo las variables del usuario si es que existe
@@ -31,7 +27,6 @@
                 $_SESSION['user_administrador'] = $results['administrador'];
                 $_SESSION['user_activo'] = $results['activo'];
                 $_SESSION['user_iniciales'] = $inicial_nombre . $inicial_apellido;
-                // header('Location: ../menu.php');
                 header('Location: ../index.php');
         }else{
                 $message = 'Email y/o contraseña incorrectos. Por favor vuelva a intentarlo.';
