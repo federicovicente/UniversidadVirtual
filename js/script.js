@@ -66,4 +66,22 @@ function mostrarLogin() {
 
 
 
-    
+function edicionDatosPersonales() {
+    const checkbox = document.getElementById('checkDatosPersonales');
+    const formDP = document.getElementById('formDatosPersonales');
+    const inputs = formDP.querySelectorAll('input[type="text"], input[type="email"]');
+    const botonGuardar = document.getElementById('botonGuardar');
+
+    checkbox.addEventListener('change', function() {
+        inputs.forEach(function(input) {
+            input.disabled = !this.checked;
+        }, this);
+
+        botonGuardar.disabled = !this.checked;
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    edicionDatosPersonales();
+});
+

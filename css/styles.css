@@ -805,3 +805,8 @@ footer li {
     margin-top: 50px !important;
     margin-bottom: 0px !important;
   }
+
+  .form-disabled {
+    background-color: #e9ecef;
+    pointer-events: none;
+}
