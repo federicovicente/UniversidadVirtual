@@ -154,7 +154,7 @@
                         <button type="button" class="btn btn-link" onclick="panelCupon()">Tengo un cupón</button>
                         <div class="panel_cupon" style="visibility: hidden;">
                             <input class="inputcupon" type="text" name="cupon" id="cupon" placeholder="Introducir el cupon" style="border-radius: 0px !important">
-                            <button type="button" class="btn btn-outline-dark btnSubmit" onclick="verificarCupon()">Validar</button>
+                            <button type="button" class="btn btn-primary btnSubmit" onclick="verificarCupon()">Validar</button>
                         </div>
                         <div class="alert alert-danger" role="alert" id="avisocupon" style="display: none;">
                             aviso
@@ -168,7 +168,7 @@
                             <h3>62,99 US$</h3>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-outline-dark btnSubmit">Comprar ahora!</button>
+                    <button type="button" class="btn btn-primary btnSubmit">Comprar ahora!</button>
                 </div>
             </div>
         </div>

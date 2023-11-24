@@ -7,41 +7,35 @@ body {
     background: linear-gradient(to left top, #102497, #7e3ffd) !important;
 }
 
-.carousel-item img{
+.carousel-item img {
     filter: brightness(50%);
 }
-
 
 nav.navbar {
     background-color: #f1f1f1 !important;
     padding: 0px !important;
 }
 
-
-
-.iniciar-sesion-nav{
-    border-left:3px groove rgb(107, 107, 116); 
-    margin: 10px 10px 10px 10px; 
+.iniciar-sesion-nav {
+    border-left: 3px groove rgb(107, 107, 116);
+    margin: 10px 10px 10px 10px;
     padding: 0 10px 0 10px;
-    
+
 }
 
-@media screen and (max-width:990px) {
+.mi-cuenta-nav {
+    border-left: 3px groove rgb(107, 107, 116);
+    margin: 10px 10px 10px 10px;
+    padding: 0 10px 0 10px;
+
+}
+
+@media (max-width:990px) {
     .iniciar-sesion-nav {
         border-left: none !important;
         padding: 0 10px 0 0px;
         margin: 20px 10px 10px 2px;
     }
-}
-
-.mi-cuenta-nav{
-    border-left:3px groove rgb(107, 107, 116); 
-    margin: 10px 10px 10px 10px; 
-    padding: 0 10px 0 10px;
-    
-}
-
-@media screen and (max-width:990px) {
     .mi-cuenta-nav {
         border-left: none !important;
         padding: 0 10px 0 0px;
@@ -49,48 +43,41 @@ nav.navbar {
     }
 }
 
-
-
 /*canvas*/
-
-.offcanvas-body{
+.offcanvas-body {
     margin-top: 0 !important;
     padding-top: 0 !important;
-    
 }
 
-.card-body h5{
+.card-body h5 {
     color: #5A36DB !important;
 }
 
-.offcanvas-header{
+.offcanvas-header {
     padding: 10px 20px 10px 20px !important;
 }
 
-#form-micuenta h3{
+#form-micuenta h3 {
     color: #5A36DB !important;
     margin-bottom: 0px !important;
 }
 
-.card-body span{
+.card-body span {
     color: #5A36DB !important;
 }
 
-.items-menu a{
+.items-menu a {
     color: #181818 !important;
     text-decoration: none !important;
 }
 
-.items-menu a:hover{
+.items-menu a:hover {
     color: #7e3ffd !important;
 }
 
-.items-menu{
+.items-menu {
     margin: 10px 0px 10px 15px;
 }
-
-
-
 /*FIN canvas*/
 
 /*carrousel Imagenes*/
@@ -103,31 +90,30 @@ nav.navbar {
     padding: 0 5% 0 5% !important;
 }
 
-@media screen and (max-width: 1400px) {
+@media (max-width: 1400px) {
     .carousel {
         padding: 0 0% 0 0% !important;
-        margin: 30px 0% 10px 0% !important;
+        margin: 30px 0% 30px 0% !important;
     }
 }
 
-@media screen and (max-width: 900px) {
+@media (max-width: 900px) {
     .carousel {
         padding: 0 0% 0 0% !important;
-        margin: 10px 0% 10px 0% !important;
+        margin: 10px 0% 20px 0% !important;
     }
 }
 
-@media screen and (max-width: 600px) {
+@media (max-width: 600px) {
     .carousel {
         padding: 0 0% 0 0% !important;
-        margin: 10px 0% 10px 0% !important;
+        margin: 10px 0% 20px 0% !important;
     }
 }
 
 .flexbox-margin-auto {
     display: flex;
     width: 100%;
-
 }
 
 .flexbox-margin-auto_content {
@@ -141,31 +127,42 @@ nav.navbar {
 .card-text {
     font-size: small;
 }
-
 /*FIN carrousel Imagenes*/
 
-
-.centrador{
+.centrador {
     display: flex !important;
     padding: 0 35 0 35px !important;
     align-items: center !important;
     justify-content: center !important;
     margin-bottom: 40px;
-  }
-
+}
 
 /*carrousel Tarjetas*/
+.contenedor-encabezado-carousel{
+    display:flex !important;
+    width: 100%;
+    justify-content: center !important;
+}
+.encabezado-carousel{
+    display:flex !important;
+    max-width: 1300px;
+    width: 100%;
+
+}
+
 .contenedor-carouselt {
-    display: flex !important;
-    width: 100%;  
+    display:flex !important;
+    width: 100%;
     justify-content: center !important;
     overflow: hidden;
 }
 
 .wrapperfv {
-    max-width: 1300px;
+    display: flex;
+    max-width: 1400px;
     width: 100%;
     position: relative;
+    justify-content: center;
 }
 
 .wrapperfv i {
@@ -190,17 +187,17 @@ nav.navbar {
 }
 
 .wrapperfv i:first-child {
-    left: -22px;
+    left: 20px;
 }
 
 .wrapperfv i:last-child {
-    right: -22px;
+    right: 20px;
 }
 
 .wrapperfv .carouselfv {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: calc((100% / 5) - 8px);
+    grid-auto-columns: calc((100% / 5) - 12px);
     overflow-x: auto;
     padding: 0 !important;
     scroll-snap-type: x mandatory;
@@ -208,6 +205,7 @@ nav.navbar {
     border-radius: 4px;
     scroll-behavior: smooth;
     scrollbar-width: none;
+    max-width: 1300px;
 }
 
 .carouselfv::-webkit-scrollbar {
@@ -253,31 +251,32 @@ nav.navbar {
     object-fit: cover;
 }
 
-.wrapperfv h4 {
+.encabezado-carousel h4 {
     font-weight: 350;
     color: #f8f8f8 !important;
     font-size: 1.7rem !important;
     margin-bottom: 15px !important;
 }
 
-@media screen and (max-width: 1300px) {
-    .wrapperfv h4 {
+@media (max-width: 1300px) {
+    .encabezado-carousel h4 {
         font-weight: 320;
         margin-left: 10px;
         font-size: 1.6rem !important;
+        margin-bottom: 5px;
     }
 }
 
-@media screen and (max-width: 900px) {
-    .wrapperfv h4 {
+@media (max-width: 900px) {
+    .encabezado-carousel h4{
         font-weight: 270;
         margin-left: 10px;
         font-size: 1.5rem !important;
     }
 }
 
-@media screen and (max-width: 600px) {
-    .wrapperfv h4 {
+@media (max-width: 600px) {
+    .encabezado-carousel h4 {
         font-weight: 250;
         margin-left: 10px;
         font-size: 1.4rem !important;
@@ -311,23 +310,23 @@ footer h6 {
     font-size: 1.31rem;
 }
 
-@media screen and (max-width: 1300px) {
+@media (max-width: 1300px) {
     .wrapperfv .carouselfv {
         grid-auto-columns: calc((100% / 4) - 8px);
-        margin: 10px;
+        margin: 0px 10px 10px 10px;
     }
 }
 
-@media screen and (max-width: 1050px) {
+@media (max-width: 1050px) {
     .wrapperfv .carouselfv {
         grid-auto-columns: calc((100% / 3) - 8px);
     }
 }
 
-@media screen and (max-width: 800px) {
+@media (max-width: 800px) {
     .wrapperfv .carouselfv {
         grid-auto-columns: 50%;
-        margin: 10px;
+        margin: 0px 10px 10px 10px;
         gap: 6px;
     }
 }
@@ -339,7 +338,7 @@ footer {
     display: grid;
     background-color: #f1f1f1;
     color: var(--second-c);
-    position:relative;
+    position: relative;
     bottom: 0 !important;
     width: 100%;
     align-items: center !important;
@@ -369,7 +368,7 @@ footer li {
 
 .wrap-footer {
     display: grid;
-    justify-content:center;
+    justify-content: center;
     grid-template-columns: 30% 15% 15% 15%;
     column-gap: 5%;
     padding-top: 20px;
@@ -417,7 +416,7 @@ footer li {
     margin: 0 auto;
 }
 
-.copy-creds{
+.copy-creds {
     margin-right: 40px;
 }
 
@@ -428,7 +427,7 @@ footer li {
 
 .legal-creds ul li {
     padding-right: 40px;
-    
+
 }
 
 .legal-creds ul a {
@@ -437,7 +436,7 @@ footer li {
 }
 
 @media (max-width:1050px) {
-    .wrap-footer {  
+    .wrap-footer {
         grid-template-columns: repeat(2, auto);
         flex-wrap: wrap;
         padding-left: 60px;
@@ -448,15 +447,16 @@ footer li {
 @media (max-width:800px) {
     .wrap-footer {
         grid-template-columns: repeat(2, auto);
-        justify-content:center;
+        justify-content: center;
         padding-left: 20px;
         padding-right: 20px;
     }
 }
+
 @media (max-width:600px) {
     .wrap-footer {
         grid-template-columns: repeat(1, auto);
-        justify-content:center;
+        justify-content: center;
         margin: 10px 0px 10px 0px;
     }
 }
@@ -467,16 +467,16 @@ footer li {
     width: 100%;
     display: grid;
     align-items: center !important;
-  }
-  
-  .wrap-curso {
+}
+
+.wrap-curso {
     display: flex;
     flex-wrap: wrap;
     margin: 20px 5px 40px 5px;
     justify-content: center;
-  }
-  
-  .descripcion-curso {
+}
+
+.descripcion-curso {
     position: relative;
     width: 65%;
     aspect-ratio: 15/9;
@@ -487,16 +487,15 @@ footer li {
     margin-right: 40px;
     background-image: linear-gradient(to bottom right, #000000, #292929);
     box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px 0px, rgba(0, 0, 0, 0.514) 0px 2px 16px 0px;
-  }
-  
-  
-  .descripcion-curso img {
+}
+
+.descripcion-curso img {
     position: absolute;
     width: 100%;
     filter: brightness(80%);
-  }
-  
-  .banner-curso {
+}
+
+.banner-curso {
     position: absolute;
     padding: 2%;
     color: #e4e4e4;
@@ -505,9 +504,9 @@ footer li {
     background-image: linear-gradient(to top, #000000, #00000073);
     bottom: 0;
     text-align: justify;
-  }
-  
-  .comprar-curso {
+}
+
+.comprar-curso {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -523,20 +522,154 @@ footer li {
     background-image: linear-gradient(to bottom right, #ffffff, #f5f2f2);
     box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px 0px, rgba(0, 0, 0, 0.514) 0px 2px 16px 0px;
     padding: 20px 10px 20px 10px;
-  }
-  .comprar-curso p{
+}
+
+.comprar-curso p {
     margin: 0px 0px 5px 0px;
-  }
-  .comprar-curso h6{
+}
+
+.comprar-curso h6 {
     margin: 0px 0px 5px 0px;
-  }
-  
-  @media (max-width:1200px) {
+}
+
+.comprar-curso .btn-primary {
+    width: 100% !important;
+    box-shadow: rgba(0, 0, 0, 0.514) 0px 0px 8px !important;
+    margin-top: 10px !important;
+}
+
+.contenedorcupon .btn-link {
+    color: #292929 !important;
+    margin: 0px 0px 10px 0px !important;
+    padding: 0px 0px 0px 0px !important;
+    font-weight: 500 !important;
+    font-size: 1.1rem !important;
+}
+
+.panel_cupon {
+    display: flex;
+}
+
+.panel_cupon .btn-primary {
+    width: 30% !important;
+    height: 35px !important;
+    margin: 0px !important;
+    padding: 0%;
+    box-shadow: none !important;
+    bottom: 0 !important;
+}
+
+.inputcupon {
+    width: 68% !important;
+    height: 35px !important;
+    margin: 0px !important;
+    padding: 0%;
+    bottom: 0 !important;
+}
+
+
+.contenedorcupon .alert-danger {
+    padding: 2px !important;
+    font-size: .9rem !important;
+    margin-top: 5px !important;
+    margin-bottom: 0px !important;
+}
+
+.contenedorcupon .alert-success {
+    padding: 2px !important;
+    font-size: .9rem !important;
+    margin-top: 5px !important;
+    margin-bottom: 0px !important;
+}
+
+.precio {
+    display: flex;
+}
+
+.preciodescuento {
+    display: flex;
+}
+
+.precio h3 {
+    font-weight: 500;
+    font-size: 2.5rem;
+    margin-top: 30px;
+}
+
+.preciodescuento h3 {
+    font-weight: 500;
+    font-size: 2.5rem;
+    margin-top: 5px;
+}
+
+.preciotachado h3 {
+    font-weight: 350;
+    font-size: 1.4rem;
+    margin: 10px 0px 0px 0px;
+    text-decoration: line-through;
+}
+
+.preciotachado,
+.preciodescuento {
+    display: none;
+}
+
+#acceder,
+#registro:hover {
+    cursor: pointer;
+}
+
+@media (max-width:600px) {
+    .comprar-curso {
+        padding: 10px;
+    }
+
+    .banner-curso {
+        min-height: 100px;
+    }
+
+    .banner-curso h4 {
+        font-weight: 500;
+        font-size: 1.2rem !important;
+    }
+
+    .banner-curso,
+    .comprar-curso,
+    .btn-link p {
+        font-weight: 350;
+        font-size: 0.9rem !important;
+    }
+
+    .comprar-curso p {
+        margin: 3px 0px 0px 0px;
+    }
+
+    .comprar-curso h6 {
+        margin: 5px 0px 0px 0px;
+    }
+
+    .comprar-curso h3 {
+        font-weight: 350;
+        font-size: 2rem !important;
+        margin: 5px 0px 0px 0px !important;
+    }
+
+    .precio h5 {
+        font-size: 1.2rem !important;
+        margin: 20px 0px 0px 5px !important;
+    }
+    .preciotachado h3 {
+        font-size: 1.2rem !important;
+        margin: 10px 0px 0px 5px !important;
+    }
+}
+
+@media (max-width:1200px) {
     .comprar-curso {
         flex-direction: row;
         justify-content: space-around;
         display: grid;
-        grid-template-columns:40% 40%;
+        grid-template-columns: 40% 40%;
         width: 100%;
         min-width: 450px;
         max-width: 700px;
@@ -544,8 +677,7 @@ footer li {
         margin-left: 10px;
         margin-right: 10px;
     }
-  }
-  @media (max-width:1200px) {
+
     .descripcion-curso {
         position: relative;
         width: 100%;
@@ -554,177 +686,21 @@ footer li {
         margin-right: 10px;
         margin-left: 10px;
     }
-  }
-
-
-
-  @media (max-width:600px) {
-    .comprar-curso{
-      padding: 10px;
-    }
-  }
-
-  @media (max-width:600px) {
-    .banner-curso{
-      min-height: 100px;
-    }
-  }
-  
-  @media (max-width:600px) {
-    .banner-curso h4 {
-      font-weight: 500;
-      font-size: 1.2rem !important;
-    }
-  }
-  @media (max-width:600px) {
-    .banner-curso, .comprar-curso, .btn-link  p {
-      font-weight: 350;
-      font-size: 0.9rem !important;
-    }
-  }
-
-  @media (max-width:600px) {
-    .comprar-curso p{
-        margin: 3px 0px 0px 0px;
-        
-    }
-  }
-  @media (max-width:600px) {
-    .comprar-curso h6{
-        margin: 5px 0px 0px 0px;
-    }
-  }
-  @media (max-width:600px) {
-    .comprar-curso h3{
-        font-weight: 350;
-        font-size: 2rem !important;
-        margin: 5px 0px 0px 0px !important;
-    }
-  }
-
-  @media (max-width:600px) {
-    .precio h5{
-        font-size: 1.2rem !important;
-        margin: 20px 0px 0px 5px !important;
-    }
-  }
-
-  .btn-outline-dark{
-    width: 100% !important;
-    box-shadow: rgba(0, 0, 0, 0.514) 0px 0px 8px !important;
-    margin-top: 10px !important;
-    border-radius: 2px !important;
-  
-  }
-  .btn-outline-dark:hover{
-    background-color: rgba(20, 20, 20, 0.822) !important;
-    box-shadow: rgba(0, 0, 0, 0.514) 0px 0px 8px !important;
-  }
-
-  
-
-  .contenedorcupon .btn-link{
-    color: #292929 !important;
-    margin: 0px 0px 10px 0px !important;
-    padding:  0px 0px 0px 0px !important;
-    font-weight: 500 !important;
-    font-size: 1.1rem !important;
-  }
-
-  .panel_cupon{
-    display: flex;
-  }
-
-  .panel_cupon .btn-outline-dark{
-    width: 30% !important;
-    height: 35px !important;
-    margin: 0px !important;
-    padding: 0%;
-    border-radius: 0px !important;
-    box-shadow: none !important;
-    bottom: 0 !important;
-  }
-
-  .inputcupon{
-    width: 68% !important;
-    height: 35px !important;
-    margin: 0px !important;
-    padding: 0%;
-    bottom: 0 !important;
-  }
-
-
-  .contenedorcupon .alert-danger{
-    padding: 2px !important;
-    font-size: .9rem !important;
-    margin-top: 5px !important;
-    margin-bottom: 0px !important;
-  }
-
-  .contenedorcupon .alert-success{
-    padding: 2px !important;
-    font-size: .9rem !important;
-    margin-top: 5px !important;
-    margin-bottom: 0px !important;
-  }
-
-
-  .precio {
-    display: flex;
-  }
-
-  .preciodescuento {
-    display: flex;
-  }
-
-  .precio h3 {
-    font-weight: 500;
-    font-size: 2.5rem;
-    margin-top: 30px;
-  }
-
-  .preciodescuento h3 {
-    font-weight: 500;
-    font-size: 2.5rem;
-    margin-top: 5px;
-  }
-
-  .preciotachado h3 {
-    font-weight: 350;
-    font-size: 1.4rem;
-    margin: 10px 0px 0px 0px;
-    text-decoration: line-through;
-  }
-
-  .preciotachado, .preciodescuento{
-    display:none;
-  }
-
-  @media (max-width:600px) {
-    .preciotachado h3{
-        font-size: 1.2rem !important;
-        margin: 10px 0px 0px 5px !important;
-    }
-  }
-
-
-#acceder, #registro:hover{
-    cursor:pointer;
 }
 
 /*Modificar Perfil*/
-  .wrap-perfil {
+.wrap-perfil {
     display: flex;
     justify-content: center;
     margin: 30px 5px 60px 5px;
-  }
+}
 
-  .perfil {
+.perfil {
     margin: 0px 5px 40px 5px;
     justify-content: center;
     width: 800px;
-  }
- 
+}
+
 .encabezado-perfil {
     position: relative;
     display: flex;
@@ -741,13 +717,13 @@ footer li {
     box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px 0px, rgba(0, 0, 0, 0.514) 0px 2px 16px 0px;
     padding: 15px 10px 15px 20px;
     margin: 0px 0px 20px 0px;
-  }
+}
 
-.encabezado-perfil .display-6{
+.encabezado-perfil .display-6 {
     color: #5A36DB;
     font-weight: 400;
 }
-  
+
 .panel-perfil {
     position: relative;
     display: flex;
@@ -764,34 +740,32 @@ footer li {
     background-image: linear-gradient(to bottom right, #ffffff, #f5f2f2);
     box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px 0px, rgba(0, 0, 0, 0.514) 0px 2px 16px 0px;
     padding: 20px 10px 20px 10px;
-  }
+}
 
-  .accordion-body{
+.accordion-body {
     padding-top: 30px !important;
     padding-bottom: 0px !important;
-  }
+}
 
-  .accordion-body .btnSubmit{
+.accordion-body .btnSubmit {
     position: relative !important;
     left: 100% !important;
     transform: translate(-100%, -100%) !important;
     margin-top: 50px !important;
     margin-bottom: 0px !important;
-  }
+}
 
-
-.btnSubmit{
+.btnSubmit {
     background-color: #5A36DB !important;
     border-radius: 0px !important;
     border: none !important;
-    color: #ffffff !important;
+    /* color: #ffffff !important; */
 }
 
-.btnSubmit:hover{
-    background-color:#7e3ffd !important;
+.btnSubmit:hover {
+    background-color: #7e3ffd !important;
 }
 
-.mi-cuenta-nav .btnSubmit{
+.mi-cuenta-nav .btnSubmit {
     border-radius: 5px 15px !important;
 }
-

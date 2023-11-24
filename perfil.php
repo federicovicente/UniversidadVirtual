@@ -259,12 +259,53 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                                        Accordion Item #3
+                                        Configuración de notificaciones
                                     </button>
                                 </h2>
                                 <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
                                     <div class="accordion-body">
-                                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                    <!-- form contrasena -->
+                                        <form id="formDatosPersonales" action="./controllers/update_perfil.php" method="POST">
+                                            <div class="row mb-3" style="text-align: right" ;>
+                                                <label for="inputnombre" class="col-sm-3 col-form-label">Nombre</label>
+                                                <div class="col-sm-9">
+                                                    <input class="form-control mb-2" type="text" name="nombre" disabled required value="<?php echo (isset($_SESSION['user_nombre']) ? $_SESSION['user_nombre'] : ''); ?>">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3" style="text-align: right">
+                                                <label for="inputapellido" class="col-sm-3 col-form-label">Apellido</label>
+                                                <div class="col-sm-9">
+                                                    <input class="form-control mb-2" type="text" name="apellido" disabled required value="<?php echo (isset($_SESSION['user_apellido']) ? $_SESSION['user_apellido'] : ''); ?>">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3" style="text-align: right">
+                                                <label for="inputemail" class="col-sm-3 col-form-label">Correo electrónico</label>
+                                                <div class="col-sm-9">
+                                                    <input class="form-control mb-2" type="email" name="email" disabled required value="<?php echo (isset($_SESSION['user_email']) ? $_SESSION['user_email'] : ''); ?>">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-sm-9 offset-sm-3">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" id="checkDatosPersonales">
+                                                        <label class="form-check-label" for="gridCheck1">
+                                                            Habilitar edición
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- alerta -->
+                                            <?php if (isset($_SESSION['updateExitoso'])) { ?>
+                                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                    <?= $_SESSION['updateExitoso'] ?>
+                                                </div>
+                                            <?php }
+                                            unset($_SESSION['updateExitoso']);
+                                            ?>
+                                            <!-- alerta -->
+                                            <button type="submit" class="btn btn-primary btnSubmit" id="botonGuardar" disabled>Guardar</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
