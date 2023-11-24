@@ -51,10 +51,10 @@
                     <button class="btn btn-outline-success" type="submit">Buscar</button>
                 </form>
                 <div class="iniciar-sesion-nav" id="iniciar-sesion-nav">
-                    <button id="btniniciarsesion" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" style="background-color: #4285F4;">Iniciar sesión</button>
+                    <button id="btniniciarsesion" class="btn btn-primary btnSubmit" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Iniciar sesión</button>
                 </div>
                 <div class="mi-cuenta-nav" id="mi-cuenta-nav">
-                    <button id="btnIniciales" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" style="background-color: #4285F4;" onclick="cerrarcanvas()"><?= isset($_SESSION['user_iniciales']) ? $_SESSION['user_iniciales'] : '' ?></button>
+                    <button id="btnIniciales" class="btn btn-primary btnSubmit" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" onclick="cerrarcanvas()"><?= isset($_SESSION['user_iniciales']) ? $_SESSION['user_iniciales'] : '' ?></button>
                 </div>
             </div>
         </div>
@@ -74,7 +74,7 @@
                     <input class="form-control mb-3" type="text" name="surname" placeholder="Apellido" required>
                     <input class="form-control mb-3" type="email" name="email" placeholder="Email" required>
                     <input class="form-control mb-3" type="password" name="password" placeholder="Contraseña" required>
-                    <button class="btn btn-primary mb-3" type="submit">Crear usuario</button>
+                    <button class="btn btn-primary mb-3 btnSubmit" type="submit">Crear usuario</button>
                     <div style="margin-left: 5px;"><span id="acceder">Ya tengo un usuario</span></div>
                 </form>
             </div>
@@ -111,7 +111,7 @@
                 <form action="./controllers/signin.php" method="POST">
                     <input class="form-control mb-3" type="email" name="email" placeholder="Email" required>
                     <input class="form-control mb-3" type="password" name="password" placeholder="Contraseña" required>
-                    <button class="btn btn-primary mb-3" type="submit">Iniciar sesión</button>
+                    <button class="btn btn-primary mb-3 btnSubmit" type="submit">Iniciar sesión</button>
                     <div style="margin-left: 5px;"><span id="registro">Aún no tengo un usuario creado</span></div>
                 </form>
             </div>
@@ -122,9 +122,8 @@
                 <hr>
                 <div class="items-menu"><a id="acceder" href="./controllers/update_sesion.php">Configuración de mi cuenta</a></div>
                 <div class="items-menu"><a id="acceder">Mis cursos</a></div>
-                <div class="cerrarSesion">
-                    <button onclick="location='./controllers/logout.php'" type="button" class="btn btn-outline-danger">Cerrar sesión</button>
-                </div>
+                <hr>
+                <div class="items-menu"><a style="font-weight: 500;" id="acceder" href="./controllers/logout.php">Salir</a></div>
             </div>
         </div>
     </div>
@@ -154,8 +153,8 @@
                     <form class="contenedorcupon">
                         <button type="button" class="btn btn-link" onclick="panelCupon()">Tengo un cupón</button>
                         <div class="panel_cupon" style="visibility: hidden;">
-                            <input class="inputcupon" type="text" name="cupon" id="cupon" placeholder="Introducir el cupon">
-                            <button type="button" class="btn btn-outline-dark" onclick="verificarCupon()">Validar</button>
+                            <input class="inputcupon" type="text" name="cupon" id="cupon" placeholder="Introducir el cupon" style="border-radius: 0px !important">
+                            <button type="button" class="btn btn-outline-dark btnSubmit" onclick="verificarCupon()">Validar</button>
                         </div>
                         <div class="alert alert-danger" role="alert" id="avisocupon" style="display: none;">
                             aviso
@@ -169,7 +168,7 @@
                             <h3>62,99 US$</h3>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-outline-dark">Comprar ahora!</button>
+                    <button type="button" class="btn btn-outline-dark btnSubmit">Comprar ahora!</button>
                 </div>
             </div>
         </div>

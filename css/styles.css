@@ -26,10 +26,6 @@ nav.navbar {
     
 }
 
-.iniciar-sesion-nav .btn-primary{
-    border-radius: 4px !important;
-}
-
 @media screen and (max-width:990px) {
     .iniciar-sesion-nav {
         border-left: none !important;
@@ -91,26 +87,6 @@ nav.navbar {
 
 .items-menu{
     margin: 10px 0px 10px 15px;
-}
-
-
-.cerrarSesion{
-    display: flex;
-}
-
-.cerrarSesion:last-child{
-    justify-content: flex-end;
-}
-
-.cerrarSesion .btn-outline-danger{
-    border-color: rgba(228, 31, 31, 0.822) !important;
-    margin-top: 100px !important; 
-    border-radius: 2px !important;
-    right: 0px !important;
-}
-
-.cerrarSesion .btn-outline-danger:hover{
-    background-color: rgba(228, 31, 31, 0.822) !important;
 }
 
 
@@ -731,9 +707,6 @@ footer li {
     }
   }
 
-#acceder, #registro{
-    color:blue;
-}
 
 #acceder, #registro:hover{
     cursor:pointer;
@@ -798,7 +771,7 @@ footer li {
     padding-bottom: 0px !important;
   }
 
-  .accordion-body .btn-primary{
+  .accordion-body .btnSubmit{
     position: relative !important;
     left: 100% !important;
     transform: translate(-100%, -100%) !important;
@@ -806,7 +779,19 @@ footer li {
     margin-bottom: 0px !important;
   }
 
-  .form-disabled {
-    background-color: #e9ecef;
-    pointer-events: none;
+
+.btnSubmit{
+    background-color: #5A36DB !important;
+    border-radius: 0px !important;
+    border: none !important;
+    color: #ffffff !important;
 }
+
+.btnSubmit:hover{
+    background-color:#7e3ffd !important;
+}
+
+.mi-cuenta-nav .btnSubmit{
+    border-radius: 5px 15px !important;
+}
+
