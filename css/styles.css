@@ -155,6 +155,7 @@ nav.navbar {
     width: 100%;
     justify-content: center !important;
     overflow: hidden;
+    margin-bottom: 40px;
 }
 
 .wrapperfv {
@@ -258,31 +259,6 @@ nav.navbar {
     margin-bottom: 15px !important;
 }
 
-@media (max-width: 1300px) {
-    .encabezado-carousel h4 {
-        font-weight: 320;
-        margin-left: 10px;
-        font-size: 1.6rem !important;
-        margin-bottom: 5px;
-    }
-}
-
-@media (max-width: 900px) {
-    .encabezado-carousel h4{
-        font-weight: 270;
-        margin-left: 10px;
-        font-size: 1.5rem !important;
-    }
-}
-
-@media (max-width: 600px) {
-    .encabezado-carousel h4 {
-        font-weight: 250;
-        margin-left: 10px;
-        font-size: 1.4rem !important;
-    }
-}
-
 .carouselfv .cardfv h5 {
     font-weight: 500;
     font-size: 1.05rem;
@@ -310,16 +286,53 @@ footer h6 {
     font-size: 1.31rem;
 }
 
+@media (max-width: 1400px) {
+    .wrapperfv{
+        width: 95%;
+    }
+    .wrapperfv i:first-child {
+        left: -30px;
+    }
+    
+    .wrapperfv i:last-child {
+        right: -30px;
+    }
+}
+
 @media (max-width: 1300px) {
+    .wrapperfv{
+        width: 95%;
+    }
+    .wrapperfv i:first-child {
+        left: -15px;
+    }
+    
+    .wrapperfv i:last-child {
+        right: -15px;
+    }
     .wrapperfv .carouselfv {
         grid-auto-columns: calc((100% / 4) - 8px);
         margin: 0px 10px 10px 10px;
+    }
+    .encabezado-carousel h4 {
+        font-weight: 320;
+        margin-left: 10px;
+        font-size: 1.6rem !important;
+        margin-bottom: 5px;
     }
 }
 
 @media (max-width: 1050px) {
     .wrapperfv .carouselfv {
         grid-auto-columns: calc((100% / 3) - 8px);
+    }
+}
+
+@media (max-width: 900px) {
+    .encabezado-carousel h4{
+        font-weight: 270;
+        margin-left: 10px;
+        font-size: 1.5rem !important;
     }
 }
 
@@ -330,6 +343,16 @@ footer h6 {
         gap: 6px;
     }
 }
+
+
+@media (max-width: 600px) {
+    .encabezado-carousel h4 {
+        font-weight: 250;
+        margin-left: 10px;
+        font-size: 1.4rem !important;
+    }
+}
+
 
 /*FIN carrousel Tarjetas*/
 
@@ -467,12 +490,12 @@ footer li {
     width: 100%;
     display: grid;
     align-items: center !important;
+    margin: 40px 0px 60px 0px;
 }
 
 .wrap-curso {
     display: flex;
     flex-wrap: wrap;
-    margin: 20px 5px 40px 5px;
     justify-content: center;
 }
 
@@ -692,7 +715,7 @@ footer li {
 .wrap-perfil {
     display: flex;
     justify-content: center;
-    margin: 30px 5px 60px 5px;
+    margin: 40px 5px 60px 5px;
 }
 
 .perfil {
@@ -759,7 +782,6 @@ footer li {
     background-color: #5A36DB !important;
     border-radius: 0px !important;
     border: none !important;
-    /* color: #ffffff !important; */
 }
 
 .btnSubmit:hover {

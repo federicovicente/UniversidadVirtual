@@ -34,7 +34,7 @@
                 header('Location: ../index.php');
         }
     }else{
-        $message = 'El email ingresado no está registrado.';
+        $message = 'El email ingresado no se encuentra registrado.';
         $_SESSION['login'] =$message;
         header('Location: ../index.php');
     }

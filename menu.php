@@ -16,10 +16,21 @@
             <h5 class=""><?= $_SESSION['user_nombre'] . ' ' . $_SESSION['user_apellido'] ?></h5>
             <h5 class=""><?= $_SESSION['user_email']?></h5>
             <h5 class=""><?= $_SESSION['user_iniciales']?></h5>
+            <h5 class=""><?= $_SESSION['user_administrador']?></h5>
             <a href="./controllers/logout.php">Salir</a>
 
         </div>
     </div>
     <?php include 'layouts/footer.php'; ?>
+
+
+    <script>
+        const userAdministrador = "<?php echo $_SESSION['user_administrador']; ?>";
+    </script>
+
+
+
+
+    <script src="js/script.js"></script>
 </body>
 </html>
