@@ -32,38 +32,6 @@ $('#acceder').click(() =>{
 })
 
 
-// $(document).ready(() =>{
-//     const iniciales = document.getElementById('btnIniciales').textContent;
-//     $('#form-registro').hide();
-//     $('#form-micuenta').hide();
-//     $('#form-admin').hide();
-//     $('#form-acceso').show();
-
-//     if (iniciales == ""){
-//         $('#mi-cuenta-nav').hide();
-//         $('#iniciar-sesion-nav').show();
-//     }else{
-//         $('#mi-cuenta-nav').show();
-//         $('#iniciar-sesion-nav').hide();
-//         $('#form-acceso').hide();
-//         $('#form-micuenta').show();
-//     }
-
-//     $('#registro').click(() =>{
-//         $('#form-registro').fadeIn(500);
-//         $('#form-acceso').hide();
-//         $('#form-micuenta').hide();
-//     })
-
-//     $('#acceder').click(() =>{
-//         $('#form-registro').hide();
-//         $('#form-acceso').fadeIn(500);
-//         $('#form-micuenta').hide();
-//     })
-// })
-
-
-
 function panelCupon(){
     const panel = document.getElementsByClassName("panel_cupon")[0];
     if (panel.style.visibility == "hidden") {
@@ -118,4 +86,5 @@ function edicionDatosPersonales() {
 document.addEventListener('DOMContentLoaded', function() {
     edicionDatosPersonales();
 });
+
 

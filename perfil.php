@@ -1,7 +1,6 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -219,22 +218,22 @@
                                             <div class="row mb-3" style="text-align: right" ;>
                                                 <label for="inputpass" class="col-sm-4 col-form-label">Contraseña actual</label>
                                                 <div class="col-sm-8">
-                                                    <input class="form-control mb-2" type="password" name="password" required>
+                                                    <input class="form-control mb-2" type="password" name="password" id="oldPass" required>
                                                 </div>
                                             </div>
                                             <div class="row mb-3" style="text-align: right">
                                                 <label for="inputanewpass" class="col-sm-4 col-form-label">Nueva contraseña</label>
                                                 <div class="col-sm-8">
-                                                    <input class="form-control mb-2" type="password" name="newpassword" required>
+                                                    <input class="form-control mb-2" type="password" name="newpassword" id="newPass"  required>
                                                 </div>
                                             </div>
                                             <div class="row mb-3" style="text-align: right">
                                                 <label for="inputemail" class="col-sm-4 col-form-label">Repita la nueva contraseña</label>
                                                 <div class="col-sm-8">
-                                                    <input class="form-control mb-2" type="password" name="newpassword2" required>
+                                                    <input class="form-control mb-2" type="password" name="newpassword2" id="newPass2" required>
                                                 </div>
                                             </div>
-                                            <!-- alerta -->
+                                            <!-- alerta cambio confirmado-->
                                             <?php if (isset($_SESSION['passchanged'])) { ?>
                                                 <script>
                                                     $(document).ready(function() {
@@ -251,6 +250,7 @@
                                             <?php }
                                             unset($_SESSION['passchanged']);
                                             ?>
+                                            <!-- alerta contraseña incorrecta-->
                                             <?php if (isset($_SESSION['wrongpassword'])) { ?>
                                                 <script>
                                                     $(document).ready(function() {
@@ -266,8 +266,23 @@
                                             <?php }
                                             unset($_SESSION['wrongpassword']);
                                             ?>
-                                            <!-- alerta -->
-                                            <button type="submit" id="btnSubmit" class="btn btn-primary btnSubmit">Cambiar contraseña</button>
+                                            <!-- alerta cambio confirmado-->
+                                            <?php if (isset($_SESSION['unequalpassword'])) { ?>
+                                                <script>
+                                                    $(document).ready(function() {
+                                                        $('#panelsStayOpen-collapseOne').removeClass('show');
+                                                        $('#panelsStayOpen-collapseTwo').addClass('show');
+                                                        $('#btnSeguridadCuenta').removeClass('collapsed');
+                                                        $('#btnDatosPersonales').addClass('collapsed');
+                                                    });
+                                                </script>
+                                                <div class="alert alert-danger" role="alert">
+                                                    <?= $_SESSION['unequalpassword'] ?>
+                                                </div>
+                                            <?php }
+                                            unset($_SESSION['unequalpassword']);
+                                            ?>
+                                            <button type="submit" id="btnCambiarPass" class="btn btn-primary btnSubmit">Cambiar contraseña</button>
                                         </form>
                                     </div>
                                 </div>
@@ -387,11 +402,6 @@
             const userAdministrador = "<?php echo isset($_SESSION['user_administrador']) ? $_SESSION['user_administrador'] : '' ?>";
         </script>
         <script src="js/script.js"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                manejarCheckbox();
-            });
-        </script>
     </body>
 <?php } else {
     require('./404.php');
