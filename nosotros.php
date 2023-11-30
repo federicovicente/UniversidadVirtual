@@ -1,19 +1,19 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tecnicas de negociación</title>
+    <title>Nosotros</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
-
 <body>
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -143,56 +143,16 @@
             </div>
         </div>
     </div>
-
-    <div class="contenedor-curso">
-        <div class="wrap-curso">
-            <div class="descripcion-curso">
-                <img src="images/I_tecnicas_negociacion.jpg" />
-                <div class="banner-curso">
-                    <h4>Tecnicas de negociación</h4>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis repudiandae ut sed dolores,
-                        aperiam odit?</p>
-                </div>
-            </div>
-            <div class="comprar-curso">
-                <div class="div">
-                    <h6>Creado por:</h6>
-                    <p>Federico vicente</p>
-                    <h6>Certificado:</h6>
-                    <p>Oficial</p>
-                    <h6>Duración:</h6>
-                    <p>240 hs</p>
-                    <h6>Idioma:</h6>
-                    <p>Españo, Inglés</p>
-                </div>
-                <div class="div">
-                    <form class="contenedorcupon">
-                        <button type="button" class="btn btn-link" onclick="panelCupon()">Tengo un cupón</button>
-                        <div class="panel_cupon" style="visibility: hidden;">
-                            <input class="inputcupon" type="text" name="cupon" id="cupon" placeholder="Introducir el cupon" style="border-radius: 0px !important">
-                            <button type="button" class="btn btn-primary btnSubmit" onclick="verificarCupon()">Validar</button>
-                        </div>
-                        <div class="alert alert-danger" role="alert" id="avisocupon" style="display: none;">
-                            aviso
-                        </div>
-                    </form>
-                    <div>
-                        <div class="precio" id="precioOriginal">
-                            <h3>69,99 US$</h3>
-                        </div>
-                        <div class="preciodescuento" id="precioDescuento">
-                            <h3>62,99 US$</h3>
-                        </div>
+    <div class="container-b">
+                <div class="wrap-b">
+                    <div class="encabezado-b">
+                        <h1 class="display-6">Nosotros</h1>
                     </div>
-                    <button type="button" class="btn btn-primary btnSubmit">Comprar ahora!</button>
+                    <div class="panel-b">
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus obcaecati unde sed iure beatae magni maiores optio impedit ea corporis ratione explicabo molestiae modi qui, excepturi suscipit iste? In debitis corporis maiores optio rerum non fugiat aspernatur eaque laboriosam quod commodi, corrupti doloremque consequuntur eveniet blanditiis aliquid ex facere magni voluptatem cum ipsum.</br>&nbsp;&nbsp;&nbsp;&nbsp;Unde, modi dicta tenetur deleniti sequi omnis accusamus accusantium possimus aspernatur. Facere molestiae, at veniam sapiente quae odit quibusdam nesciunt itaque deserunt, eaque tenetur deleniti, quam pariatur laboriosam quisquam id facilis cumque eveniet laborum recusandae non. Esse, impedit suscipit sunt itaque corrupti culpa asperiores est reprehenderit reiciendis. Officia, ratione nam adipisci accusantium porro voluptatum rem deserunt excepturi ex perspiciatis aperiam obcaecati veniam earum temporibus aliquid doloremque aspernatur maxime ut quod aut asperiores repellat. Tempora reprehenderit delectus molestiae ipsam sunt nam voluptates. Facilis laboriosam est ducimus voluptates blanditiis dignissimos laborum, minima deserunt sint, officiis ea ipsam unde commodi, nobis beatae rem velit iusto. Nemo illo deleniti at molestiae dolor minus modi sed dignissimos Lorem ipsum dolor sit amet consectetur adipisicing elit.</br>&nbsp;&nbsp;&nbsp;&nbsp;Ducimus obcaecati unde sed iure beatae magni maiores optio, Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus obcaecati unde sed iure beatae magni maiores optio, Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus obcaecati unde sed iure beatae magni maiores optio, Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus obcaecati unde sed iure beatae magni maiores optio.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <script>
-        const userAdministrador = "<?php echo isset($_SESSION['user_administrador']) ? $_SESSION['user_administrador'] : '' ?>";
-    </script>
-    <script src="js/script.js"></script>
     <!-- Footer -->
     <footer class="footer">
             <div class="wrap-footer">
@@ -246,6 +206,9 @@
                 </div>
             </div>
     </footer>
+    <script>
+        const userAdministrador = "<?php echo isset($_SESSION['user_administrador']) ? $_SESSION['user_administrador'] : '' ?>";
+    </script>
+    <script src="js/script.js"></script>    
 </body>
-
 </html>

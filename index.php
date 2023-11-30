@@ -267,7 +267,7 @@
                   <h5>Más Información</h5>
                   <ul>
                       <li><a href="/">Inicio</a></li>
-                      <li><a href="#">Nosotros</a></li>
+                      <li><a href="./nosotros.php">Nosotros</a></li>
                       <li><a href="#">Contactar</a></li>
                   </ul>
               </div>
