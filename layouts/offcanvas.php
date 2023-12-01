@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <!-- canvas -->
     <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
@@ -71,7 +70,7 @@
                 </form>
             </div>
             <!-- Formulario Mi cuenta -->
-            <div class="card-body" id="form-micuenta">
+            <div class="card-body form-user" id="form-micuenta">
                 <h3 class=""><?= $_SESSION['user_nombre'] . ' ' . $_SESSION['user_apellido'] ?></h3>
                 <p style="color:#6d6d6d !important;" class=""><?= $_SESSION['user_email'] ?></p>
                 <hr>
@@ -86,12 +85,12 @@
                 <div class="items-menu"><a style="font-weight: 500;" id="acceder" href="./controllers/logout.php">Salir</a></div>
             </div>
             <!-- Formulario Administrador -->
-            <div class="card-body" id="form-admin">
+            <div class="card-body form-user" id="form-admin">
                 <h3 class=""><?= $_SESSION['user_nombre'] . ' ' . $_SESSION['user_apellido'] ?></h3>
                 <p style="color:#6d6d6d !important;" class=""><?= $_SESSION['user_email'] ?></p>
                 <hr>
                 <div class="items-menu"><a id="acceder" href="./controllers/update_sesion.php">Administrar cursos</a></div>
-                <div class="items-menu"><a id="acceder" href="./controllers/update_sesion.php">Administrar usuario</a></div>
+                <div class="items-menu"><a id="acceder" href="./controllers/get_users.php">Administrar usuarios</a></div>
                 <div class="items-menu"><a id="acceder" href="./controllers/update_sesion.php">Configuración de mi cuenta</a></div>
                 <hr>
                 <div class="items-menu"><a style="font-weight: 500;" id="acceder" href="./controllers/logout.php">Salir</a></div>
@@ -99,4 +98,5 @@
         </div>
     </div>
 </body>
+
 </html>

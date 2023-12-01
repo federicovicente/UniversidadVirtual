@@ -15,134 +15,136 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <!-- navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.php">
-                <img src="images/logoCompleto.png" alt="Bootstrap" height="40" style="margin: 0 0 0 0;">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="#" id="iniciar" role="button" data-bs-toggle="modal" data-bs-target="#modalLoguin"></a>
-                    </li>
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Buscar</button>
-                </form>
-                <div class="iniciar-sesion-nav" id="iniciar-sesion-nav">
-                    <button id="btniniciarsesion" class="btn btn-primary btnSubmit" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Iniciar sesión</button>
-                </div>
-                <div class="mi-cuenta-nav" id="mi-cuenta-nav">
-                    <button id="btnIniciales" class="btn btn-primary btnSubmit" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" onclick="cerrarcanvas()"><?= isset($_SESSION['user_iniciales']) ? $_SESSION['user_iniciales'] : '' ?></button>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <!-- canvas -->
-    <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"></h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body" id="form-offcanvas">
-            <!-- Formulario de registro -->
-            <div class="card-body" id="form-registro">
-                <h5 class="mt-3 mb-5 text-center">Regístrate</h5>
-                <form action="./controllers/signup.php" method="POST">
-                    <input class="form-control mb-3" type="text" name="name" placeholder="Nombre" required>
-                    <input class="form-control mb-3" type="text" name="surname" placeholder="Apellido" required>
-                    <input class="form-control mb-3" type="email" name="email" placeholder="Email" required>
-                    <input class="form-control mb-3" type="password" name="password" placeholder="Contraseña" required>
-                    <button class="btn btn-primary mb-3 btnSubmit" type="submit">Crear usuario</button>
-                    <div style="margin-left: 5px;"><span id="acceder">Ya tengo un usuario</span></div>
-                </form>
-            </div>
-            <!-- Formulario iniciar sesión -->
-            <div class="card-body" id="form-acceso">
-                <h5 class="mt-3 mb-5 text-center">Iniciar sesión</h5>
-                <!-- pregunto si la variable de sesión está disponible -->
-                <?php if (isset($_SESSION['registro'])) { ?>
-                    <script>
-                        $(document).ready(function() {
-                            $('#offcanvasWithBothOptions').offcanvas('show');
-                        });
-                    </script>
-                    <div class="alert alert-success" role="alert">
-                        <?= $_SESSION['registro'] ?>
-                    </div>
-                <?php }
-                unset($_SESSION['registro']);
-                ?>
-                <?php if (isset($_SESSION['login'])) {
-                    echo '';
-                ?>
-                    <script>
-                        $(document).ready(function() {
-                            $('#offcanvasWithBothOptions').offcanvas('show');
-                        });
-                    </script>
-                    <div class="alert alert-danger" role="alert">
-                        <?= $_SESSION['login'] ?>
-                    </div>
-                <?php }
-                unset($_SESSION['login']);
-                ?>
-                <form action="./controllers/signin.php" method="POST">
-                    <input class="form-control mb-3" type="email" name="email" placeholder="Email" required>
-                    <input class="form-control mb-3" type="password" name="password" placeholder="Contraseña" required>
-                    <button class="btn btn-primary mb-3 btnSubmit" type="submit">Iniciar sesión</button>
-                    <div style="margin-left: 5px;"><span id="registro">Aún no tengo un usuario creado</span></div>
-                </form>
-            </div>
-            <!-- Formulario Mi cuenta -->
-            <div class="card-body" id="form-micuenta">
-                <h3 class=""><?= $_SESSION['user_nombre'] . ' ' . $_SESSION['user_apellido'] ?></h3>
-                <p style="color:#6d6d6d !important;" class=""><?= $_SESSION['user_email'] ?></p>
-                <hr>
-                <div class="items-menu"><a id="acceder">Mis cursos</a></div>
-                <div class="items-menu"><a id="acceder">Favoritos</a></div>
-                <div class="items-menu"><a id="acceder">Notificaciones</a></div>
-                <div class="items-menu"><a id="acceder">Mensajes</a></div>
-                <div class="items-menu"><a id="acceder">Métodos de pago</a></div>
-                <div class="items-menu"><a id="acceder">Cupones UV</a></div>
-                <div class="items-menu"><a id="acceder" href="./controllers/update_sesion.php">Configuración de mi cuenta</a></div>
-                <hr>
-                <div class="items-menu"><a style="font-weight: 500;" id="acceder" href="./controllers/logout.php">Salir</a></div>
-            </div>
-            <!-- Formulario Administrador -->
-            <div class="card-body" id="form-admin">
-                <h3 class=""><?= $_SESSION['user_nombre'] . ' ' . $_SESSION['user_apellido'] ?></h3>
-                <p style="color:#6d6d6d !important;" class=""><?= $_SESSION['user_email'] ?></p>
-                <hr>
-                <div class="items-menu"><a id="acceder" href="./controllers/update_sesion.php">Administrar cursos</a></div>
-                <div class="items-menu"><a id="acceder" href="./controllers/update_sesion.php">Administrar usuario</a></div>
-                <div class="items-menu"><a id="acceder" href="./controllers/update_sesion.php">Configuración de mi cuenta</a></div>
-                <hr>
-                <div class="items-menu"><a style="font-weight: 500;" id="acceder" href="./controllers/logout.php">Salir</a></div>
-            </div>
-        </div>
-    </div>
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="index.php">
+              <img src="images/logoCompleto.png" alt="Bootstrap" height="40" style="margin: 0 0 0 0;">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Dropdown
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Action</a></li>
+                          <li><a class="dropdown-item" href="#">Another action</a></li>
+                          <li>
+                              <hr class="dropdown-divider">
+                          </li>
+                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      </ul>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link " href="#" id="iniciar" role="button" data-bs-toggle="modal" data-bs-target="#modalLoguin"></a>
+                  </li>
+              </ul>
+              <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Buscar</button>
+              </form>
+              <div class="iniciar-sesion-nav" id="iniciar-sesion-nav">
+                  <button id="btniniciarsesion" class="btn btn-primary btnSubmit" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Iniciar sesión</button>
+              </div>
+              <div class="mi-cuenta-nav" id="mi-cuenta-nav">
+                  <button id="btnIniciales" class="btn btn-primary btnSubmit" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" onclick="cerrarcanvas()"><?= isset($_SESSION['user_iniciales']) ? $_SESSION['user_iniciales'] : '' ?></button>
+              </div>
+          </div>
+      </div>
+  </nav>
+  <!-- canvas -->
+  <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+      <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body" id="form-offcanvas">
+          <!-- Formulario de registro -->
+          <div class="card-body" id="form-registro">
+              <h5 class="mt-3 mb-5 text-center">Regístrate</h5>
+              <form action="./controllers/signup.php" method="POST">
+                  <input class="form-control mb-3" type="text" name="name" placeholder="Nombre" required>
+                  <input class="form-control mb-3" type="text" name="surname" placeholder="Apellido" required>
+                  <input class="form-control mb-3" type="email" name="email" placeholder="Email" required>
+                  <input class="form-control mb-3" type="password" name="password" placeholder="Contraseña" required>
+                  <button class="btn btn-primary mb-3 btnSubmit" type="submit">Crear usuario</button>
+                  <div style="margin-left: 5px;"><span id="acceder">Ya tengo un usuario</span></div>
+              </form>
+          </div>
+          <!-- Formulario iniciar sesión -->
+          <div class="card-body" id="form-acceso">
+              <h5 class="mt-3 mb-5 text-center">Iniciar sesión</h5>
+              <!-- pregunto si la variable de sesión está disponible -->
+              <?php if (isset($_SESSION['registro'])) { ?>
+                  <script>
+                      $(document).ready(function() {
+                          $('#offcanvasWithBothOptions').offcanvas('show');
+                      });
+                  </script>
+                  <div class="alert alert-success" role="alert">
+                      <?= $_SESSION['registro'] ?>
+                  </div>
+              <?php }
+              unset($_SESSION['registro']);
+              ?>
+              <?php if (isset($_SESSION['login'])) {
+                  echo '';
+              ?>
+                  <script>
+                      $(document).ready(function() {
+                          $('#offcanvasWithBothOptions').offcanvas('show');
+                      });
+                  </script>
+                  <div class="alert alert-danger" role="alert">
+                      <?= $_SESSION['login'] ?>
+                  </div>
+              <?php }
+              unset($_SESSION['login']);
+              ?>
+              <form action="./controllers/signin.php" method="POST">
+                  <input class="form-control mb-3" type="email" name="email" placeholder="Email" required>
+                  <input class="form-control mb-3" type="password" name="password" placeholder="Contraseña" required>
+                  <button class="btn btn-primary mb-3 btnSubmit" type="submit">Iniciar sesión</button>
+                  <div style="margin-left: 5px;"><span id="registro">Aún no tengo un usuario creado</span></div>
+              </form>
+          </div>
+          <!-- Formulario Mi cuenta -->
+          <div class="card-body form-user" id="form-micuenta">
+              <h3 class=""><?= $_SESSION['user_nombre'] . ' ' . $_SESSION['user_apellido'] ?></h3>
+              <p style="color:#6d6d6d !important;" class=""><?= $_SESSION['user_email'] ?></p>
+              <hr>
+              <div class="items-menu"><a id="acceder">Mis cursos</a></div>
+              <div class="items-menu"><a id="acceder">Favoritos</a></div>
+              <div class="items-menu"><a id="acceder">Notificaciones</a></div>
+              <div class="items-menu"><a id="acceder">Mensajes</a></div>
+              <div class="items-menu"><a id="acceder">Métodos de pago</a></div>
+              <div class="items-menu"><a id="acceder">Cupones UV</a></div>
+              <div class="items-menu"><a id="acceder" href="./controllers/update_sesion.php">Configuración de mi cuenta</a></div>
+              <hr>
+              <div class="items-menu"><a style="font-weight: 500;" id="acceder" href="./controllers/logout.php">Salir</a></div>
+          </div>
+          <!-- Formulario Administrador -->
+          <div class="card-body form-user" id="form-admin">
+              <h3 class=""><?= $_SESSION['user_nombre'] . ' ' . $_SESSION['user_apellido'] ?></h3>
+              <p style="color:#6d6d6d !important;" class=""><?= $_SESSION['user_email'] ?></p>
+              <hr>
+              <div class="items-menu"><a id="acceder" href="./controllers/update_sesion.php">Administrar cursos</a></div>
+              <div class="items-menu"><a id="acceder" href="./controllers/get_users.php">Administrar usuarios</a></div>
+              <div class="items-menu"><a id="acceder" href="./controllers/update_sesion.php">Configuración de mi cuenta</a></div>
+              <hr>
+              <div class="items-menu"><a style="font-weight: 500;" id="acceder" href="./controllers/logout.php">Salir</a></div>
+          </div>
+      </div>
+  </div>
+
+
     <div class="container-b">
                 <div class="wrap-b">
                     <div class="encabezado-b">

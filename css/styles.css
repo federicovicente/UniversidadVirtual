@@ -57,7 +57,7 @@ nav.navbar {
     padding: 10px 20px 10px 20px !important;
 }
 
-#form-micuenta h3 {
+.form-user h3 {
     color: #5A36DB !important;
     margin-bottom: 0px !important;
 }
@@ -724,6 +724,30 @@ footer li {
     width: 800px;
 }
 
+.extended{
+    width: 1300px !important;
+    max-width: 90%;
+}
+
+@media(max-width:1200px){
+    .extended{
+        max-width: 95% !important;
+    }
+}
+
+@media(max-width:1000px){
+    .extended{
+        max-width: 99% !important;
+    }
+}
+
+.full{
+    margin: 10px 0px 10px 0px !important;
+    padding: 0px !important;
+    overflow: hidden !important;
+    width: 100%;
+}
+
 .encabezado-b {  /*encabezado-perfil*/
     position: relative;
     display: flex;
@@ -733,7 +757,6 @@ footer li {
     flex-grow: 1;
     width: 100%;
     min-width: 100px;
-    max-width: 800px;
     height: auto;
     border-radius: 10px 10px 0px 0px;
     background-image: linear-gradient(to bottom right, #ffffff, #f5f2f2);
@@ -757,7 +780,6 @@ footer li {
     flex-grow: 1;
     width: 100%;
     min-width: 100px;
-    max-width: 800px;
     height: auto;
     min-height: 400px;
     border-radius: 0px 0px 10px 10px;
@@ -795,6 +817,20 @@ footer li {
     background-color: #7e3ffd !important;
 }
 
+.btnCancel {
+    background-color: #949494 !important;
+    border-radius: 0px !important;
+    border: none !important;
+}
+
+.btnCancel:hover {
+    background-color: #adadad !important;
+}
+
 .mi-cuenta-nav .btnSubmit {
     border-radius: 5px 15px !important;
+}
+
+.modal-header h1{
+    color: #5A36DB !important;
 }
