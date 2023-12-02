@@ -127,7 +127,7 @@
                     <div class="items-menu"><a id="acceder">Mensajes</a></div>
                     <div class="items-menu"><a id="acceder">Métodos de pago</a></div>
                     <div class="items-menu"><a id="acceder">Cupones UV</a></div>
-                    <div class="items-menu"><a id="acceder" href="./controllers/update_sesion.php">Configuración de mi cuenta</a></div>
+                    <div class="items-menu"><a id="acceder" href="./controllers/renew_sesion.php">Configuración de mi cuenta</a></div>
                     <hr>
                     <div class="items-menu"><a style="font-weight: 500;" id="acceder" href="./controllers/logout.php">Salir</a></div>
                 </div>
@@ -136,9 +136,9 @@
                     <h3 class=""><?= $_SESSION['user_nombre'] . ' ' . $_SESSION['user_apellido'] ?></h3>
                     <p style="color:#6d6d6d !important;" class=""><?= $_SESSION['user_email'] ?></p>
                     <hr>
-                    <div class="items-menu"><a id="acceder" href="./controllers/update_sesion.php">Administrar cursos</a></div>
+                    <div class="items-menu"><a id="acceder" href="./controllers/renew_sesion.php">Administrar cursos</a></div>
                     <div class="items-menu"><a id="acceder" href="./controllers/get_users.php">Administrar usuarios</a></div>
-                    <div class="items-menu"><a id="acceder" href="./controllers/update_sesion.php">Configuración de mi cuenta</a></div>
+                    <div class="items-menu"><a id="acceder" href="./controllers/renew_sesion.php">Configuración de mi cuenta</a></div>
                     <hr>
                     <div class="items-menu"><a style="font-weight: 500;" id="acceder" href="./controllers/logout.php">Salir</a></div>
                 </div>

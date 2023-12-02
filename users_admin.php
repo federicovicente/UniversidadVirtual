@@ -1,4 +1,4 @@
-<?php session_start();?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -127,7 +127,7 @@
                     <div class="items-menu"><a id="acceder">Mensajes</a></div>
                     <div class="items-menu"><a id="acceder">Métodos de pago</a></div>
                     <div class="items-menu"><a id="acceder">Cupones UV</a></div>
-                    <div class="items-menu"><a id="acceder" href="./controllers/update_sesion.php">Configuración de mi cuenta</a></div>
+                    <div class="items-menu"><a id="acceder" href="./controllers/renew_sesion.php">Configuración de mi cuenta</a></div>
                     <hr>
                     <div class="items-menu"><a style="font-weight: 500;" id="acceder" href="./controllers/logout.php">Salir</a></div>
                 </div>
@@ -136,9 +136,9 @@
                     <h3 class=""><?= $_SESSION['user_nombre'] . ' ' . $_SESSION['user_apellido'] ?></h3>
                     <p style="color:#6d6d6d !important;" class=""><?= $_SESSION['user_email'] ?></p>
                     <hr>
-                    <div class="items-menu"><a id="acceder" href="./controllers/update_sesion.php">Administrar cursos</a></div>
+                    <div class="items-menu"><a id="acceder" href="./controllers/renew_sesion.php">Administrar cursos</a></div>
                     <div class="items-menu"><a id="acceder" href="./controllers/get_users.php">Administrar usuarios</a></div>
-                    <div class="items-menu"><a id="acceder" href="./controllers/update_sesion.php">Configuración de mi cuenta</a></div>
+                    <div class="items-menu"><a id="acceder" href="./controllers/renew_sesion.php">Configuración de mi cuenta</a></div>
                     <hr>
                     <div class="items-menu"><a style="font-weight: 500;" id="acceder" href="./controllers/logout.php">Salir</a></div>
                 </div>
@@ -153,27 +153,27 @@
                 </div>
                 <div class="panel-b table-responsive">
                     <div style="display:flex">
-                        <button type="submit" style="height:36px" class="btn btn-primary btnSubmit" data-bs-toggle='modal' data-bs-target='#createModal'  id="btnCreatUser" >Crear usuario</button> 
+                        <button type="submit" style="height:36px" class="btn btn-primary btnSubmit" data-bs-toggle='modal' data-bs-target='#createModal' id="btnCreatUser">Crear usuario</button>
                         <!-- alertas -->
                         <?php if (isset($_SESSION['success'])) { ?>
-                        <div class="alert alert-success alert-dismissible fade show mb-0 mt-3 position-absolute top0 start-50 translate-middle" role="alert">
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            <?= $_SESSION['success'] ?>
-                        </div>
+                            <div class="alert alert-success alert-dismissible fade show mb-0 mt-3 position-absolute top0 start-50 translate-middle" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <?= $_SESSION['success'] ?>
+                            </div>
                         <?php }
                         unset($_SESSION['success']);
                         ?>
                         <?php if (isset($_SESSION['danger'])) { ?>
-                        <div class="alert alert-danger alert-dismissible fade show mb-0 mt-3 position-absolute top0 start-50 translate-middle" role="alert">
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            <?= $_SESSION['danger'] ?>
-                        </div>
+                            <div class="alert alert-danger alert-dismissible fade show mb-0 mt-3 position-absolute top0 start-50 translate-middle" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <?= $_SESSION['danger'] ?>
+                            </div>
                         <?php }
                         unset($_SESSION['danger']);
                         ?>
                         <!-- alertas -->
                     </div>
-                    <table class="table table-hover mt-3" >
+                    <table class="table table-hover mt-3">
                         <thead class="table-dark">
                             <tr>
                                 <th scope="col">#ID</th>
@@ -185,89 +185,64 @@
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
-                <tbody>
-                    <?php
-                    $lista_usuarios = unserialize($_SESSION['lista_usuarios']);
+                        <tbody>
+                            <?php
+                            $lista_usuarios = unserialize($_SESSION['lista_usuarios']);
 
-                    foreach ($lista_usuarios as $usuario) {
-                        echo "<tr>";
+                            foreach ($lista_usuarios as $usuario) {
+                                echo "<tr>";
 
-                        $idUsuario = $usuario["idUsuario"];
-                        echo "<td>";
-                        echo $idUsuario;
-                        echo "</td>";
+                                $idUsuario = $usuario["idUsuario"];
+                                echo "<td>";
+                                echo $idUsuario;
+                                echo "</td>";
 
-                        $nombre = $usuario["nombre"];
-                        echo "<td>";
-                        echo $nombre;
-                        echo "</td>";
+                                $nombre = $usuario["nombre"];
+                                echo "<td>";
+                                echo $nombre;
+                                echo "</td>";
 
-                        $apellido = $usuario["apellido"];
-                        echo "<td>";
-                        echo $apellido;
-                        echo "</td>";
+                                $apellido = $usuario["apellido"];
+                                echo "<td>";
+                                echo $apellido;
+                                echo "</td>";
 
-                        echo "<td>";
-                        echo $usuario["email"];
-                        echo "</td>";
+                                $email = $usuario["email"];
+                                echo "<td>";
+                                echo $email;
+                                echo "</td>";
 
-                        if($usuario["administrador"] == 1){
-                            $administrador = 'Si';
-                        }else{
-                            $administrador = 'No';
-                        }
-                        echo "<td>";
-                        echo $administrador;
-                        echo "</td>";
+                                if ($usuario["administrador"] == 1) {
+                                    $administrador = 'Si';
+                                } else {
+                                    $administrador = 'No';
+                                }
+                                echo "<td>";
+                                echo $administrador;
+                                echo "</td>";
 
-                        if($usuario["activo"] == 1){
-                            $activo = 'Si';
-                        }else{
-                            $activo = 'No';
-                        }
-                        echo "<td>";
-                        echo $activo;
-                        echo "</td>";
+                                if ($usuario["activo"] == 1) {
+                                    $activo = 'Si';
+                                } else {
+                                    $activo = 'No';
+                                }
+                                echo "<td>";
+                                echo $activo;
+                                echo "</td>";
 
-                        echo "<td>";
-                        echo "<a href='#' data-bs-toggle='modal' data-bs-target='#deleteModal' idUsuario='$idUsuario' nombre='$nombre' apellido='$apellido'><i class='bi bi-trash3-fill mx-1'></i></a>";
-                        echo "<i class='bi bi-pencil-fill mx-1'></i>";
-                        echo "</td>";
+                                echo "<td>";
+                                echo "<a href='#' data-bs-toggle='modal' data-bs-target='#deleteModal' idUsuario='$idUsuario' nombre='$nombre' apellido='$apellido'><i class='bi bi-trash3-fill mx-1'></i></a>";
+                                echo "<a href='#' data-bs-toggle='modal' data-bs-target='#updateModal' idUsuario='$idUsuario' nombre='$nombre' apellido='$apellido' email='$email' administrador='$administrador' activo='$activo'><i class='bi bi-pencil-fill mx-1'></i></a>";
+                                echo "</td>";
+                                echo "</tr>";
+                            }
+                            ?>
+                        </tbody>
 
-                        echo "</tr>";
-                    }
-                    ?>
-                </tbody>
-
-                </table>
-            </div>
-            </div>
-        </div>
-
-        <!-- create modal -->
-        <!-- <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Alta Orador</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="../controller/delOra.php" method="post">
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">¿Desea eliminar el orador?</label>
-                            <div id="nomApe"></div>
-                            <input type="hidden" class="form-control" id="idDel" name="idDel">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-primary">Eliminar</button>
-                        </div>
-                    </form>
+                    </table>
                 </div>
             </div>
         </div>
-        </div> -->
 
         <!-- delete modal -->
         <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -298,11 +273,11 @@
         <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header" >
+                    <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Crear usuario</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body" >
+                    <div class="modal-body">
                         <form action="./controllers/create_user.php" method="post">
                             <div class="mb-3">
                                 <input class="form-control mb-3" type="text" name="name" placeholder="Nombre" required>
@@ -311,7 +286,7 @@
                                 <input class="form-control mb-3" type="password" name="password" placeholder="Contraseña" required>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="administrador" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">Tilde la casilla si el usuario va a ser administrador</label>                               
+                                    <label class="form-check-label" for="flexCheckDefault">Tilde la casilla si el usuario va a ser administrador</label>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -324,7 +299,39 @@
             </div>
         </div>
 
-
+        <!-- update modal -->
+        <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modificar usuario</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="./controllers/update_user.php" method="post">
+                            <div class="mb-3">
+                                <input class="form-control mb-3" type="text" id="inputIdUsuario" name="idUsuario" required>
+                                <input class="form-control mb-3" type="text" id="inputNombre" name="nombre" placeholder="Nombre" required>
+                                <input class="form-control mb-3" type="text" id="inputApellido" name="apellido" placeholder="Apellido" required>
+                                <input class="form-control mb-3" type="email" id="inputEmail" name="email" placeholder="Email" required>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="inputAdministrador" name="administrador" value="1" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">Administrador</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="inputActivo" name="activo" value="1" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">Activo</label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary btnSubmit">Aceptar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
