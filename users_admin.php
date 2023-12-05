@@ -1,7 +1,6 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -145,15 +144,14 @@
             </div>
         </div>
 
-
         <div class="container-b">
             <div class="wrap-b extended">
-                <div class="encabezado-b ">
+                <div class="encabezado-b angosto">
                     <h1 class="display-6">Administrador de usuarios</h1>
                 </div>
-                <div class="panel-b table-responsive">
+                <div class="panel-b table-responsive just">
                     <div style="display:flex">
-                        <button type="submit" style="height:36px" class="btn btn-primary btnSubmit" data-bs-toggle='modal' data-bs-target='#createModal' id="btnCreatUser">Crear usuario</button>
+                        <button type="submit" class="btn btn-primary btnSubmit" data-bs-toggle='modal' data-bs-target='#createModal' id="btnCreatUser">Crear usuario</button>
                         <!-- alertas -->
                         <?php if (isset($_SESSION['success'])) { ?>
                             <div class="alert alert-success alert-dismissible fade show mb-0 mt-3 position-absolute top0 start-50 translate-middle" role="alert">
@@ -185,8 +183,12 @@
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="body-dark">      
                             <?php
+
+                            require'./database/database.php';
+                            require'./controllers/get_users.php';
+
                             $lista_usuarios = unserialize($_SESSION['lista_usuarios']);
 
                             foreach ($lista_usuarios as $usuario) {
@@ -255,8 +257,10 @@
                     <div class="modal-body">
                         <form action="./controllers/delete_user.php" method="post">
                             <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">¿Desea eliminar el usuario?</label>
-                                <div id="nombreUsuario"></div>
+                                <label for="recipient-name" class="col-form-label">¿Seguro desea eliminar el usuario</label>
+                                <b><label for="recipient-name" class="col-form-label" id="nombreUsuario"></label></b>
+                                <label for="recipient-name" class="col-form-label">?</label>
+                                <label for="recipient-name" class="col-form-label">Esta acción no podrá deshacerse.</label>
                                 <input type="hidden" class="form-control" id="idUsuarios" name="idUsuario">
                             </div>
                             <div class="modal-footer">
@@ -310,7 +314,7 @@
                     <div class="modal-body">
                         <form action="./controllers/update_user.php" method="post">
                             <div class="mb-3">
-                                <input class="form-control mb-3" type="text" id="inputIdUsuario" name="idUsuario" required>
+                                <input class="form-control mb-3" type="hidden" id="inputIdUsuario" name="idUsuario"  required>
                                 <input class="form-control mb-3" type="text" id="inputNombre" name="nombre" placeholder="Nombre" required>
                                 <input class="form-control mb-3" type="text" id="inputApellido" name="apellido" placeholder="Apellido" required>
                                 <input class="form-control mb-3" type="email" id="inputEmail" name="email" placeholder="Email" required>

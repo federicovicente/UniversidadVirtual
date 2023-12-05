@@ -35,12 +35,12 @@
         if($stmt->execute()){
             $message = "Usuario registrado";
             $_SESSION['success'] = $message;
-            header('Location: ./get_users.php');
+            header('Location: ../users_admin.php');
         }else{
             $message = "No ha sido posible registar al usuario";
             // Creo una variable de sesión
             $_SESSION['danger'] = $message;
-            header('Location: ./get_users.php');
+            header('Location: ../users_admin.php');
     }
 }
 ?>

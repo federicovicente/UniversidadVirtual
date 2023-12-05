@@ -12,7 +12,7 @@ if (deleteModal) {
     const modalBodyInput = deleteModal.querySelector('.modal-body input')
     modalBodyInput.value = idUsuario
 
-    document.getElementById("nombreUsuario").innerHTML=nombre + " " + apellido
+    document.getElementById("nombreUsuario").textContent = nombre + " " + apellido
   })
 }
 
@@ -54,3 +54,4 @@ if (updateModal) {
     }
   })
 }
+

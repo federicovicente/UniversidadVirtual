@@ -17,5 +17,5 @@ if ($deleteUser) {
     $_SESSION['danger'] = $message;
 }
 
-header('Location: ./get_users.php');
+header('Location: ../users_admin.php');
 ?>
