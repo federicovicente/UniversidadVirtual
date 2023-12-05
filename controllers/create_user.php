@@ -1,10 +1,10 @@
 <?php
     session_start();
 
-
     require('../database/database.php');
 
-    //Verificar si el email existe
+    $conn = dataBase();
+
     $userData = $conn->prepare("SELECT * FROM usuarios WHERE email =:email");
 
     $userData->bindParam(':email', $_POST['email']);
@@ -38,7 +38,6 @@
             header('Location: ../users_admin.php');
         }else{
             $message = "No ha sido posible registar al usuario";
-            // Creo una variable de sesión
             $_SESSION['danger'] = $message;
             header('Location: ../users_admin.php');
     }

@@ -1,4 +1,5 @@
 <?php
+function dataBase(){
     $server = 'localhost';
     $username = 'root';
     $password = '';
@@ -11,4 +12,6 @@
         die('Ha fallado la conexión' . $e->getMessage());
     }
 
+    return $conn;
+}
 ?>

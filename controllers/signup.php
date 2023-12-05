@@ -4,7 +4,8 @@
 
     require('../database/database.php');
 
-    //Verificar si el email existe
+    $conn = dataBase();
+
     $userData = $conn->prepare("SELECT * FROM usuarios WHERE email =:email");
 
     $userData->bindParam(':email', $_POST['email']);

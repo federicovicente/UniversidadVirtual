@@ -7,6 +7,8 @@
     if($pass1 === $pass2){
         require('../database/database.php');
 
+        $conn = dataBase();
+
         $userData = $conn->prepare("SELECT u.contrasenia FROM usuarios u WHERE idUsuario = :idUsuario");
         $userData->bindParam(':idUsuario', $_SESSION['user_id']);
         $userData->execute();

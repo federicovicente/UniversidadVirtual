@@ -3,6 +3,8 @@
 
     require('../database/database.php');
 
+    $conn = dataBase();
+
     $userList = $conn->prepare("SELECT * FROM usuarios");
 
     $userList->execute();

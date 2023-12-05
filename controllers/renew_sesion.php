@@ -3,6 +3,8 @@
 
     require('../database/database.php');
 
+    $conn = dataBase();
+
     $userData = $conn->prepare("SELECT * FROM usuarios WHERE idUsuario = :idUsuario");
 
     $userData->bindParam(':idUsuario', $_SESSION['user_id']);

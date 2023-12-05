@@ -3,6 +3,8 @@
 
     require('../database/database.php');
 
+    $conn = dataBase();
+
     $updateData = $conn->prepare("UPDATE usuarios SET nombre = :nombre, apellido = :apellido, email = :email, administrador = :administrador, activo = :activo WHERE idUsuario = :idUsuario");
     
     $updateData->bindParam(':idUsuario', $_POST['idUsuario']);

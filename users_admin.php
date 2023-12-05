@@ -186,11 +186,10 @@
                         <tbody class="body-dark">      
                             <?php
 
-                            require'./database/database.php';
                             require'./controllers/get_users.php';
 
-                            $lista_usuarios = unserialize($_SESSION['lista_usuarios']);
-
+                            $lista_usuarios = unserialize(getUsers());
+                            
                             foreach ($lista_usuarios as $usuario) {
                                 echo "<tr>";
 

@@ -1,21 +1,19 @@
 <?php
-    // Verificar si usuario y contraseña son correctos
     session_start();
 
-    // aceder a la base de datos
     require('../database/database.php');
+
+    $conn = dataBase();
 
     $userData = $conn->prepare("SELECT * FROM usuarios WHERE email =:email");
 
-    // recoger la informacion (el email)
+
     $userData->bindParam(':email', $_POST['email']);
 
     $userData->execute();
     
-    //cargo las variables del usuario si es que existe
     $results = $userData->fetch(PDO::FETCH_ASSOC);
 
-    //Si $result viene vacío es que el mail no está registrado. Si me devuelve algo es que el mail existe y si existe verifico la contraseña
     if($results) {
         if(password_verify($_POST['password'], $results['contrasenia'])) {
                 $_SESSION['user_id'] = $results['idUsuario'];
