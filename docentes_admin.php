@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrar usuarios</title>
+    <title>Administrar docentes</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -148,11 +148,11 @@
         <div class="container-b">
             <div class="wrap-b extended">
                 <div class="encabezado-b angosto">
-                    <h1 class="display-6">Administrador de usuarios</h1>
+                    <h1 class="display-6">Administrador de docentes</h1>
                 </div>
                 <div class="panel-b table-responsive just">
                     <div style="display:flex">
-                        <button type="submit" class="btn btn-primary btnSubmit" data-bs-toggle='modal' data-bs-target='#createModal' id="btnCreatUser">Crear usuario</button>
+                        <button type="submit" class="btn btn-primary btnSubmit" data-bs-toggle='modal' data-bs-target='#createModal' id="btnCreatUser">Crear docente</button>
                         <!-- alertas -->
                         <?php if (isset($_SESSION['success'])) { ?>
                             <div class="alert alert-success alert-dismissible fade show mb-0 mt-3 position-absolute top0 start-50 translate-middle" role="alert">
