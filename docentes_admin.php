@@ -170,7 +170,7 @@
                 </div>
                 <div class="panel-b table-responsive just">
                     <div style="display:flex">
-                        <button type="submit" class="btn btn-primary btnSubmit" data-bs-toggle='modal' data-bs-target='#createModalDocente' id="btnCreatUser">Crear docente</button>
+                        <button type="submit" class="btn btn-primary btnSubmit" data-bs-toggle='modal' data-bs-target='#createModal' id="btnCreatUser">Crear docente</button>
                         <!-- alertas -->
                         <?php if (isset($_SESSION['success'])) { ?>
                             <div class="alert alert-success alert-dismissible fade show mb-0 mt-3 position-absolute top0 start-50 translate-middle" role="alert">
@@ -263,13 +263,13 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="./controllers/delete_user.php" method="post">
+                        <form action="./controllers/delete_docente.php" method="post">
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">¿Seguro desea eliminar el docente</label>
                                 <b><label for="recipient-name" class="col-form-label" id="elementDelete"></label></b>
                                 <label for="recipient-name" class="col-form-label">?</label>
                                 <label for="recipient-name" class="col-form-label">Esta acción no podrá deshacerse.</label>
-                                <input type="hidden" class="form-control" id="idDocente_Docente" name="idDocente">
+                                <input type="hidden" class="form-control" id="idDocente_Delete" name="idDocente">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Cancelar</button>
@@ -290,7 +290,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="./controllers/create_user.php" method="post">
+                        <form action="./controllers/create_docente.php" method="post">
                             <div class="mb-3">
                                 <div class="divForm">
                                     <input id="CreateName" type="text" name="name" placeholder=" " required>

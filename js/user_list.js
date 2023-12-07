@@ -20,7 +20,6 @@ if (deleteModal) {
 }
 
 
-
 const updateModal = document.getElementById('updateModal')
 if (updateModal) {
     updateModal.addEventListener('show.bs.modal', event => {
