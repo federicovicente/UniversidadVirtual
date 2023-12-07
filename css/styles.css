@@ -43,6 +43,55 @@ nav.navbar {
     }
 }
 
+/*formularios*/
+.divForm{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.divForm input{
+    color: #656262;
+    background: none;
+    border: solid 1px rgba(0, 0, 0, .1);
+    border-radius: 4px;
+    padding: 9px;
+    font-size: 17px;
+    margin-bottom: 25px;
+}
+
+.divForm input:focus{
+    border: solid 2px #5A36DB;
+    outline: none;
+}
+
+.divForm label{
+    font-size: 1.1rem;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    cursor:text;
+    color: rgba(0, 0, 0, .4);
+    transition: transform .2s;
+    margin-bottom: 25px;
+}
+
+.divForm input:focus + label,
+.divForm input:not(:placeholder-shown) + label{
+    transform: translateY(-23px);
+    background: white;
+    color:#5A36DB;
+    font-size: 0.8rem;
+    padding: 4px;
+    
+}
+
+.divForm input:not(:focus) + label{
+    color: rgba(0, 0, 0, .4);
+    bottom: 9px;
+}
+
+
 /*canvas*/
 .offcanvas-body {
     margin-top: 0 !important;
@@ -51,6 +100,7 @@ nav.navbar {
 
 .card-body h5 {
     color: #5A36DB !important;
+    font-size:25px;
 }
 
 .offcanvas-header {

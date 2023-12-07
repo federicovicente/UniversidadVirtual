@@ -68,10 +68,22 @@
             <div class="card-body" id="form-registro">
                 <h5 class="mt-3 mb-5 text-center">Regístrate</h5>
                 <form action="./controllers/signup.php" method="POST">
-                    <input class="form-control mb-3" type="text" name="name" placeholder="Nombre" required>
-                    <input class="form-control mb-3" type="text" name="surname" placeholder="Apellido" required>
-                    <input class="form-control mb-3" type="email" name="email" placeholder="Email" required>
-                    <input class="form-control mb-3" type="password" name="password" placeholder="Contraseña" required>
+                    <div class="divForm">
+                        <input id="name" type="text" name="name" placeholder=" " required>
+                        <label for="name">Nombre</label>
+                    </div>
+                    <div class="divForm">
+                        <input id="surname" type="text" name="surname" placeholder=" " required>
+                        <label for="surname">Apellido</label>
+                    </div>
+                    <div class="divForm">
+                        <input id="email" type="email" name="email" placeholder=" " required>
+                        <label for="email">Correo electrónico</label>
+                    </div>
+                    <div class="divForm">
+                        <input id="password" type="password" name="password" placeholder=" " required>
+                        <label for="password">Contraseña</label>
+                    </div>
                     <button class="btn btn-primary mb-3 btnSubmit" type="submit">Crear usuario</button>
                     <div style="margin-left: 5px;"><span id="acceder">Ya tengo un usuario</span></div>
                 </form>
@@ -107,9 +119,15 @@
                 unset($_SESSION['login']);
                 ?>
                 <form action="./controllers/signin.php" method="POST">
-                    <input class="form-control mb-3" type="email" name="email" placeholder="Email" required>
-                    <input class="form-control mb-3" type="password" name="password" placeholder="Contraseña" required>
-                    <button class="btn btn-primary mb-3 btnSubmit" type="submit">Iniciar sesión</button>
+                    <div class="divForm">
+                        <input id="email" type="email" name="email" placeholder=" " required>
+                        <label for="email">Correo electrónico</label>
+                    </div>
+                    <div class="divForm">
+                        <input id="password" type="password" name="password" placeholder=" " required>
+                        <label for="password">Contraseña</label>
+                    </div>
+                    <button class="btn btn-primary  mb-3 btnSubmit" type="submit">Iniciar sesión</button>
                     <div style="margin-left: 5px;"><span id="registro">Aún no tengo un usuario creado</span></div>
                 </form>
             </div>
