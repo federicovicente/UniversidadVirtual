@@ -27,62 +27,36 @@ if (updateModal) {
         
     const button = event.relatedTarget
 
-    if(button.hasAttribute('idUsuario')){}
-    $('#inputIdUsuario').val($(button).attr("idUsuario"))
-    $('#inputNombre').val($(button).attr("nombre"))
-    $('#inputApellido').val($(button).attr("apellido"))
-    $('#inputEmail').val($(button).attr("email"))    
-    
-    if($(button).attr("administrador") == 'Si'){
-        $('#inputAdministrador').prop("checked",true);
-    }else{
-        $('#inputAdministrador').prop("checked",false);
-    }
-
-    if($(button).attr("activo") == 'Si'){
-        $('#inputActivo').prop("checked",true);
-    }else{
-        $('#inputActivo').prop("checked",false);
-    }
-  })
-}
-
-
-const updateModalDocente = document.getElementById('updateModalDocente')
-if (updateModalDocente) {
-    updateModalDocente.addEventListener('show.bs.modal', event => {
+    if(button.hasAttribute('idUsuario')){
+        $('#inputIdUsuario').val($(button).attr("idUsuario"))
+        $('#inputNombre').val($(button).attr("nombre"))
+        $('#inputApellido').val($(button).attr("apellido"))
+        $('#inputEmail').val($(button).attr("email"))    
         
-    const button = event.relatedTarget
-    
-    let idUsuario = button.getAttribute('idUsuario')
-    let nombre = button.getAttribute('nombre')
-    let apellido = button.getAttribute('apellido')
-    let email = button.getAttribute('email')
-    let administrador = button.getAttribute('administrador')
-    let activo = button.getAttribute('activo')
+        if($(button).attr("administrador") == 'Si'){
+            $('#inputAdministrador').prop("checked",true);
+        }else{
+            $('#inputAdministrador').prop("checked",false);
+        }
 
-    const inputIdUsuario = document.getElementById('inputIdUsuario')
-    const inputNombre = document.getElementById('inputNombre')
-    const inputApellido = document.getElementById('inputApellido')
-    const inputEmail = document.getElementById('inputEmail')
-    const inputAdministrador = document.getElementById('inputAdministrador')
-    const inputActivo =  document.getElementById('inputActivo')
+        if($(button).attr("activo") == 'Si'){
+            $('#inputActivo').prop("checked",true);
+        }else{
+            $('#inputActivo').prop("checked",false);
+        }
+    }else if(button.hasAttribute('idDocente')){
+        $('#inputIdDocente').val($(button).attr("idDocente"))
+        $('#inputNombre').val($(button).attr("nombre"))
+        $('#inputApellido').val($(button).attr("apellido"))
+        $('#inputEmail').val($(button).attr("email"))    
+        
+        if($(button).attr("activo") == 'Si'){
+            $('#inputActivo').prop("checked",true);
+        }else{
+            $('#inputActivo').prop("checked",false);
+        }
 
-    inputIdUsuario.value = idUsuario;
-    inputNombre.value = nombre;
-    inputApellido.value = apellido;
-    inputEmail.value = email;
 
-    if(administrador === 'Si'){
-        inputAdministrador.checked = true;
-    }else{
-        inputAdministrador.checked = false;
-    }
-
-    if(activo === 'Si'){
-        inputActivo.checked = true;
-    }else{
-        inputActivo.checked = false;
     }
   })
 }

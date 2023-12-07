@@ -242,7 +242,7 @@
 
                                 echo "<td>";
                                 echo "<a href='#' data-bs-toggle='modal' data-bs-target='#deleteModal' idDocente='$idDocente' nombre='$nombre' apellido='$apellido'><i class='bi bi-trash3-fill mx-1'></i></a>";
-                                echo "<a href='#' data-bs-toggle='modal' data-bs-target='#updateModalDocente' idDocente='$idDocente' nombre='$nombre' apellido='$apellido' email='$email' activo='$activo'><i class='bi bi-pencil-fill mx-1'></i></a>";
+                                echo "<a href='#' data-bs-toggle='modal' data-bs-target='#updateModal' idDocente='$idDocente' nombre='$nombre' apellido='$apellido' email='$email' activo='$activo'><i class='bi bi-pencil-fill mx-1'></i></a>";
                                 echo "</td>";
                                 echo "</tr>";
                             }
@@ -269,7 +269,7 @@
                                 <b><label for="recipient-name" class="col-form-label" id="elementDelete"></label></b>
                                 <label for="recipient-name" class="col-form-label">?</label>
                                 <label for="recipient-name" class="col-form-label">Esta acción no podrá deshacerse.</label>
-                                <input type="hidden" class="form-control" id="idDocente" name="idDocente">
+                                <input type="hidden" class="form-control" id="idDocente_Docente" name="idDocente">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Cancelar</button>
@@ -282,7 +282,7 @@
         </div>
 
         <!-- create modal -->
-        <div class="modal fade" id="createModalDocente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -316,7 +316,7 @@
         </div>
 
         <!-- update modal -->
-        <div class="modal fade" id="updateModalDocente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
