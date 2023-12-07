@@ -35,7 +35,7 @@
         }else{
             $message = "No ha sido posible registar al docente";
             $_SESSION['danger'] = $message;
-            header('Location: ../docentes_admin.php');
+            header('Location: ../admin_docentes.php');
     }
 }
 ?>

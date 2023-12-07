@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrar usuarios</title>
+    <title>Administrar cursos</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -72,20 +72,20 @@
                     <h5 class="mt-3 mb-5 text-center">Regístrate</h5>
                     <form action="./controllers/signup.php" method="POST">
                         <div class="divForm">
-                            <input id="name" type="text" name="name" placeholder=" " required>
-                            <label for="name">Nombre</label>
+                            <input id="nameNew" type="text" name="name" placeholder=" " required>
+                            <label for="nameNew">Nombre</label>
                         </div>
                         <div class="divForm">
-                            <input id="surname" type="text" name="surname" placeholder=" " required>
-                            <label for="surname">Apellido</label>
+                            <input id="surnameNew" type="text" name="surname" placeholder=" " required>
+                            <label for="surnameNew">Apellido</label>
                         </div>
                         <div class="divForm">
-                            <input id="email" type="email" name="email" placeholder=" " required>
-                            <label for="email">Correo electrónico</label>
+                            <input id="emailNew" type="email" name="email" placeholder=" " required>
+                            <label for="emailNew">Correo electrónico</label>
                         </div>
                         <div class="divForm">
-                            <input id="password" type="password" name="password" placeholder=" " required>
-                            <label for="password">Contraseña</label>
+                            <input id="passwordNew" type="password" name="password" placeholder=" " required>
+                            <label for="passwordNew">Contraseña</label>
                         </div>
                         <button class="btn btn-primary mb-3 btnSubmit" type="submit">Crear usuario</button>
                         <div style="margin-left: 5px;"><span id="acceder">Ya tengo un usuario</span></div>
@@ -154,8 +154,8 @@
                     <h3 class=""><?= $_SESSION['user_nombre'] . ' ' . $_SESSION['user_apellido'] ?></h3>
                     <p style="color:#6d6d6d !important;" class=""><?= $_SESSION['user_email'] ?></p>
                     <hr>
-                    <div class="items-menu"><a id="acceder" href="docentes_admin.php">Administrar docentes</a></div>
-                    <div class="items-menu"><a id="acceder" href="users_admin.php">Administrar usuarios</a></div>
+                    <div class="items-menu"><a id="acceder" href="admin_docentes.php">Administrar docentes</a></div>
+                    <div class="items-menu"><a id="acceder" href="admin_users.php">Administrar usuarios</a></div>
                     <div class="items-menu"><a id="acceder" href="./controllers/renew_sesion.php">Configuración de mi cuenta</a></div>
                     <hr>
                     <div class="items-menu"><a style="font-weight: 500;" id="acceder" href="./controllers/logout.php">Salir</a></div>
@@ -166,11 +166,11 @@
         <div class="container-b">
             <div class="wrap-b extended">
                 <div class="encabezado-b angosto">
-                    <h1 class="display-6">Administrador de usuarios</h1>
+                    <h1 class="display-6">Administrador de cursos</h1>
                 </div>
                 <div class="panel-b table-responsive just">
                     <div style="display:flex">
-                        <button type="submit" class="btn btn-primary btnSubmit" data-bs-toggle='modal' data-bs-target='#createModal' id="btnCreatUser">Crear usuario</button>
+                        <button type="submit" class="btn btn-primary btnSubmit" data-bs-toggle='modal' data-bs-target='#createModal' id="btnCreatUser">Crear curso</button>
                         <!-- alertas -->
                         <?php if (isset($_SESSION['success'])) { ?>
                             <div class="alert alert-success alert-dismissible fade show mb-0 mt-3 position-absolute top0 start-50 translate-middle" role="alert">
@@ -194,10 +194,13 @@
                         <thead class="table-dark">
                             <tr>
                                 <th scope="col">#ID</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Apellido</th>
-                                <th scope="col">email</th>
-                                <th scope="col">Administrador</th>
+                                <th scope="col">Curso</th>
+                                <th scope="col" hidden>idDocente</th>
+                                <th scope="col">Docente</th>
+                                <th scope="col">Duración</th>
+                                <th scope="col">Certificado</th>
+                                <th scope="col">Idiomas</th>
+                                <th scope="col">Precio</th>
                                 <th scope="col">Activo</th>
                                 <th scope="col">Acciones</th>
                             </tr>
@@ -205,43 +208,54 @@
                         <tbody class="body-dark">
                             <?php
 
-                            require './controllers/get_users.php';
+                            require './controllers/get_cursos.php';
 
-                            $lista_usuarios = unserialize(getUsers());
+                            $lista_cursos = unserialize(getCursos());
 
-                            foreach ($lista_usuarios as $usuario) {
+                            foreach ($lista_cursos as $curso) {
                                 echo "<tr>";
 
-                                $idUsuario = $usuario["idUsuario"];
+                                $idCurso = $curso["idCurso"];
                                 echo "<td>";
-                                echo $idUsuario;
+                                echo $idCurso;
                                 echo "</td>";
 
-                                $nombre = $usuario["nombre"];
+                                $nombre = $curso["curso"];
                                 echo "<td>";
                                 echo $nombre;
                                 echo "</td>";
 
-                                $apellido = $usuario["apellido"];
+                                $idDocente = $curso["idDocente"];
+                                "<td>";
+                                $idDocente;
+                                "</td>";
+
+                                $docente = $curso["docente"];
                                 echo "<td>";
-                                echo $apellido;
+                                echo $docente;
                                 echo "</td>";
 
-                                $email = $usuario["email"];
+                                $duracion = $curso["duracion"];
                                 echo "<td>";
-                                echo $email;
+                                echo $duracion;
                                 echo "</td>";
 
-                                if ($usuario["administrador"] == 1) {
-                                    $administrador = 'Si';
-                                } else {
-                                    $administrador = 'No';
-                                }
+                                $certificado = $curso["certificado"];
                                 echo "<td>";
-                                echo $administrador;
+                                echo $certificado;
                                 echo "</td>";
 
-                                if ($usuario["activo"] == 1) {
+                                $idioma = $curso["idioma"];
+                                echo "<td>";
+                                echo $idioma;
+                                echo "</td>";
+
+                                $precio = $curso["precio"];
+                                echo "<td>";
+                                echo $precio;
+                                echo "</td>";
+
+                                if ($curso["activo"] == 1) {
                                     $activo = 'Si';
                                 } else {
                                     $activo = 'No';
@@ -251,8 +265,9 @@
                                 echo "</td>";
 
                                 echo "<td>";
-                                echo "<a href='#' data-bs-toggle='modal' data-bs-target='#deleteModal' idUsuario='$idUsuario' nombre='$nombre' apellido='$apellido'><i class='bi bi-trash3-fill mx-1'></i></a>";
-                                echo "<a href='#' data-bs-toggle='modal' data-bs-target='#updateModal' idUsuario='$idUsuario' nombre='$nombre' apellido='$apellido' email='$email' administrador='$administrador' activo='$activo'><i class='bi bi-pencil-fill mx-1'></i></a>";
+                                echo "<a href='#' data-bs-toggle='modal' data-bs-target='#deleteModal' idCurso='$idCurso' curso='$nombre'><i class='bi bi-trash3-fill mx-1'></i></a>";
+                                echo "<a href='#' data-bs-toggle='modal' data-bs-target='#updateModal' idCurso='$idCurso' curso='$nombre' duracion='$duracion' certificado='$certificado' idioma='$idioma' precio='$precio' activo='$activo'><i class='bi bi-pencil-fill mx-1'></i></a>";
+                                echo "<a href='#' data-bs-toggle='modal' data-bs-target='#updateModal' idCurso='$idCurso' curso='$nombre' duracion='$duracion' certificado='$certificado' idioma='$idioma' precio='$precio' activo='$activo'><i class='bi bi-eye-fill mx-1'></i></a>";
                                 echo "</td>";
                                 echo "</tr>";
                             }

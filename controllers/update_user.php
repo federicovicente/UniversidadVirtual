@@ -24,6 +24,6 @@
         $_SESSION['danger'] = $message;
     }
 
-    header('Location: ../users_admin.php');
+    header('Location: ../admin_users.php');
 
 ?>

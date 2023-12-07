@@ -39,7 +39,7 @@
         }else{
             $message = "No ha sido posible registar al usuario";
             $_SESSION['danger'] = $message;
-            header('Location: ../users_admin.php');
+            header('Location: ../admin_users.php');
     }
 }
 ?>

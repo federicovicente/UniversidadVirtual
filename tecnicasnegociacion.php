@@ -69,20 +69,20 @@
                 <h5 class="mt-3 mb-5 text-center">Regístrate</h5>
                 <form action="./controllers/signup.php" method="POST">
                     <div class="divForm">
-                        <input id="name" type="text" name="name" placeholder=" " required>
-                        <label for="name">Nombre</label>
+                        <input id="nameNew" type="text" name="name" placeholder=" " required>
+                        <label for="nameNew">Nombre</label>
                     </div>
                     <div class="divForm">
-                        <input id="surname" type="text" name="surname" placeholder=" " required>
-                        <label for="surname">Apellido</label>
+                        <input id="surnameNew" type="text" name="surname" placeholder=" " required>
+                        <label for="surnameNew">Apellido</label>
                     </div>
                     <div class="divForm">
-                        <input id="email" type="email" name="email" placeholder=" " required>
-                        <label for="email">Correo electrónico</label>
+                        <input id="emailNew" type="email" name="email" placeholder=" " required>
+                        <label for="emailNew">Correo electrónico</label>
                     </div>
                     <div class="divForm">
-                        <input id="password" type="password" name="password" placeholder=" " required>
-                        <label for="password">Contraseña</label>
+                        <input id="passwordNew" type="password" name="password" placeholder=" " required>
+                        <label for="passwordNew">Contraseña</label>
                     </div>
                     <button class="btn btn-primary mb-3 btnSubmit" type="submit">Crear usuario</button>
                     <div style="margin-left: 5px;"><span id="acceder">Ya tengo un usuario</span></div>
@@ -151,8 +151,8 @@
                 <h3 class=""><?= $_SESSION['user_nombre'] . ' ' . $_SESSION['user_apellido'] ?></h3>
                 <p style="color:#6d6d6d !important;" class=""><?= $_SESSION['user_email'] ?></p>
                 <hr>
-                <div class="items-menu"><a id="acceder" href="docentes_admin.php">Administrar docentes</a></div>
-                <div class="items-menu"><a id="acceder" href="users_admin.php">Administrar usuarios</a></div>
+                <div class="items-menu"><a id="acceder" href="admin_docentes.php">Administrar docentes</a></div>
+                <div class="items-menu"><a id="acceder" href="admin_users.php">Administrar usuarios</a></div>
                 <div class="items-menu"><a id="acceder" href="./controllers/renew_sesion.php">Configuración de mi cuenta</a></div>
                 <hr>
                 <div class="items-menu"><a style="font-weight: 500;" id="acceder" href="./controllers/logout.php">Salir</a></div>

@@ -5,14 +5,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil</title>
+    <title>Administrar usuarios</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 </head>
-
 <?php if (isset($_SESSION['user_id'])) { ?>
 
     <body>
@@ -164,204 +164,220 @@
         </div>
 
         <div class="container-b">
-            <div class="wrap-b">
-                <div class="encabezado-b">
-                    <h1 class="display-6">Mi perfil</h1>
+            <div class="wrap-b extended">
+                <div class="encabezado-b angosto">
+                    <h1 class="display-6">Administrador de usuarios</h1>
                 </div>
-                <div class="panel-b">
-                    <div class="accordion" id="accordionPanelsStayOpenExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button" id="btnDatosPersonales" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                                    Datos personales
-                                </button>
-                            </h2>
-                            <div id="panelsStayOpen-collapseOne" class="accordion-collapse data-bs-parent collapse show">
-                                <div class="accordion-body" id="datos_personales">
-                                    <!-- form datos personales -->
-                                    <form id="formDatosPersonales" action="./controllers/update_perfil.php" method="POST">
-                                        <div class="row mb-3" style="text-align: right" ;>
-                                            <label for="inputnombre" class="col-sm-3 col-form-label">Nombre</label>
-                                            <div class="col-sm-9">
-                                                <input class="form-control mb-2" type="text" name="nombre" disabled required value="<?php echo (isset($_SESSION['user_nombre']) ? $_SESSION['user_nombre'] : ''); ?>">
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3" style="text-align: right">
-                                            <label for="inputapellido" class="col-sm-3 col-form-label">Apellido</label>
-                                            <div class="col-sm-9">
-                                                <input class="form-control mb-2" type="text" name="apellido" disabled required value="<?php echo (isset($_SESSION['user_apellido']) ? $_SESSION['user_apellido'] : ''); ?>">
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3" style="text-align: right">
-                                            <label for="inputemail" class="col-sm-3 col-form-label">Correo electrónico</label>
-                                            <div class="col-sm-9">
-                                                <input class="form-control mb-2" type="email" name="email" disabled required value="<?php echo (isset($_SESSION['user_email']) ? $_SESSION['user_email'] : ''); ?>">
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <div class="col-sm-9 offset-sm-3">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="checkDatosPersonales">
-                                                    <label class="form-check-label" for="gridCheck1">
-                                                        Habilitar edición
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- alerta -->
-                                        <?php if (isset($_SESSION['updateExitoso'])) { ?>
-                                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                <?= $_SESSION['updateExitoso'] ?>
-                                            </div>
-                                        <?php }
-                                        unset($_SESSION['updateExitoso']);
-                                        ?>
-                                        <!-- alerta -->
-                                        <button type="submit" class="btn btn-primary btnSubmit" id="botonGuardar" disabled>Guardar</button>
-                                    </form>
-                                </div>
+                <div class="panel-b table-responsive just">
+                    <div style="display:flex">
+                        <button type="submit" class="btn btn-primary btnSubmit" data-bs-toggle='modal' data-bs-target='#createModal' id="btnCreatUser">Crear usuario</button>
+                        <!-- alertas -->
+                        <?php if (isset($_SESSION['success'])) { ?>
+                            <div class="alert alert-success alert-dismissible fade show mb-0 mt-3 position-absolute top0 start-50 translate-middle" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <?= $_SESSION['success'] ?>
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" id="btnSeguridadCuenta" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                                    Seguridad de la cuenta
-                                </button>
-                            </h2>
-                            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
-                                <div class="accordion-body">
-                                    <!-- form contrasena -->
-                                    <form id="formContrasenia" action="./controllers/update_password.php" method="POST">
-                                        <div class="row mb-3" style="text-align: right" ;>
-                                            <label for="inputpass" class="col-sm-4 col-form-label">Contraseña actual</label>
-                                            <div class="col-sm-8">
-                                                <input class="form-control mb-2" type="password" name="password" id="oldPass" required>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3" style="text-align: right">
-                                            <label for="inputanewpass" class="col-sm-4 col-form-label">Nueva contraseña</label>
-                                            <div class="col-sm-8">
-                                                <input class="form-control mb-2" type="password" name="newpassword" id="newPass" required>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3" style="text-align: right">
-                                            <label for="inputemail" class="col-sm-4 col-form-label">Repita la nueva contraseña</label>
-                                            <div class="col-sm-8">
-                                                <input class="form-control mb-2" type="password" name="newpassword2" id="newPass2" required>
-                                            </div>
-                                        </div>
-                                        <!-- alerta cambio confirmado-->
-                                        <?php if (isset($_SESSION['passchanged'])) { ?>
-                                            <script>
-                                                $(document).ready(function() {
-                                                    $('#panelsStayOpen-collapseOne').removeClass('show');
-                                                    $('#panelsStayOpen-collapseTwo').addClass('show');
-                                                    $('#btnSeguridadCuenta').removeClass('collapsed');
-                                                    $('#btnDatosPersonales').addClass('collapsed');
-                                                });
-                                            </script>
-                                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                <?= $_SESSION['passchanged'] ?>
-                                            </div>
-                                        <?php }
-                                        unset($_SESSION['passchanged']);
-                                        ?>
-                                        <!-- alerta contraseña incorrecta-->
-                                        <?php if (isset($_SESSION['wrongpassword'])) { ?>
-                                            <script>
-                                                $(document).ready(function() {
-                                                    $('#panelsStayOpen-collapseOne').removeClass('show');
-                                                    $('#panelsStayOpen-collapseTwo').addClass('show');
-                                                    $('#btnSeguridadCuenta').removeClass('collapsed');
-                                                    $('#btnDatosPersonales').addClass('collapsed');
-                                                });
-                                            </script>
-                                            <div class="alert alert-danger" role="alert">
-                                                <?= $_SESSION['wrongpassword'] ?>
-                                            </div>
-                                        <?php }
-                                        unset($_SESSION['wrongpassword']);
-                                        ?>
-                                        <!-- alerta cambio confirmado-->
-                                        <?php if (isset($_SESSION['unequalpassword'])) { ?>
-                                            <script>
-                                                $(document).ready(function() {
-                                                    $('#panelsStayOpen-collapseOne').removeClass('show');
-                                                    $('#panelsStayOpen-collapseTwo').addClass('show');
-                                                    $('#btnSeguridadCuenta').removeClass('collapsed');
-                                                    $('#btnDatosPersonales').addClass('collapsed');
-                                                });
-                                            </script>
-                                            <div class="alert alert-danger" role="alert">
-                                                <?= $_SESSION['unequalpassword'] ?>
-                                            </div>
-                                        <?php }
-                                        unset($_SESSION['unequalpassword']);
-                                        ?>
-                                        <button type="submit" id="btnCambiarPass" class="btn btn-primary btnSubmit">Cambiar contraseña</button>
-                                    </form>
-                                </div>
+                        <?php }
+                        unset($_SESSION['success']);
+                        ?>
+                        <?php if (isset($_SESSION['danger'])) { ?>
+                            <div class="alert alert-danger alert-dismissible fade show mb-0 mt-3 position-absolute top0 start-50 translate-middle" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <?= $_SESSION['danger'] ?>
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                                    Configuración de notificaciones
-                                </button>
-                            </h2>
-                            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
-                                <div class="accordion-body">
-                                    <!-- form contrasena -->
-                                    <form id="formDatosPersonales" action="./controllers/update_perfil.php" method="POST">
-                                        <div class="row mb-3" style="text-align: right" ;>
-                                            <label for="inputnombre" class="col-sm-3 col-form-label">Nombre</label>
-                                            <div class="col-sm-9">
-                                                <input class="form-control mb-2" type="text" name="nombre" disabled required value="<?php echo (isset($_SESSION['user_nombre']) ? $_SESSION['user_nombre'] : ''); ?>">
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3" style="text-align: right">
-                                            <label for="inputapellido" class="col-sm-3 col-form-label">Apellido</label>
-                                            <div class="col-sm-9">
-                                                <input class="form-control mb-2" type="text" name="apellido" disabled required value="<?php echo (isset($_SESSION['user_apellido']) ? $_SESSION['user_apellido'] : ''); ?>">
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3" style="text-align: right">
-                                            <label for="inputemail" class="col-sm-3 col-form-label">Correo electrónico</label>
-                                            <div class="col-sm-9">
-                                                <input class="form-control mb-2" type="email" name="email" disabled required value="<?php echo (isset($_SESSION['user_email']) ? $_SESSION['user_email'] : ''); ?>">
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <div class="col-sm-9 offset-sm-3">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="checkDatosPersonales">
-                                                    <label class="form-check-label" for="gridCheck1">
-                                                        Habilitar edición
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- alerta -->
-                                        <?php if (isset($_SESSION['updateExitoso'])) { ?>
-                                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                <?= $_SESSION['updateExitoso'] ?>
-                                            </div>
-                                        <?php }
-                                        unset($_SESSION['updateExitoso']);
-                                        ?>
-                                        <!-- alerta -->
-                                        <button type="submit" class="btn btn-primary btnSubmit" id="botonGuardar" disabled>Guardar</button>
-                                    </form>
-                                </div>
+                        <?php }
+                        unset($_SESSION['danger']);
+                        ?>
+                        <!-- alertas -->
+                    </div>
+                    <table class="table table-hover mt-3">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">#ID</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellido</th>
+                                <th scope="col">email</th>
+                                <th scope="col">Administrador</th>
+                                <th scope="col">Activo</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody class="body-dark">
+                            <?php
+
+                            require './controllers/get_users.php';
+
+                            $lista_usuarios = unserialize(getUsers());
+
+                            foreach ($lista_usuarios as $usuario) {
+                                echo "<tr>";
+
+                                $idUsuario = $usuario["idUsuario"];
+                                echo "<td>";
+                                echo $idUsuario;
+                                echo "</td>";
+
+                                $nombre = $usuario["nombre"];
+                                echo "<td>";
+                                echo $nombre;
+                                echo "</td>";
+
+                                $apellido = $usuario["apellido"];
+                                echo "<td>";
+                                echo $apellido;
+                                echo "</td>";
+
+                                $email = $usuario["email"];
+                                echo "<td>";
+                                echo $email;
+                                echo "</td>";
+
+                                if ($usuario["administrador"] == 1) {
+                                    $administrador = 'Si';
+                                } else {
+                                    $administrador = 'No';
+                                }
+                                echo "<td>";
+                                echo $administrador;
+                                echo "</td>";
+
+                                if ($usuario["activo"] == 1) {
+                                    $activo = 'Si';
+                                } else {
+                                    $activo = 'No';
+                                }
+                                echo "<td>";
+                                echo $activo;
+                                echo "</td>";
+
+                                echo "<td>";
+                                echo "<a href='#' data-bs-toggle='modal' data-bs-target='#deleteModal' idUsuario='$idUsuario' nombre='$nombre' apellido='$apellido'><i class='bi bi-trash3-fill mx-1'></i></a>";
+                                echo "<a href='#' data-bs-toggle='modal' data-bs-target='#updateModal' idUsuario='$idUsuario' nombre='$nombre' apellido='$apellido' email='$email' administrador='$administrador' activo='$activo'><i class='bi bi-pencil-fill mx-1'></i></a>";
+                                echo "</td>";
+                                echo "</tr>";
+                            }
+                            ?>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- delete modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar usuario</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="./controllers/delete_user.php" method="post">
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">¿Seguro desea eliminar el usuario</label>
+                                <b><label for="recipient-name" class="col-form-label" id="elementDelete"></label></b>
+                                <label for="recipient-name" class="col-form-label">?</label>
+                                <label for="recipient-name" class="col-form-label">Esta acción no podrá deshacerse.</label>
+                                <input type="hidden" class="form-control" id="idUsuario_Delete" name="idUsuario">
                             </div>
-                        </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary btnSubmit">Eliminar</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- create modal -->
+        <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo usuario</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="./controllers/create_user.php" method="post">
+                            <div class="mb-3">
+                                <div class="divForm">
+                                    <input id="CreateName" type="text" name="name" placeholder=" " required>
+                                    <label for="CreateName">Nombre</label>
+                                </div>
+                                <div class="divForm">
+                                    <input id="CreateSurname" type="text" name="surname" placeholder=" " required>
+                                    <label for="CreateSurname">Apellido</label>
+                                </div>
+                                <div class="divForm">
+                                    <input id="CreatEemail" type="email" name="email" placeholder=" " required>
+                                    <label for="CreatEemail">Correo electrónico</label>
+                                </div>
+                                <div class="divForm">
+                                    <input id="CreatePassword" type="password" name="password" placeholder=" " required>
+                                    <label for="CreatePassword">Contraseña</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="administrador" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">Tilde la casilla si el usuario va a ser administrador</label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary btnSubmit">Aceptar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- update modal -->
+        <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modificar usuario</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="./controllers/update_user.php" method="post">
+                            <div class="mb-3">
+                                <input class="form-control mb-3" type="hidden" id="inputIdUsuario" name="idUsuario" required>
+                                <div class="divForm">
+                                    <input type="text" id="inputNombre" name="nombre" placeholder=" " required>
+                                    <label for="inputNombre">Nombre</label>
+                                </div>
+                                <div class="divForm">
+                                    <input type="text" id="inputApellido" name="apellido" placeholder=" " required>
+                                    <label for="inputApellido">Apellido</label>
+                                </div>
+                                <div class="divForm">
+                                    <input type="email" id="inputEmail" name="email" placeholder=" " required>
+                                    <label for="inputEmail">Correo electrónico</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="inputAdministrador" name="administrador" value="1" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">Administrador</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="inputActivo" name="activo" value="1" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">Activo</label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary btnSubmit">Aceptar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
         <!-- Footer -->
         <footer class="footer">
             <div class="wrap-footer">
@@ -415,10 +431,25 @@
                 </div>
             </div>
         </footer>
+
         <script>
             const userAdministrador = "<?php echo isset($_SESSION['user_administrador']) ? $_SESSION['user_administrador'] : '' ?>";
         </script>
+
+        <script>
+            $(document).ready(function() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const mostrarLogin = urlParams.get('mostrarLogin');
+
+                if (mostrarLogin === 'true') {
+                    $('#offcanvasWithBothOptions').offcanvas('show');
+                }
+            });
+        </script>
+
         <script src="js/script.js"></script>
+        <script src="js/user_list.js"></script>
+
     </body>
 <?php } else {
     require('./404.php');

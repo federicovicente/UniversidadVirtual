@@ -19,5 +19,5 @@
         $_SESSION['danger'] = $message;
     }
 
-    header('Location: ../docentes_admin.php');
+    header('Location: ../admin_docentes.php');
 ?>
