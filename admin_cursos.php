@@ -48,8 +48,8 @@
                         </li>
                     </ul>
                     <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Buscar</button>
+                        <input class="form-control me-2 mt-2 mb-2" type="search" placeholder="Buscar" aria-label="Search">
+                        <button class="btn btn-outline-success mt-2 mb-2" type="submit">Buscar</button>
                     </form>
                     <div class="iniciar-sesion-nav" id="iniciar-sesion-nav">
                         <button id="btniniciarsesion" class="btn btn-primary btnSubmit" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Iniciar sesión</button>
@@ -154,8 +154,9 @@
                     <h3 class=""><?= $_SESSION['user_nombre'] . ' ' . $_SESSION['user_apellido'] ?></h3>
                     <p style="color:#6d6d6d !important;" class=""><?= $_SESSION['user_email'] ?></p>
                     <hr>
-                    <div class="items-menu"><a id="acceder" href="admin_docentes.php">Administrar docentes</a></div>
-                    <div class="items-menu"><a id="acceder" href="admin_users.php">Administrar usuarios</a></div>
+                    <div class="items-menu"><a id="acceder" href="admin_docentes.php">Administrador de docentes</a></div>
+                    <div class="items-menu"><a id="acceder" href="admin_users.php">Administrador de usuarios</a></div>
+                    <div class="items-menu"><a id="acceder" href="admin_cursos.php">Administrador de cursos</a></div>
                     <div class="items-menu"><a id="acceder" href="./controllers/renew_sesion.php">Configuración de mi cuenta</a></div>
                     <hr>
                     <div class="items-menu"><a style="font-weight: 500;" id="acceder" href="./controllers/logout.php">Salir</a></div>
@@ -170,7 +171,7 @@
                 </div>
                 <div class="panel-b table-responsive just">
                     <div style="display:flex">
-                        <button type="submit" class="btn btn-primary btnSubmit" onclick="location.href='cu_curso.php'"  id="btnCreatUser">Crear curso</button>
+                        <button type="submit" class="btn btn-primary btnSubmit" onclick="location.href='cu_curso.php'" id="btnCreatUser">Crear curso</button>
                         <!-- alertas -->
                         <?php if (isset($_SESSION['success'])) { ?>
                             <div class="alert alert-success alert-dismissible fade show mb-0 mt-3 position-absolute top0 start-50 translate-middle" role="alert">
@@ -323,11 +324,11 @@
                                 <div class="divForm">
                                     <input id="CreateDetalle" type="text" name="detalle" placeholder=" " required>
                                     <label for="CreateDetalle">Detalle</label>
-                                    <textarea style="max-height: 100px; min-height:100px" id="text" name="text" ></textarea>
+                                    <textarea style="max-height: 100px; min-height:100px" id="text" name="text"></textarea>
                                 </div>
                                 <div class="divForm">
                                     <input id="CreatDescripcion" type="text" name="descripcion" placeholder=" " required>
-                                    <textarea style="max-height: 100px; min-height:100px" id="text" name="text" ></textarea>
+                                    <textarea style="max-height: 100px; min-height:100px" id="text" name="text"></textarea>
                                     <label for="CreatDescripcion">Descripción</label>
                                 </div>
 

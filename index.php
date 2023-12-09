@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vicente</title>
+  <title>Universidad Virtual</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -46,8 +46,8 @@
           </li>
         </ul>
         <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Buscar</button>
+          <input class="form-control me-2 mt-2 mb-2" type="search" placeholder="Buscar" aria-label="Search">
+          <button class="btn btn-outline-success mt-2 mb-2" type="submit">Buscar</button>
         </form>
         <div class="iniciar-sesion-nav" id="iniciar-sesion-nav">
           <button id="btniniciarsesion" class="btn btn-primary btnSubmit" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Iniciar sesión</button>
@@ -153,7 +153,7 @@
         <p style="color:#6d6d6d !important;" class=""><?= $_SESSION['user_email'] ?></p>
         <hr>
         <div class="items-menu"><a id="acceder" href="admin_docentes.php">Administrador de docentes</a></div>
-        <div class="items-menu"><a id="acceder" href="admin_users.php">Administrador de uarios</a></div>
+        <div class="items-menu"><a id="acceder" href="admin_users.php">Administrador de usuarios</a></div>
         <div class="items-menu"><a id="acceder" href="admin_cursos.php">Administrador de cursos</a></div>
         <div class="items-menu"><a id="acceder" href="./controllers/renew_sesion.php">Configuración de mi cuenta</a></div>
         <hr>

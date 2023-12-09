@@ -48,8 +48,8 @@
                         </li>
                     </ul>
                     <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Buscar</button>
+                        <input class="form-control me-2 mt-2 mb-2" type="search" placeholder="Buscar" aria-label="Search">
+                        <button class="btn btn-outline-success mt-2 mb-2" type="submit">Buscar</button>
                     </form>
                     <div class="iniciar-sesion-nav" id="iniciar-sesion-nav">
                         <button id="btniniciarsesion" class="btn btn-primary btnSubmit" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Iniciar sesión</button>
@@ -154,8 +154,9 @@
                     <h3 class=""><?= $_SESSION['user_nombre'] . ' ' . $_SESSION['user_apellido'] ?></h3>
                     <p style="color:#6d6d6d !important;" class=""><?= $_SESSION['user_email'] ?></p>
                     <hr>
-                    <div class="items-menu"><a id="acceder" href="admin_docentes.php">Administrar docentes</a></div>
-                    <div class="items-menu"><a id="acceder" href="admin_users.php">Administrar usuarios</a></div>
+                    <div class="items-menu"><a id="acceder" href="admin_docentes.php">Administrador de docentes</a></div>
+                    <div class="items-menu"><a id="acceder" href="admin_users.php">Administrador de usuarios</a></div>
+                    <div class="items-menu"><a id="acceder" href="admin_cursos.php">Administrador de cursos</a></div>
                     <div class="items-menu"><a id="acceder" href="./controllers/renew_sesion.php">Configuración de mi cuenta</a></div>
                     <hr>
                     <div class="items-menu"><a style="font-weight: 500;" id="acceder" href="./controllers/logout.php">Salir</a></div>
@@ -189,7 +190,7 @@
                         ?>
                         <!-- alertas -->
                     </div>
-                    
+
                     <form action="./controllers/create_curso.php" method="post">
                         <div class="mb-3">
                             <div class="divForm2">
@@ -233,20 +234,20 @@
                             <div class="divMitad">
                                 <div class="divForm3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="espaniol" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">Español</label>
+                                        <input class="form-check-input" type="checkbox" name="espaniol" value="" id="espaniol">
+                                        <label class="form-check-label" for="espaniol">Español</label>
                                     </div>
                                 </div>
                                 <div class="divForm3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="ingles" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">Inglés</label>
+                                        <input class="form-check-input" type="checkbox" name="ingles" value="" id="ingles">
+                                        <label class="form-check-label" for="ingles">Inglés</label>
                                     </div>
                                 </div>
                                 <div class="divForm3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="portugues" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">Portugués</label>
+                                        <input class="form-check-input" type="checkbox" name="portugues" value="" id="portugues">
+                                        <label class="form-check-label" for="portugues">Portugués</label>
                                     </div>
                                 </div>
                             </div>
@@ -258,11 +259,12 @@
                                 </div>
                             </div>
 
+                            <div class="divForm2">
+                                <label>Imagen de portada</label>
+                                <input class="form-control mb-3 mt-2" type="file" name="archivo" required>
+                            </div>
 
-
-                            
-
-                            <div class="modal-footer">
+                            <div class="divBotones">
                                 <button type="button" class="btn btn-secondary btnCancel" data-bs-toggle='modal' data-bs-target='#cancelCurso'>Cancelar</button>
                                 <button type="submit" class="btn btn-primary btnSubmit">Aceptar</button>
                             </div>
