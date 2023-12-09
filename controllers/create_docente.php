@@ -16,7 +16,7 @@
     if($results) {
         $message = 'El correo electrónico ingresado ya existe.';
         $_SESSION['danger'] = $message;
-        header('Location: ../docentes_admin.php');
+        header('Location: ../admin_docentes.php');
     }else{
 
         $sql = 'INSERT INTO docentes (nombre, apellido, email, activo) VALUES (:nombre, :apellido, :email, :activo)';
@@ -31,7 +31,7 @@
         if($stmt->execute()){
             $message = "Docente registrado";
             $_SESSION['success'] = $message;
-            header('Location: ../docentes_admin.php');
+            header('Location: ../admin_docentes.php');
         }else{
             $message = "No ha sido posible registar al docente";
             $_SESSION['danger'] = $message;

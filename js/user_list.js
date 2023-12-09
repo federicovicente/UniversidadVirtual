@@ -11,7 +11,11 @@ if (deleteModal) {
 
     }else if(button.hasAttribute('idDocente')){
         $('#idDocente_Delete').val($(button).attr("idDocente"))
-        var elementDelete = $(button).attr("nombre") + " " + $(button).attr("apellido")   
+        var elementDelete = $(button).attr("nombre") + " " + $(button).attr("apellido") 
+
+    }else if(button.hasAttribute('idCurso')){
+        $('#idCurso_Delete').val($(button).attr("idCurso"))
+        var elementDelete = $(button).attr("curso")
     }
 
     document.getElementById('elementDelete').textContent = elementDelete   

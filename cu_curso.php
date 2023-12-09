@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrar docentes</title>
+    <title>Administrar cursos</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -164,13 +164,12 @@
         </div>
 
         <div class="container-b">
-            <div class="wrap-b extended">
+            <div class="wrap-b extendedM">
                 <div class="encabezado-b">
-                    <h1 class="display-6">Administrador de docentes</h1>
+                    <h1 class="display-6">Crear nuevo curso</h1>
                 </div>
-                <div class="panel-b table-responsive just">
+                <div class="panel-b">
                     <div style="display:flex">
-                        <button type="submit" class="btn btn-primary btnSubmit" data-bs-toggle='modal' data-bs-target='#createModal' id="btnCreatUser">Crear docente</button>
                         <!-- alertas -->
                         <?php if (isset($_SESSION['success'])) { ?>
                             <div class="alert alert-success alert-dismissible fade show mb-0 mt-3 position-absolute top0 start-50 translate-middle" role="alert">
@@ -190,170 +189,113 @@
                         ?>
                         <!-- alertas -->
                     </div>
-                    <table class="table table-hover mt-3">
-                        <thead class="table-dark">
-                            <tr>
-                                <th scope="col">#ID</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Apellido</th>
-                                <th scope="col">email</th>
-                                <th scope="col">Activo</th>
-                                <th scope="col">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody class="body-dark">
-                            <?php
-
-                            require './controllers/get_docentes.php';
-
-                            $lista_docentes = unserialize(getDocentes());
-
-                            foreach ($lista_docentes as $docente) {
-                                echo "<tr>";
-
-                                $idDocente = $docente["idDocente"];
-                                echo "<td>";
-                                echo $idDocente;
-                                echo "</td>";
-
-                                $nombre = $docente["nombre"];
-                                echo "<td>";
-                                echo $nombre;
-                                echo "</td>";
-
-                                $apellido = $docente["apellido"];
-                                echo "<td>";
-                                echo $apellido;
-                                echo "</td>";
-
-                                $email = $docente["email"];
-                                echo "<td>";
-                                echo $email;
-                                echo "</td>";
-
-                                if ($docente["activo"] == 1) {
-                                    $activo = 'Si';
-                                } else {
-                                    $activo = 'No';
-                                }
-                                echo "<td>";
-                                echo $activo;
-                                echo "</td>";
-
-                                echo "<td>";
-                                echo "<a href='#' data-bs-toggle='modal' data-bs-target='#deleteModal' idDocente='$idDocente' nombre='$nombre' apellido='$apellido'><i class='bi bi-trash3-fill mx-1'></i></a>";
-                                echo "<a href='#' data-bs-toggle='modal' data-bs-target='#updateModal' idDocente='$idDocente' nombre='$nombre' apellido='$apellido' email='$email' activo='$activo'><i class='bi bi-pencil-fill mx-1'></i></a>";
-                                echo "</td>";
-                                echo "</tr>";
-                            }
-                            ?>
-                        </tbody>
-
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- delete modal -->
-        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar docente</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="./controllers/delete_docente.php" method="post">
-                            <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">¿Seguro desea eliminar el docente</label>
-                                <b><label for="recipient-name" class="col-form-label" id="elementDelete"></label></b>
-                                <label for="recipient-name" class="col-form-label">?</label>
-                                <label for="recipient-name" class="col-form-label">Esta acción no podrá deshacerse.</label>
-                                <input type="hidden" class="form-control" id="idDocente_Delete" name="idDocente">
+                    
+                    <form action="./controllers/create_curso.php" method="post">
+                        <div class="mb-3">
+                            <div class="divForm2">
+                                <label>Título</label>
+                                <input id="curso" class="" type="text" name="curso" required>
                             </div>
+                            <div class="divForm2">
+                                <label>Subtítulo</label>
+                                <input id="subTitulo" id="text" name="subTitulo" required></input>
+                            </div>
+                            <div class="divForm2">
+                                <label>Docente creador</label>
+                                <select style="width: 300px;" name="docentes" id="docente">
+                                    <?php
+                                    require './controllers/get_docentes.php';
+
+                                    $lista_docentes = unserialize(getDocentes());
+                                    echo "<option selected=>Seleccione un ítem de la lista</option>";
+                                    foreach ($lista_docentes as $docente) {
+                                        echo "<option value=" . $docente["idDocente"] . ">" . $docente["nombre"] . " " . $docente["apellido"] . "</option>";
+                                    } ?>
+                                </select>
+                            </div>
+                            <div class="divForm2">
+                                <label>Detalle</label>
+                                <textarea id="descripcion" style="min-height:100px" id="text" name="descripcion" required></textarea>
+                            </div>
+                            <div class="divMitad">
+                                <div class="divForm2">
+                                    <label>Duración</label>
+                                    <input id="duracion" class="" type="text" name="duracion" required>
+                                </div>
+                                <div class="divForm2">
+                                    <label>Certificado</label>
+                                    <input id="certificado" class="" type="text" name="certificado" required>
+                                </div>
+                            </div>
+                            <div class="divForm2">
+                                <label>Idiomas disponibles</label>
+                            </div>
+                            <div class="divMitad">
+                                <div class="divForm3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="espaniol" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">Español</label>
+                                    </div>
+                                </div>
+                                <div class="divForm3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="ingles" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">Inglés</label>
+                                    </div>
+                                </div>
+                                <div class="divForm3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="portugues" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">Portugués</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="divForm2">
+                                <label>Precio</label>
+                                <div class="inputGrup">
+                                    <span class="input-group-text">$</span>
+                                    <input id="precio" class="" type="text" name="precio" placeholder=" " required>
+                                </div>
+                            </div>
+
+
+
+                            
+
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="submit" class="btn btn-primary btnSubmit">Eliminar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- create modal -->
-        <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo docente</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="./controllers/create_docente.php" method="post">
-                            <div class="mb-3">
-                                <div class="divForm">
-                                    <input id="CreateName" type="text" name="name" placeholder=" " required>
-                                    <label for="CreateName">Nombre</label>
-                                </div>
-                                <div class="divForm">
-                                    <input id="CreateSurname" type="text" name="surname" placeholder=" " required>
-                                    <label for="CreateSurname">Apellido</label>
-                                </div>
-                                <div class="divForm">
-                                    <input id="CreatEemail" type="email" name="email" placeholder=" " required>
-                                    <label for="CreatEemail">Correo electrónico</label>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-secondary btnCancel" data-bs-toggle='modal' data-bs-target='#cancelCurso'>Cancelar</button>
                                 <button type="submit" class="btn btn-primary btnSubmit">Aceptar</button>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
+
+
                 </div>
             </div>
         </div>
 
-        <!-- update modal -->
-        <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        <!-- Cancel modal -->
+        <div class="modal fade" id="cancelCurso" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modificar docente</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Cancelar</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="./controllers/update_docente.php" method="post">
-                            <div class="mb-3">
-                                <input class="form-control mb-3" type="hidden" id="inputIdDocente" name="idDocente" required>
-                                <div class="divForm">
-                                    <input type="text" id="inputNombre" name="nombre" placeholder=" " required>
-                                    <label for="inputNombre">Nombre</label>
-                                </div>
-                                <div class="divForm">
-                                    <input type="text" id="inputApellido" name="apellido" placeholder=" " required>
-                                    <label for="inputApellido">Apellido</label>
-                                </div>
-                                <div class="divForm">
-                                    <input type="email" id="inputEmail" name="email" placeholder=" " required>
-                                    <label for="inputEmail">Correo electrónico</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="inputActivo" name="activo" value="1" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">Activo</label>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="submit" class="btn btn-primary btnSubmit">Aceptar</button>
-                            </div>
-                        </form>
+                        <div class="mb-3">
+                            <label for="CreateCurso">Está seguro que desea cancelar la creación del curso?</label>
+                            <label for="CreateCurso">La información no podrá ser recuperada</label>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary btnSubmit" onclick="location.href='admin_cursos.php'">Aceptar</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
 
 
         <!-- Footer -->

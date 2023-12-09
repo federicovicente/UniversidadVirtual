@@ -165,12 +165,12 @@
 
         <div class="container-b">
             <div class="wrap-b extended">
-                <div class="encabezado-b angosto">
+                <div class="encabezado-b">
                     <h1 class="display-6">Administrador de cursos</h1>
                 </div>
                 <div class="panel-b table-responsive just">
                     <div style="display:flex">
-                        <button type="submit" class="btn btn-primary btnSubmit" data-bs-toggle='modal' data-bs-target='#createModal' id="btnCreatUser">Crear curso</button>
+                        <button type="submit" class="btn btn-primary btnSubmit" onclick="location.href='cu_curso.php'"  id="btnCreatUser">Crear curso</button>
                         <!-- alertas -->
                         <?php if (isset($_SESSION['success'])) { ?>
                             <div class="alert alert-success alert-dismissible fade show mb-0 mt-3 position-absolute top0 start-50 translate-middle" role="alert">
@@ -284,17 +284,16 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar usuario</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar curso</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="./controllers/delete_user.php" method="post">
+                        <form action="./controllers/delete_curso.php" method="post">
                             <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">¿Seguro desea eliminar el usuario</label>
+                                <label for="recipient-name" class="col-form-label">Está a punto de eliminar el curso:</label>
                                 <b><label for="recipient-name" class="col-form-label" id="elementDelete"></label></b>
-                                <label for="recipient-name" class="col-form-label">?</label>
                                 <label for="recipient-name" class="col-form-label">Esta acción no podrá deshacerse.</label>
-                                <input type="hidden" class="form-control" id="idUsuario_Delete" name="idUsuario">
+                                <input type="hidden" class="form-control" id="idCurso_Delete" name="idCurso">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Cancelar</button>
@@ -311,28 +310,37 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo usuario</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo curso</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="./controllers/create_user.php" method="post">
+                        <form action="./controllers/create_curso.php" method="post">
                             <div class="mb-3">
                                 <div class="divForm">
-                                    <input id="CreateName" type="text" name="name" placeholder=" " required>
-                                    <label for="CreateName">Nombre</label>
+                                    <input id="CreateCurso" type="text" name="curso" placeholder=" " required>
+                                    <label for="CreateCurso">Curso</label>
                                 </div>
                                 <div class="divForm">
-                                    <input id="CreateSurname" type="text" name="surname" placeholder=" " required>
-                                    <label for="CreateSurname">Apellido</label>
+                                    <input id="CreateDetalle" type="text" name="detalle" placeholder=" " required>
+                                    <label for="CreateDetalle">Detalle</label>
+                                    <textarea style="max-height: 100px; min-height:100px" id="text" name="text" ></textarea>
                                 </div>
                                 <div class="divForm">
-                                    <input id="CreatEemail" type="email" name="email" placeholder=" " required>
-                                    <label for="CreatEemail">Correo electrónico</label>
+                                    <input id="CreatDescripcion" type="text" name="descripcion" placeholder=" " required>
+                                    <textarea style="max-height: 100px; min-height:100px" id="text" name="text" ></textarea>
+                                    <label for="CreatDescripcion">Descripción</label>
+                                </div>
+
+                                <div class="divForm">
+                                    <input id="CreateDuracion" type="text" name="duracion" placeholder=" " required>
+                                    <label for="CreateDuracion">Duración</label>
                                 </div>
                                 <div class="divForm">
-                                    <input id="CreatePassword" type="password" name="password" placeholder=" " required>
-                                    <label for="CreatePassword">Contraseña</label>
+                                    <input id="CreateCertificado" type="text" name="duracion" placeholder=" " required>
+                                    <label for="CreateDuracion">Certificado</label>
                                 </div>
+
+
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="administrador" value="" id="flexCheckDefault">
                                     <label class="form-check-label" for="flexCheckDefault">Tilde la casilla si el usuario va a ser administrador</label>
