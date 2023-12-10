@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrar cursos</title>
+    <title>Modificar curso</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -164,245 +164,187 @@
             </div>
         </div>
 
+
+        <?php
+        $idCurso = $_GET["id"]; ?>
+        <?php
+        require './controllers/data_curso.php';
+
+        $data_cursos = unserialize(dataCurso($idCurso));
+        $lista_docentes = unserialize(getDocentes());
+        ?>
+
+
         <div class="container-b">
-            <div class="wrap-b extended">
+            <div class="wrap-b extendedM">
                 <div class="encabezado-b">
-                    <h1 class="display-6">Administrador de cursos</h1>
+                    <h1 class="display-6">Modificar curso</h1>
                 </div>
-                <div class="panel-b table-responsive just">
+                <div class="panel-b">
                     <div style="display:flex">
-                        <button type="submit" class="btn btn-primary btnSubmit" onclick="location.href='c_curso.php'" id="btnCreatUser">Crear curso</button>
-                        <!-- alertas -->
-                        <?php if (isset($_SESSION['success'])) { ?>
-                            <div class="alert alert-success alert-dismissible fade show mb-0 mt-3 position-absolute top0 start-50 translate-middle" role="alert">
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                <?= $_SESSION['success'] ?>
-                                <?= isset($_SESSION['success2']) ? $_SESSION['success2'] : '' ?>
-                            </div>
-                        <?php }
-                        unset($_SESSION['success']);
-                        unset($_SESSION['success2']);
-                        ?>
-                        <?php if (isset($_SESSION['danger'])) { ?>
-                            <div class="alert alert-danger alert-dismissible fade show mb-0 mt-3 position-absolute top0 start-50 translate-middle" role="alert">
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                <?= $_SESSION['danger'] ?>
-                            </div>
-                        <?php }
-                        unset($_SESSION['danger']);
-                        ?>
-                        <!-- alertas -->
                     </div>
-                    <table class="table table-hover mt-3">
-                        <thead class="table-dark">
-                            <tr>
-                                <th scope="col">#ID</th>
-                                <th scope="col">Curso</th>
-                                <th scope="col" hidden>idDocente</th>
-                                <th scope="col">Docente</th>
-                                <th scope="col" hidden>Duración</th>
-                                <th scope="col" hidden>Certificado</th>
-                                <th scope="col">Idiomas</th>
-                                <th scope="col">Precio</th>
-                                <th scope="col">Activo</th>
-                                <th class="thAcciones" scope="col">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody class="body-dark">
-                            <?php
+                    <form action="./controllers/create_curso.php" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <div class="divForm2">
+                                <label>Título</label>
+                                <input id="curso" value="<?php echo $data_cursos["curso"]; ?>" type="text" name="curso" required>
+                            </div>
+                            <div class="divForm2">
+                                <label>Subtítulo</label>
+                                <input id="subTitulo" value="<?php echo $data_cursos["subTitulo"]; ?>" type="text" name="subTitulo" required></input>
+                            </div>
+                            <div class="divForm2">
+                                <label>Docente creador</label>
+                                <select style="width: 300px;" name="docente" id="docente" required>
+                                    <?php
+                                    $idDocenteCurso = $data_cursos["idDocente"];
+                                    echo "<option selected=>Seleccione un ítem de la lista</option>";
+                                    foreach ($lista_docentes as $docente) {
+                                        $selected = ($docente["idDocente"] == $idDocenteCurso) ? 'selected' : '';
+                                        echo "<option value=" . $docente["idDocente"] . " $selected>" . $docente["nombre"] . " " . $docente["apellido"] . " " . $docente["idDocente"] . "</option>";
+                                    } ?>
+                                </select>
+                            </div>
+                            <div class="divForm2">
+                                <label>Detalle</label>
+                                <textarea id="descripcion" style="min-height:100px" id="text" name="descripcion" required><?php echo $data_cursos["descripcion"]; ?></textarea>
+                            </div>
+                            <div class="divMitad">
+                                <div class="divForm2">
+                                    <label>Duración</label>
+                                    <input id="duracion" class="" type="text" name="duracion" required value="<?php echo $data_cursos["duracion"]; ?>">
+                                </div>
+                                <div class="divForm2">
+                                    <label>Certificado</label>
+                                    <input id="certificado" class="" type="text" name="certificado" required value="<?php echo $data_cursos["certificado"]; ?>">
+                                </div>
+                            </div>
+                            <div class="divForm2">
+                                <label>Idiomas disponibles</label>
+                            </div>
 
-                            require './controllers/get_cursos.php';
-
-                            $lista_cursos = unserialize(getCursos());
-
-                            foreach ($lista_cursos as $curso) {
-                                echo "<tr>";
-
-                                $idCurso = $curso["idCurso"];
-                                echo "<td>";
-                                echo $idCurso;
-                                echo "</td>";
-
-                                $nombre = $curso["curso"];
-                                echo "<td>";
-                                echo $nombre;
-                                echo "</td>";
-
-                                $idDocente = $curso["idDocente"];
-                                "<td>";
-                                $idDocente;
-                                "</td>";
-
-                                $docente = $curso["docente"];
-                                echo "<td>";
-                                echo $docente;
-                                echo "</td>";
-
-                                $duracion = $curso["duracion"];
-                                "<td>";
-                                $duracion;
-                                "</td>";
-
-                                $certificado = $curso["certificado"];
-                                "<td>";
-                                $certificado;
-                                "</td>";
-
-                                $idioma = $curso["idioma"];
-                                echo "<td>";
-                                echo $idioma;
-                                echo "</td>";
-
-                                $precio = $curso["precio"];
-                                echo "<td>";
-                                echo $precio;
-                                echo "</td>";
-
-                                if ($curso["activo"] == 1) {
-                                    $activo = 'Si';
-                                } else {
-                                    $activo = 'No';
+                            <div class="divMitad">
+                                <div class="divForm3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="espanol" value="Español" id="espanol">
+                                        <label class="form-check-label" for="espanol">Español</label>
+                                    </div>
+                                </div>
+                                <div class="divForm3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="ingles" value="Inglés" id="ingles">
+                                        <label class="form-check-label" for="ingles">Inglés</label>
+                                    </div>
+                                </div>
+                                <div class="divForm3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="portugues" value="Portugués" id="portugues">
+                                        <label class="form-check-label" for="portugues">Portugués</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                var idiomas = "<?php echo $data_cursos["idioma"]; ?>";
+                                if(idiomas.includes("Español")){
+                                    $('#espanol').prop("checked",true);
+                                }else{
+                                    $('#espanol').prop("checked",false);
                                 }
-                                echo "<td>";
-                                echo $activo;
-                                echo "</td>";
-
-                                echo "<td>";
-                                echo "<a href='#' data-bs-toggle='modal' data-bs-target='#deleteModal' idCurso='$idCurso' curso='$nombre'><i class='bi bi-trash3-fill mx-1'></i></a>";
-                                echo "<a id='idCurso' href='u_curso.php?id=$idCurso' idCurso='$idCurso' ><i class='bi bi-pencil-fill mx-1'></i></a>";
-                                echo "<a href='#' data-bs-toggle='modal' data-bs-target='#updateModal' idCurso='$idCurso' curso='$nombre' duracion='$duracion' certificado='$certificado' idioma='$idioma' precio='$precio' activo='$activo'><i class='bi bi-eye-fill mx-1'></i></a>";
-                                echo "</td>";
-                                echo "</tr>";
-                            }
-                            ?>
-                        </tbody>
-
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- delete modal -->
-        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar curso</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="./controllers/delete_curso.php" method="post">
-                            <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Está a punto de eliminar el curso:</label>
-                                <b><label for="recipient-name" class="col-form-label" id="elementDelete"></label></b>
-                                <label for="recipient-name" class="col-form-label">Esta acción no podrá deshacerse.</label>
-                                <input type="hidden" class="form-control" id="idCurso_Delete" name="idCurso">
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="submit" class="btn btn-primary btnSubmit">Eliminar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- create modal -->
-        <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo curso</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="./controllers/create_curso.php" method="post">
-                            <div class="mb-3">
-                                <div class="divForm">
-                                    <input id="CreateCurso" type="text" name="curso" placeholder=" " required>
-                                    <label for="CreateCurso">Curso</label>
-                                </div>
-                                <div class="divForm">
-                                    <input id="CreateDetalle" type="text" name="detalle" placeholder=" " required>
-                                    <label for="CreateDetalle">Detalle</label>
-                                    <textarea style="max-height: 100px; min-height:100px" id="text" name="text"></textarea>
-                                </div>
-                                <div class="divForm">
-                                    <input id="CreatDescripcion" type="text" name="descripcion" placeholder=" " required>
-                                    <textarea style="max-height: 100px; min-height:100px" id="text" name="text"></textarea>
-                                    <label for="CreatDescripcion">Descripción</label>
-                                </div>
-
-                                <div class="divForm">
-                                    <input id="CreateDuracion" type="text" name="duracion" placeholder=" " required>
-                                    <label for="CreateDuracion">Duración</label>
-                                </div>
-                                <div class="divForm">
-                                    <input id="CreateCertificado" type="text" name="duracion" placeholder=" " required>
-                                    <label for="CreateDuracion">Certificado</label>
-                                </div>
-
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="administrador" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">Tilde la casilla si el usuario va a ser administrador</label>
+                                if(idiomas.includes('Inglés')){
+                                    $('#ingles').prop("checked",true);
+                                }else{
+                                    $('#ingles').prop("checked",false);
+                                }                                
+                                if(idiomas.includes('Portugués')){
+                                    $('#portugues').prop("checked",true);
+                                }else{
+                                    $('#portugues').prop("checked",false);
+                                }
+                            </script>
+                            <div class="divForm2">
+                                <label>Precio</label>
+                                <div class="inputGrup">
+                                    <span class="input-group-text">$</span>
+                                    <input id="precio" class="" type="text" name="precio" placeholder=" " required value="<?php echo $data_cursos["precio"]; ?>">
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Cancelar</button>
+
+                            <div class="divForm2">
+                                <label>Imagen de portada</label>
+                                <input class="form-control mb-3 mt-2" type="file" name="archivo" id="imagenCurso" required>
+                            </div>
+                            <!-- Control tamaño superado -->
+                            <script>
+                                $(document).ready(function() {
+                                    $('#imagenCurso').on('change', function() {
+
+                                        var fileSize = this.files[0].size; // Tamaño del archivo en bytes
+                                        var maxSize = 500 * 1024; // 4MB en bytes
+                                        var fileName = this.files[0].name; // Obtiene el nombre del archivo
+                                        var fileExtension = fileName.split('.').pop().toLowerCase(); // Obtiene la extensión del archivo
+                                        var extensions = ['jpg', 'pdf'];
+
+                                        if (!extensions.includes(fileExtension)) {
+                                            $('#divMensaje').show();
+                                            $('#textMensaje').text('El archivo no es de tipo .jpg');
+                                            this.value = "";
+                                        } else if (fileSize > maxSize) {
+                                            $('#divMensaje').show();
+                                            $('#textMensaje').text('El archivo seleccionado excede el límite de tamaño (10MB)');
+                                            this.value = ""; // Limpia el campo del archivo seleccionado
+                                        } else {
+                                            $('#divMensaje').css('display', 'none');
+                                            $('#textMensaje').text('');
+                                        }
+
+                                        $('#divMensaje').on('click', function() {
+                                            $('#divMensaje').css('display', 'none'); // Oculta la alerta
+                                            $('#textMensaje').text(''); // Limpia el texto del mensaje
+                                        });
+
+                                    });
+                                });
+                            </script>
+                            <!-- Control tamaño superado -->
+                            <!-- Alerta tamaño superado -->
+                            <div class="alert alert-danger alert-dismissible fade show mb-0 mt-3 position-absolute top0 start-50 translate-middle" id="divMensaje" style="display: none;" role="alert">
+                                <label id="textMensaje"></label>
+                            </div>
+                            <!-- Alerta tamaño superado -->
+
+                            <div class="divBotones">
+                                <button type="button" class="btn btn-secondary btnCancel" data-bs-toggle='modal' data-bs-target='#cancelCurso'>Cancelar</button>
                                 <button type="submit" class="btn btn-primary btnSubmit">Aceptar</button>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
+
+
                 </div>
             </div>
         </div>
 
-        <!-- update modal -->
-        <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- Cancel modal -->
+        <div class="modal fade" id="cancelCurso" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modificar usuario</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Cancelar</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="./controllers/update_user.php" method="post">
-                            <div class="mb-3">
-                                <input class="form-control mb-3" type="hidden" id="inputIdUsuario" name="idUsuario" required>
-                                <div class="divForm">
-                                    <input type="text" id="inputNombre" name="nombre" placeholder=" " required>
-                                    <label for="inputNombre">Nombre</label>
-                                </div>
-                                <div class="divForm">
-                                    <input type="text" id="inputApellido" name="apellido" placeholder=" " required>
-                                    <label for="inputApellido">Apellido</label>
-                                </div>
-                                <div class="divForm">
-                                    <input type="email" id="inputEmail" name="email" placeholder=" " required>
-                                    <label for="inputEmail">Correo electrónico</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="inputAdministrador" name="administrador" value="1" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">Administrador</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="inputActivo" name="activo" value="1" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">Activo</label>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="submit" class="btn btn-primary btnSubmit">Aceptar</button>
-                            </div>
-                        </form>
+                        <div class="mb-3">
+                            <label for="CreateCurso">Está seguro que desea cancelar la creación del curso?</label>
+                            <label for="CreateCurso">La información no podrá ser recuperada</label>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary btnSubmit" onclick="location.href='admin_cursos.php'">Aceptar</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
 
         <!-- Footer -->
         <footer class="footer">

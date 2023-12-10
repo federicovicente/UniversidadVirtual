@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrar cursos</title>
+    <title>Nuevo curso</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -190,16 +190,15 @@
                         ?>
                         <!-- alertas -->
                     </div>
-
                     <form action="./controllers/create_curso.php" method="post" enctype="multipart/form-data">
                         <div class="mb-3">
                             <div class="divForm2">
                                 <label>Título</label>
-                                <input id="curso" class="" type="text" name="curso" required>
+                                <input id="curso" type="text" name="curso" required>
                             </div>
                             <div class="divForm2">
                                 <label>Subtítulo</label>
-                                <input id="subTitulo" id="text" name="subTitulo" required></input>
+                                <input id="subTitulo" type="text" name="subTitulo" required></input>
                             </div>
                             <div class="divForm2">
                                 <label>Docente creador</label>
@@ -314,7 +313,6 @@
             </div>
         </div>
 
-
         <!-- Cancel modal -->
         <div class="modal fade" id="cancelCurso" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -336,7 +334,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- Footer -->
         <footer class="footer">
@@ -391,23 +388,6 @@
                 </div>
             </div>
         </footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         <script>
             const userAdministrador = "<?php echo isset($_SESSION['user_administrador']) ? $_SESSION['user_administrador'] : '' ?>";

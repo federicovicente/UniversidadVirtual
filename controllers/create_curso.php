@@ -16,7 +16,7 @@ $results = $cursoData->fetch(PDO::FETCH_ASSOC);
 if ($results) {
     $message = 'El nombre del curso ya existe';
     $_SESSION['danger'] = $message;
-    header('Location: ../cu_curso.php');
+    header('Location: ../c_curso.php');
 } else {
 
     $sql = 'INSERT INTO cursos (idDocente, curso, subTitulo, descripcion, duracion, certificado, idioma, precio, img, activo) VALUES (:idDocente, :curso, :subTitulo, :descripcion, :duracion, :certificado, :idioma, :precio, :img, :activo)';
