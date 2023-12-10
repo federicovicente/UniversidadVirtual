@@ -191,7 +191,7 @@
                         <!-- alertas -->
                     </div>
 
-                    <form action="./controllers/create_curso.php" method="post">
+                    <form action="./controllers/create_curso.php" method="post" enctype="multipart/form-data">
                         <div class="mb-3">
                             <div class="divForm2">
                                 <label>Título</label>
@@ -203,7 +203,7 @@
                             </div>
                             <div class="divForm2">
                                 <label>Docente creador</label>
-                                <select style="width: 300px;" name="docentes" id="docente">
+                                <select style="width: 300px;" name="docente" id="docente" required>
                                     <?php
                                     require './controllers/get_docentes.php';
 
@@ -234,19 +234,19 @@
                             <div class="divMitad">
                                 <div class="divForm3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="espaniol" value="" id="espaniol">
-                                        <label class="form-check-label" for="espaniol">Español</label>
+                                        <input class="form-check-input" type="checkbox" name="espanol" value="Español" id="espanol">
+                                        <label class="form-check-label" for="espanol">Español</label>
                                     </div>
                                 </div>
                                 <div class="divForm3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="ingles" value="" id="ingles">
+                                        <input class="form-check-input" type="checkbox" name="ingles" value="Inglés" id="ingles">
                                         <label class="form-check-label" for="ingles">Inglés</label>
                                     </div>
                                 </div>
                                 <div class="divForm3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="portugues" value="" id="portugues">
+                                        <input class="form-check-input" type="checkbox" name="portugues" value="Portugués" id="portugues">
                                         <label class="form-check-label" for="portugues">Portugués</label>
                                     </div>
                                 </div>
@@ -261,8 +261,46 @@
 
                             <div class="divForm2">
                                 <label>Imagen de portada</label>
-                                <input class="form-control mb-3 mt-2" type="file" name="archivo" required>
+                                <input class="form-control mb-3 mt-2" type="file" name="archivo" id="imagenCurso" required>
                             </div>
+                            <!-- Control tamaño superado -->
+                            <script>
+                                $(document).ready(function() {
+                                    $('#imagenCurso').on('change', function() {
+
+                                        var fileSize = this.files[0].size; // Tamaño del archivo en bytes
+                                        var maxSize = 500 * 1024; // 4MB en bytes
+                                        var fileName = this.files[0].name; // Obtiene el nombre del archivo
+                                        var fileExtension = fileName.split('.').pop().toLowerCase(); // Obtiene la extensión del archivo
+                                        var extensions = ['jpg', 'pdf'];
+
+                                        if (!extensions.includes(fileExtension)) {
+                                            $('#divMensaje').show();
+                                            $('#textMensaje').text('El archivo no es de tipo .jpg');
+                                            this.value = "";
+                                        } else if (fileSize > maxSize) {
+                                            $('#divMensaje').show();
+                                            $('#textMensaje').text('El archivo seleccionado excede el límite de tamaño (10MB)');
+                                            this.value = ""; // Limpia el campo del archivo seleccionado
+                                        } else {
+                                            $('#divMensaje').css('display', 'none');
+                                            $('#textMensaje').text('');
+                                        }
+
+                                        $('#divMensaje').on('click', function() {
+                                            $('#divMensaje').css('display', 'none'); // Oculta la alerta
+                                            $('#textMensaje').text(''); // Limpia el texto del mensaje
+                                        });
+
+                                    });
+                                });
+                            </script>
+                            <!-- Control tamaño superado -->
+                            <!-- Alerta tamaño superado -->
+                            <div class="alert alert-danger alert-dismissible fade show mb-0 mt-3 position-absolute top0 start-50 translate-middle" id="divMensaje" style="display: none;" role="alert">
+                                <label id="textMensaje"></label>
+                            </div>
+                            <!-- Alerta tamaño superado -->
 
                             <div class="divBotones">
                                 <button type="button" class="btn btn-secondary btnCancel" data-bs-toggle='modal' data-bs-target='#cancelCurso'>Cancelar</button>
@@ -353,6 +391,23 @@
                 </div>
             </div>
         </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         <script>
             const userAdministrador = "<?php echo isset($_SESSION['user_administrador']) ? $_SESSION['user_administrador'] : '' ?>";

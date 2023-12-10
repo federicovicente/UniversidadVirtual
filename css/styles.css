@@ -43,6 +43,10 @@ nav.navbar {
     }
 }
 
+.thAcciones{
+    min-width: 100px !important;
+}
+
 /*formulario 1*/
 .divForm{
     display: flex;

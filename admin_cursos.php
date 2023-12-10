@@ -177,9 +177,11 @@
                             <div class="alert alert-success alert-dismissible fade show mb-0 mt-3 position-absolute top0 start-50 translate-middle" role="alert">
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 <?= $_SESSION['success'] ?>
+                                <?= isset($_SESSION['success2']) ? $_SESSION['success2'] : '' ?>
                             </div>
                         <?php }
                         unset($_SESSION['success']);
+                        unset($_SESSION['success2']);
                         ?>
                         <?php if (isset($_SESSION['danger'])) { ?>
                             <div class="alert alert-danger alert-dismissible fade show mb-0 mt-3 position-absolute top0 start-50 translate-middle" role="alert">
@@ -198,12 +200,12 @@
                                 <th scope="col">Curso</th>
                                 <th scope="col" hidden>idDocente</th>
                                 <th scope="col">Docente</th>
-                                <th scope="col">Duración</th>
-                                <th scope="col">Certificado</th>
+                                <th scope="col" hidden>Duración</th>
+                                <th scope="col" hidden>Certificado</th>
                                 <th scope="col">Idiomas</th>
                                 <th scope="col">Precio</th>
                                 <th scope="col">Activo</th>
-                                <th scope="col">Acciones</th>
+                                <th class="thAcciones" scope="col">Acciones</th>
                             </tr>
                         </thead>
                         <tbody class="body-dark">
@@ -237,14 +239,14 @@
                                 echo "</td>";
 
                                 $duracion = $curso["duracion"];
-                                echo "<td>";
-                                echo $duracion;
-                                echo "</td>";
+                                "<td>";
+                                $duracion;
+                                "</td>";
 
                                 $certificado = $curso["certificado"];
-                                echo "<td>";
-                                echo $certificado;
-                                echo "</td>";
+                                "<td>";
+                                $certificado;
+                                "</td>";
 
                                 $idioma = $curso["idioma"];
                                 echo "<td>";
