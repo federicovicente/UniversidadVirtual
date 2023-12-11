@@ -164,7 +164,6 @@
             </div>
         </div>
 
-
         <?php
         $idCurso = $_GET["id"]; ?>
         <?php
@@ -173,7 +172,6 @@
         $data_cursos = unserialize(dataCurso($idCurso));
         $lista_docentes = unserialize(getDocentes());
         ?>
-
 
         <div class="container-b">
             <div class="wrap-b extendedM">
@@ -187,7 +185,7 @@
                         <div class="mb-3">
                             <div class="divForm2">
                                 <label>Título</label>
-                                <input id="curso" value="<?php echo $data_cursos["curso"]; ?>" type="text" name="curso" required>
+                                <input id="curso" value="<?php echo $data_cursos["curso"]; ?>" type="text" name="curso"  required>
                             </div>
                             <div class="divForm2">
                                 <label>Subtítulo</label>
@@ -243,24 +241,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <script>
-                                var idiomas = "<?php echo $data_cursos["idioma"]; ?>";
-                                if(idiomas.includes("Español")){
-                                    $('#espanol').prop("checked",true);
-                                }else{
-                                    $('#espanol').prop("checked",false);
-                                }
-                                if(idiomas.includes('Inglés')){
-                                    $('#ingles').prop("checked",true);
-                                }else{
-                                    $('#ingles').prop("checked",false);
-                                }                                
-                                if(idiomas.includes('Portugués')){
-                                    $('#portugues').prop("checked",true);
-                                }else{
-                                    $('#portugues').prop("checked",false);
-                                }
-                            </script>
                             <div class="divForm2">
                                 <label>Precio</label>
                                 <div class="inputGrup">
@@ -271,47 +251,22 @@
 
                             <div class="divForm2">
                                 <label>Imagen de portada</label>
-                                <input class="form-control mb-3 mt-2" type="file" name="archivo" id="imagenCurso" required>
+                                <input class="form-control mb-3 mt-2" type="file" name="archivo" id="imagenCurso">
+                                <button id="btnImagenCurso" type="button" class="btn btn-primary btnSubmit" data-bs-toggle='modal' data-bs-target='#verImagen'>Ver imagen</button>
                             </div>
-                            <!-- Control tamaño superado -->
-                            <script>
-                                $(document).ready(function() {
-                                    $('#imagenCurso').on('change', function() {
 
-                                        var fileSize = this.files[0].size; // Tamaño del archivo en bytes
-                                        var maxSize = 500 * 1024; // 4MB en bytes
-                                        var fileName = this.files[0].name; // Obtiene el nombre del archivo
-                                        var fileExtension = fileName.split('.').pop().toLowerCase(); // Obtiene la extensión del archivo
-                                        var extensions = ['jpg', 'pdf'];
-
-                                        if (!extensions.includes(fileExtension)) {
-                                            $('#divMensaje').show();
-                                            $('#textMensaje').text('El archivo no es de tipo .jpg');
-                                            this.value = "";
-                                        } else if (fileSize > maxSize) {
-                                            $('#divMensaje').show();
-                                            $('#textMensaje').text('El archivo seleccionado excede el límite de tamaño (10MB)');
-                                            this.value = ""; // Limpia el campo del archivo seleccionado
-                                        } else {
-                                            $('#divMensaje').css('display', 'none');
-                                            $('#textMensaje').text('');
-                                        }
-
-                                        $('#divMensaje').on('click', function() {
-                                            $('#divMensaje').css('display', 'none'); // Oculta la alerta
-                                            $('#textMensaje').text(''); // Limpia el texto del mensaje
-                                        });
-
-                                    });
-                                });
-                            </script>
-                            <!-- Control tamaño superado -->
                             <!-- Alerta tamaño superado -->
-                            <div class="alert alert-danger alert-dismissible fade show mb-0 mt-3 position-absolute top0 start-50 translate-middle" id="divMensaje" style="display: none;" role="alert">
+                            <div class="alert alert-danger  fade show mb-0 mt-3 position-absolute top0 start-50 translate-middle" id="divMensaje" style="display: none;" role="alert">
                                 <label id="textMensaje"></label>
                             </div>
-                            <!-- Alerta tamaño superado -->
-
+                            <div class="divMitad" style="margin-top:40px">
+                                <div class="divForm3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="espanol" value="1" id="cursoActivo">
+                                        <label class="form-check-label" for="espanol">Activo</label>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="divBotones">
                                 <button type="button" class="btn btn-secondary btnCancel" data-bs-toggle='modal' data-bs-target='#cancelCurso'>Cancelar</button>
                                 <button type="submit" class="btn btn-primary btnSubmit">Aceptar</button>
@@ -340,6 +295,20 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-primary btnSubmit" onclick="location.href='admin_cursos.php'">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Imagen modal -->
+        <div class="modal fade" id="verImagen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <img src="<?php echo $data_cursos["img"]; ?>" alt="img">
+                    <div class="modal-body">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btnSubmit" data-bs-dismiss="modal">Cerrar</button>
                         </div>
                     </div>
                 </div>
@@ -402,7 +371,76 @@
 
         <script>
             const userAdministrador = "<?php echo isset($_SESSION['user_administrador']) ? $_SESSION['user_administrador'] : '' ?>";
+
+            //Control tamaño y tipo archivo
+            $(document).ready(function() {
+                $('#imagenCurso').on('change', function() {
+
+                    var fileSize = this.files[0].size; // Tamaño del archivo en bytes
+                    var maxSize = 500 * 1024; // 4MB en bytes
+                    var fileName = this.files[0].name; // Obtiene el nombre del archivo
+                    var fileExtension = fileName.split('.').pop().toLowerCase(); // Obtiene la extensión del archivo
+                    var extensions = ['jpg', 'pdf'];
+
+                    if (!extensions.includes(fileExtension)) {
+                        $('#divMensaje').show();
+                        $('#textMensaje').text('El archivo no es de tipo .jpg');
+                        this.value = "";
+                    } else if (fileSize > maxSize) {
+                        $('#divMensaje').show();
+                        $('#textMensaje').text('El archivo seleccionado excede el límite de tamaño (10MB)');
+                        this.value = ""; // Limpia el campo del archivo seleccionado
+                    } else {
+                        $('#divMensaje').css('display', 'none');
+                        $('#textMensaje').text('');
+                    }
+
+                    //oculta alerta al hacer clic
+                    $('#divMensaje').on('click', function() {
+                        $('#divMensaje').css('display', 'none'); // Oculta la alerta
+                        $('#textMensaje').text(''); // Limpia el texto del mensaje
+                    });
+
+                });
+            });
+
+            //Mostrar ocultar boton ver imagen
+            var dirImg = "<?php echo $data_cursos["img"]; ?>";
+            if (!dirImg == "") {
+                $('#btnImagenCurso').show;
+            } else {
+                $('#btnImagenCurso').css('display', 'none');
+            }
+
+            //Checkear idiomas
+            var idiomas = "<?php echo $data_cursos["idioma"]; ?>";
+            if (idiomas.includes("Español")) {
+                $('#espanol').prop("checked", true);
+            } else {
+                $('#espanol').prop("checked", false);
+            }
+            if (idiomas.includes('Inglés')) {
+                $('#ingles').prop("checked", true);
+            } else {
+                $('#ingles').prop("checked", false);
+            }
+            if (idiomas.includes('Portugués')) {
+                $('#portugues').prop("checked", true);
+            } else {
+                $('#portugues').prop("checked", false);
+            }
+
+            //Checkear Activo
+            var cursoActivo = "<?php echo $data_cursos["activo"]; ?>";
+            if (cursoActivo == 1) {
+                $('#cursoActivo').prop("checked", true);
+            } else {
+                $('#cursoActivo').prop("checked", false);
+            }
         </script>
+
+
+
 
         <script>
             $(document).ready(function() {

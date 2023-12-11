@@ -47,6 +47,17 @@ nav.navbar {
     min-width: 100px !important;
 }
 
+.modal-body{
+    overflow: hidden !important;
+}
+
+.modal-content img{
+    margin: 20px 20px 0px 20px !important;
+    object-fit: contain;
+    border-radius: 4px;
+  }
+  
+
 /*formulario 1*/
 .divForm{
     display: flex;

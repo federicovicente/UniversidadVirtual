@@ -260,46 +260,12 @@
 
                             <div class="divForm2">
                                 <label>Imagen de portada</label>
-                                <input class="form-control mb-3 mt-2" type="file" name="archivo" id="imagenCurso" required>
+                                <input class="form-control mb-3 mt-2" type="file" name="archivo" id="imagenCurso">
                             </div>
-                            <!-- Control tamaño superado -->
-                            <script>
-                                $(document).ready(function() {
-                                    $('#imagenCurso').on('change', function() {
-
-                                        var fileSize = this.files[0].size; // Tamaño del archivo en bytes
-                                        var maxSize = 500 * 1024; // 4MB en bytes
-                                        var fileName = this.files[0].name; // Obtiene el nombre del archivo
-                                        var fileExtension = fileName.split('.').pop().toLowerCase(); // Obtiene la extensión del archivo
-                                        var extensions = ['jpg', 'pdf'];
-
-                                        if (!extensions.includes(fileExtension)) {
-                                            $('#divMensaje').show();
-                                            $('#textMensaje').text('El archivo no es de tipo .jpg');
-                                            this.value = "";
-                                        } else if (fileSize > maxSize) {
-                                            $('#divMensaje').show();
-                                            $('#textMensaje').text('El archivo seleccionado excede el límite de tamaño (10MB)');
-                                            this.value = ""; // Limpia el campo del archivo seleccionado
-                                        } else {
-                                            $('#divMensaje').css('display', 'none');
-                                            $('#textMensaje').text('');
-                                        }
-
-                                        $('#divMensaje').on('click', function() {
-                                            $('#divMensaje').css('display', 'none'); // Oculta la alerta
-                                            $('#textMensaje').text(''); // Limpia el texto del mensaje
-                                        });
-
-                                    });
-                                });
-                            </script>
-                            <!-- Control tamaño superado -->
                             <!-- Alerta tamaño superado -->
                             <div class="alert alert-danger alert-dismissible fade show mb-0 mt-3 position-absolute top0 start-50 translate-middle" id="divMensaje" style="display: none;" role="alert">
                                 <label id="textMensaje"></label>
                             </div>
-                            <!-- Alerta tamaño superado -->
 
                             <div class="divBotones">
                                 <button type="button" class="btn btn-secondary btnCancel" data-bs-toggle='modal' data-bs-target='#cancelCurso'>Cancelar</button>
@@ -391,6 +357,37 @@
 
         <script>
             const userAdministrador = "<?php echo isset($_SESSION['user_administrador']) ? $_SESSION['user_administrador'] : '' ?>";
+
+            //Control tamaño y tipo archivo
+            $(document).ready(function() {
+                $('#imagenCurso').on('change', function() {
+
+                    var fileSize = this.files[0].size; // Tamaño del archivo en bytes
+                    var maxSize = 500 * 1024; // 4MB en bytes
+                    var fileName = this.files[0].name; // Obtiene el nombre del archivo
+                    var fileExtension = fileName.split('.').pop().toLowerCase(); // Obtiene la extensión del archivo
+                    var extensions = ['jpg', 'pdf'];
+
+                    if (!extensions.includes(fileExtension)) {
+                        $('#divMensaje').show();
+                        $('#textMensaje').text('El archivo no es de tipo .jpg');
+                        this.value = "";
+                    } else if (fileSize > maxSize) {
+                        $('#divMensaje').show();
+                        $('#textMensaje').text('El archivo seleccionado excede el límite de tamaño (10MB)');
+                        this.value = ""; // Limpia el campo del archivo seleccionado
+                    } else {
+                        $('#divMensaje').css('display', 'none');
+                        $('#textMensaje').text('');
+                    }
+
+                    $('#divMensaje').on('click', function() {
+                        $('#divMensaje').css('display', 'none'); // Oculta la alerta
+                        $('#textMensaje').text(''); // Limpia el texto del mensaje
+                    });
+
+                });
+            });
         </script>
 
         <script>

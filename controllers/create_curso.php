@@ -43,30 +43,38 @@ if ($results) {
 
     $stmt->bindParam(':precio', $_POST['precio']);
 
-    $dir = "../files/";
-    $maxSize = 500; 
-    $extensions = ["jpg", "pdf"];
+    if(isset($_FILES['archivo']) && !empty($_FILES['archivo']['name'])){
 
-    $newName = str_replace(" ", "_", $_POST['curso']);
-
-    $nameFile = explode(".", $_FILES['archivo']['name']);
-
-    $extensionFile = strtolower(end($nameFile));
+        $dir = "../files/";
+        $maxSize = 500; 
+        $extensions = ["jpg", "pdf"];
+        $ruta = "./files/";
     
-    $ruta_carga = $dir . $newName . "." . $extensionFile;
+        $newName = str_replace(" ", "_", $_POST['curso']);
+    
+        $nameFile = explode(".", $_FILES['archivo']['name']);
+    
+        $extensionFile = strtolower(end($nameFile));
+        
+        $ruta_carga = $ruta . $newName . "." . $extensionFile;
+    
+        $stmt->bindParam(':img', $ruta_carga);
 
-    $stmt->bindParam(':img', $ruta_carga);
-
-
-    if (in_array($extensionFile, $extensions) && $_FILES['archivo']['size'] < ($maxSize * 1024)) {
-        if (!file_exists($dir)) {
-            mkdir($dir, 0777);
+        if (in_array($extensionFile, $extensions) && $_FILES['archivo']['size'] < ($maxSize * 1024)) {
+            if (!file_exists($dir)) {
+                mkdir($dir, 0777);
+            }
+            move_uploaded_file($_FILES['archivo']['tmp_name'], $ruta_carga);
+        } else {
+            $message = "La imagen no pudo ser guardad";
+            $_SESSION['success2'] = $message;
         }
-        move_uploaded_file($_FILES['archivo']['tmp_name'], $ruta_carga);
-    } else {
-        $message = "La imagen no pudo ser guardad";
-        $_SESSION['success2'] = $message;
+    }else{
+        $imgNull = "";
+        $stmt->bindParam(':img', $imgNull);
     }
+
+   
 
     $cursoActivo = 1;
     $stmt->bindParam(':activo', $cursoActivo);
