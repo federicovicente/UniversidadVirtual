@@ -269,8 +269,8 @@
 
                                 echo "<td>";
                                 echo "<a href='#' data-bs-toggle='modal' data-bs-target='#deleteModal' idCurso='$idCurso' curso='$nombre'><i class='bi bi-trash3-fill mx-1'></i></a>";
-                                echo "<a id='idCurso' href='u_curso.php?id=$idCurso' idCurso='$idCurso' ><i class='bi bi-pencil-fill mx-1'></i></a>";
-                                echo "<a href='#' data-bs-toggle='modal' data-bs-target='#updateModal' idCurso='$idCurso' curso='$nombre' duracion='$duracion' certificado='$certificado' idioma='$idioma' precio='$precio' activo='$activo'><i class='bi bi-eye-fill mx-1'></i></a>";
+                                echo "<a id='btnModificar' href='u_curso.php?id=$idCurso' idCurso='$idCurso' ><i class='bi bi-pencil-fill mx-1'></i></a>";
+                                echo "<a id='btnVer' href='u_curso.php?id=$idCurso' idCurso='$idCurso'><i class='bi bi-eye-fill mx-1'></i></a>";
                                 echo "</td>";
                                 echo "</tr>";
                             }
@@ -307,101 +307,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- create modal -->
-        <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo curso</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="./controllers/create_curso.php" method="post">
-                            <div class="mb-3">
-                                <div class="divForm">
-                                    <input id="CreateCurso" type="text" name="curso" placeholder=" " required>
-                                    <label for="CreateCurso">Curso</label>
-                                </div>
-                                <div class="divForm">
-                                    <input id="CreateDetalle" type="text" name="detalle" placeholder=" " required>
-                                    <label for="CreateDetalle">Detalle</label>
-                                    <textarea style="max-height: 100px; min-height:100px" id="text" name="text"></textarea>
-                                </div>
-                                <div class="divForm">
-                                    <input id="CreatDescripcion" type="text" name="descripcion" placeholder=" " required>
-                                    <textarea style="max-height: 100px; min-height:100px" id="text" name="text"></textarea>
-                                    <label for="CreatDescripcion">Descripción</label>
-                                </div>
-
-                                <div class="divForm">
-                                    <input id="CreateDuracion" type="text" name="duracion" placeholder=" " required>
-                                    <label for="CreateDuracion">Duración</label>
-                                </div>
-                                <div class="divForm">
-                                    <input id="CreateCertificado" type="text" name="duracion" placeholder=" " required>
-                                    <label for="CreateDuracion">Certificado</label>
-                                </div>
-
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="administrador" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">Tilde la casilla si el usuario va a ser administrador</label>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="submit" class="btn btn-primary btnSubmit">Aceptar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- update modal -->
-        <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modificar usuario</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="./controllers/update_user.php" method="post">
-                            <div class="mb-3">
-                                <input class="form-control mb-3" type="hidden" id="inputIdUsuario" name="idUsuario" required>
-                                <div class="divForm">
-                                    <input type="text" id="inputNombre" name="nombre" placeholder=" " required>
-                                    <label for="inputNombre">Nombre</label>
-                                </div>
-                                <div class="divForm">
-                                    <input type="text" id="inputApellido" name="apellido" placeholder=" " required>
-                                    <label for="inputApellido">Apellido</label>
-                                </div>
-                                <div class="divForm">
-                                    <input type="email" id="inputEmail" name="email" placeholder=" " required>
-                                    <label for="inputEmail">Correo electrónico</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="inputAdministrador" name="administrador" value="1" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">Administrador</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="inputActivo" name="activo" value="1" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">Activo</label>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary btnCancel" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="submit" class="btn btn-primary btnSubmit">Aceptar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
 
 
         <!-- Footer -->
@@ -471,6 +376,16 @@
                     $('#offcanvasWithBothOptions').offcanvas('show');
                 }
             });
+
+            //Guardar tipo de botón: modificar o solo lectura
+            $('#btnModificar').on('click', () => {
+                localStorage.setItem('boton', 'btnModificar');
+            });
+
+            $('#btnVer').on('click', () => {
+                localStorage.setItem('boton', 'btnVer');
+            });
+           
         </script>
 
         <script src="js/script.js"></script>

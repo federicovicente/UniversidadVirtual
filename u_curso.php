@@ -185,8 +185,8 @@
                         <div class="mb-3">
                             <div class="divForm2">
                                 <label>Título</label>
-                                <input id="curso" value="<?php echo $data_cursos["curso"]; ?>" type="text" name="curso"  required>
-                                <input id="idCurso" value="<?php echo $data_cursos["idCurso"]; ?>" type="text" name="idCurso"  hidden>
+                                <input id="curso" value="<?php echo $data_cursos["curso"]; ?>" type="text" name="curso" required>
+                                <input id="idCurso" value="<?php echo $data_cursos["idCurso"]; ?>" type="text" name="idCurso" hidden>
                             </div>
                             <div class="divForm2">
                                 <label>Subtítulo</label>
@@ -223,9 +223,9 @@
                             </div>
 
                             <div class="divMitad">
-                                <div class="divForm3">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="espanol" value="Español" id="espanol">
+                                <div class="divForm3" >
+                                    <div class="form-check" >
+                                        <input class="form-check-input" type="checkbox" name="espanol" value="Español" id="espanol" disabled>
                                         <label class="form-check-label" for="espanol">Español</label>
                                     </div>
                                 </div>
@@ -238,7 +238,7 @@
                                 <div class="divForm3">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="portugues" value="Portugués" id="portugues">
-                                        <label class="form-check-label" for="portugues">Portugués</label>
+                                        <label class="form-check-label" for="portugues" >Portugués</label>
                                     </div>
                                 </div>
                             </div>
@@ -269,8 +269,9 @@
                                 </div>
                             </div>
                             <div class="divBotones">
-                                <button type="button" class="btn btn-secondary btnCancel" data-bs-toggle='modal' data-bs-target='#cancelCurso'>Cancelar</button>
-                                <button type="submit" class="btn btn-primary btnSubmit">Aceptar</button>
+                                <button id="btnCancelar" type="button" class="btn btn-secondary btnCancel" data-bs-toggle='modal' data-bs-target='#cancelCurso'>Cancelar</button>
+                                <button id="btnAceptar" type="submit" class="btn btn-primary btnSubmit">Aceptar</button>
+                                <button id="btnCerrar" onclick="location.href='admin_cursos.php'" type="button" class="btn btn-primary btnSubmit" >Cerrar</button>
                             </div>
                         </div>
                     </form>
@@ -438,10 +439,48 @@
             } else {
                 $('#cursoActivo').prop("checked", false);
             }
+
+            //Modo visualización
+            $(document).ready(() => {
+                const boton = localStorage.getItem('boton');
+
+                if (boton == 'btnVer') {
+                    $('#curso').attr('readonly', 'readonly')
+                    $('#subTitulo').attr('readonly', 'readonly')
+                    $('#docente').prop('disabled', true)
+                    $('#descripcion').attr('readonly', 'readonly')
+                    $('#duracion').attr('readonly', 'readonly')
+                    $('#certificado').attr('readonly', 'readonly')
+                    $('#espanol').prop('disabled', true)
+                    $('#ingles').prop('disabled', true)
+                    $('#portugues').prop('disabled', true)
+                    $('#formIdioma').attr('readonly', 'readonly')
+                    $('#precio').attr('readonly', 'readonly')
+                    $('#cursoActivo').prop('disabled', true)
+                    $('#imagenCurso').css('display', 'none')
+                    $('#btnCancelar').css('display', 'none')
+                    $('#btnAceptar').css('display', 'none')
+                    $('#btnCerrar').show
+
+                } else if (boton == 'btnModificar') {
+                    $('#curso').removeAttr('readonly');
+                    $('#subTitulo').removeAttr('readonly')
+                    $('#docente').prop('disabled', false)
+                    $('#descripcion').removeAttr('readonly')
+                    $('#duracion').removeAttr('readonly')
+                    $('#certificado').removeAttr('readonly')
+                    $('#espanol').prop('disabled', false)
+                    $('#ingles').prop('disabled', false)
+                    $('#portugues').prop('disabled', false)
+                    $('#precio').removeAttr('readonly')
+                    $('#cursoActivo').prop('disabled', false)
+                    $('#imagenCurso').show
+                    $('#btnCancelar').show
+                    $('#btnAceptar').show
+                    $('#btnCerrar').css('display', 'none')
+                }
+            });
         </script>
-
-
-
 
         <script>
             $(document).ready(function() {
