@@ -181,11 +181,12 @@
                 <div class="panel-b">
                     <div style="display:flex">
                     </div>
-                    <form action="./controllers/create_curso.php" method="post" enctype="multipart/form-data">
+                    <form action="./controllers/update_curso.php" method="post" enctype="multipart/form-data">
                         <div class="mb-3">
                             <div class="divForm2">
                                 <label>Título</label>
                                 <input id="curso" value="<?php echo $data_cursos["curso"]; ?>" type="text" name="curso"  required>
+                                <input id="idCurso" value="<?php echo $data_cursos["idCurso"]; ?>" type="text" name="idCurso"  hidden>
                             </div>
                             <div class="divForm2">
                                 <label>Subtítulo</label>
@@ -199,7 +200,7 @@
                                     echo "<option selected=>Seleccione un ítem de la lista</option>";
                                     foreach ($lista_docentes as $docente) {
                                         $selected = ($docente["idDocente"] == $idDocenteCurso) ? 'selected' : '';
-                                        echo "<option value=" . $docente["idDocente"] . " $selected>" . $docente["nombre"] . " " . $docente["apellido"] . " " . $docente["idDocente"] . "</option>";
+                                        echo "<option value=" . $docente["idDocente"] . " $selected>" . $docente["nombre"] . " " . $docente["apellido"] . "</option>";
                                     } ?>
                                 </select>
                             </div>
@@ -262,8 +263,8 @@
                             <div class="divMitad" style="margin-top:40px">
                                 <div class="divForm3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="espanol" value="1" id="cursoActivo">
-                                        <label class="form-check-label" for="espanol">Activo</label>
+                                        <input class="form-check-input" type="checkbox" name="cursoActivo" value="1" id="cursoActivo">
+                                        <label class="form-check-label" for="cursoActivo">Activo</label>
                                     </div>
                                 </div>
                             </div>

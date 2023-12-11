@@ -56,9 +56,10 @@ if ($results) {
     
         $extensionFile = strtolower(end($nameFile));
         
-        $ruta_carga = $ruta . $newName . "." . $extensionFile;
+        $ruta_carga = $dir . $newName . "." . $extensionFile;
+        $img = $ruta . $newName . "." . $extensionFile;
     
-        $stmt->bindParam(':img', $ruta_carga);
+        $stmt->bindParam(':img', $img);
 
         if (in_array($extensionFile, $extensions) && $_FILES['archivo']['size'] < ($maxSize * 1024)) {
             if (!file_exists($dir)) {
