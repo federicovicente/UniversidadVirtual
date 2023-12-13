@@ -12,6 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
 <?php if (isset($_SESSION['user_id'])) { ?>
 
@@ -442,9 +443,23 @@
 
             //Modo visualización
             $(document).ready(() => {
-                const boton = localStorage.getItem('boton');
-
-                if (boton == 'btnVer') {
+                if (CryptoJS.AES.decrypt(localStorage.getItem('boton'), 'admin123').toString(CryptoJS.enc.Utf8) == 'btnModificar') {
+                    $('#curso').removeAttr('readonly');
+                    $('#subTitulo').removeAttr('readonly')
+                    $('#docente').prop('disabled', false)
+                    $('#descripcion').removeAttr('readonly')
+                    $('#duracion').removeAttr('readonly')
+                    $('#certificado').removeAttr('readonly')
+                    $('#espanol').prop('disabled', false)
+                    $('#ingles').prop('disabled', false)
+                    $('#portugues').prop('disabled', false)
+                    $('#precio').removeAttr('readonly')
+                    $('#cursoActivo').prop('disabled', false)
+                    $('#imagenCurso').show
+                    $('#btnCancelar').show
+                    $('#btnAceptar').show
+                    $('#btnCerrar').css('display', 'none')
+                }else {
                     $('#curso').attr('readonly', 'readonly')
                     $('#subTitulo').attr('readonly', 'readonly')
                     $('#docente').prop('disabled', true)
@@ -461,24 +476,10 @@
                     $('#btnCancelar').css('display', 'none')
                     $('#btnAceptar').css('display', 'none')
                     $('#btnCerrar').show
-
-                } else if (boton == 'btnModificar') {
-                    $('#curso').removeAttr('readonly');
-                    $('#subTitulo').removeAttr('readonly')
-                    $('#docente').prop('disabled', false)
-                    $('#descripcion').removeAttr('readonly')
-                    $('#duracion').removeAttr('readonly')
-                    $('#certificado').removeAttr('readonly')
-                    $('#espanol').prop('disabled', false)
-                    $('#ingles').prop('disabled', false)
-                    $('#portugues').prop('disabled', false)
-                    $('#precio').removeAttr('readonly')
-                    $('#cursoActivo').prop('disabled', false)
-                    $('#imagenCurso').show
-                    $('#btnCancelar').show
-                    $('#btnAceptar').show
-                    $('#btnCerrar').css('display', 'none')
-                }
+                }  
+                
+                
+                
             });
         </script>
 
