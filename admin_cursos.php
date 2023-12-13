@@ -238,7 +238,7 @@
                                 echo $idioma;
                                 echo "</td>";
 
-                                $precio = $curso["precio"];
+                                $precio = number_format($curso["precio"], 2, ',', '.');
                                 echo "<td>";
                                 echo $precio;
                                 echo "</td>";
