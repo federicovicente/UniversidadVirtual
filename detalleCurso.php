@@ -1,11 +1,16 @@
-<?php session_start(); ?>
+<?php session_start(); 
+$idCurso = $_GET["id"];
+require './controllers/data_curso.php';
+
+$data_cursos = unserialize(dataCurso($idCurso));
+$lista_docentes = unserialize(getDocentes());
+?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tecnicas de negociación</title>
+    <title><?php echo $data_cursos["curso"] ?></title>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
@@ -145,20 +150,10 @@
         </div>
     </div>
 
-    <?php
-        $idCurso = $_GET["id"];
-        ?>
-        <?php
-        require './controllers/data_curso.php';
-
-        $data_cursos = unserialize(dataCurso($idCurso));
-        $lista_docentes = unserialize(getDocentes());
-        ?>
-
     <div class="contenedor-curso">
         <div class="wrap-curso">
             <div class="descripcion-curso">
-                <img src="<?php echo $data_cursos["img"] ?>"/>
+                <img src="<?php echo $data_cursos["img"] ?>" />
                 <div class="banner-curso">
                     <h4><?php echo $data_cursos["curso"] ?></h4>
                     <p><?php echo $data_cursos["descripcion"] ?></p>
@@ -201,7 +196,7 @@
     </div>
     <script>
         const userAdministrador = "<?php echo isset($_SESSION['user_administrador']) ? $_SESSION['user_administrador'] : '' ?>";
-        
+
         $('#h3precioDescuento').text('$ <?php echo isset($data_cursos["precio"]) ? number_format($data_cursos["precio"] * 0.9, 0, ',', '.') : '' ?>')
     </script>
     <script src="js/script.js"></script>

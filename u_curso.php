@@ -1,11 +1,16 @@
-<?php session_start(); ?>
+<?php session_start(); 
+$idCurso = $_GET["id"];
+require './controllers/data_curso.php';
+$data_cursos = unserialize(dataCurso($idCurso));
+$lista_docentes = unserialize(getDocentes());
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modificar curso</title>
+    <title><?php echo $data_cursos["curso"]; ?></title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -148,17 +153,6 @@
                 </div>
             </div>
         </div>
-
-
-        <?php
-        $idCurso = $_GET["id"];
-        ?>
-        <?php
-        require './controllers/data_curso.php';
-
-        $data_cursos = unserialize(dataCurso($idCurso));
-        $lista_docentes = unserialize(getDocentes());
-        ?>
 
         <div class="container-b">
             <div class="wrap-b extendedM">

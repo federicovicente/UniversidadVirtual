@@ -211,7 +211,7 @@
           echo "<h5>" . $curso["curso"] . "</h5>";
           echo "<h6>" . $curso["subTitulo"] . "</h6>";
           echo "</div>";
-          echo "<a idCurso='$idCurso' href='tecnicasnegociacion.php?id=$idCurso' class='card-link'>Más información...</a>";
+          echo "<a idCurso='$idCurso' href='detalleCurso.php?id=$idCurso' class='card-link'>Más información...</a>";
           echo "</li>";
         } ?>
       </ul>
