@@ -156,7 +156,6 @@
         <?php
         require './controllers/data_curso.php';
 
-
         $data_cursos = unserialize(dataCurso($idCurso));
         $lista_docentes = unserialize(getDocentes());
         ?>

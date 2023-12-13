@@ -145,28 +145,35 @@
         </div>
     </div>
 
+    <?php
+        $idCurso = $_GET["id"];
+        ?>
+        <?php
+        require './controllers/data_curso.php';
 
+        $data_cursos = unserialize(dataCurso($idCurso));
+        $lista_docentes = unserialize(getDocentes());
+        ?>
 
     <div class="contenedor-curso">
         <div class="wrap-curso">
             <div class="descripcion-curso">
-                <img src="images/I_tecnicas_negociacion.jpg" />
+                <img src="<?php echo $data_cursos["img"] ?>"/>
                 <div class="banner-curso">
-                    <h4>Tecnicas de negociación</h4>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis repudiandae ut sed dolores,
-                        aperiam odit?</p>
+                    <h4><?php echo $data_cursos["curso"] ?></h4>
+                    <p><?php echo $data_cursos["descripcion"] ?></p>
                 </div>
             </div>
             <div class="comprar-curso">
                 <div class="div">
                     <h6>Creado por:</h6>
-                    <p>Federico vicente</p>
+                    <p><?php echo $data_cursos["docente"]; ?></p>
                     <h6>Certificado:</h6>
-                    <p>Oficial</p>
+                    <p><?php echo $data_cursos["certificado"]; ?></p>
                     <h6>Duración:</h6>
-                    <p>240 hs</p>
+                    <p><?php echo $data_cursos["duracion"]; ?></p>
                     <h6>Idioma:</h6>
-                    <p>Españo, Inglés</p>
+                    <p><?php echo $data_cursos["idioma"]; ?></p>
                 </div>
                 <div class="div">
                     <form class="contenedorcupon">
@@ -181,10 +188,10 @@
                     </form>
                     <div>
                         <div class="precio" id="precioOriginal">
-                            <h3>69,99 US$</h3>
+                            <h3>$ <?php echo isset($data_cursos["precio"]) ? number_format($data_cursos["precio"], 0, '.', '.') : '' ?></h3>
                         </div>
                         <div class="preciodescuento" id="precioDescuento">
-                            <h3>62,99 US$</h3>
+                            <h3 id="h3precioDescuento" value=""></h3>
                         </div>
                     </div>
                     <button type="button" class="btn btn-primary btnSubmit">Comprar ahora!</button>
@@ -194,6 +201,8 @@
     </div>
     <script>
         const userAdministrador = "<?php echo isset($_SESSION['user_administrador']) ? $_SESSION['user_administrador'] : '' ?>";
+        
+        $('#h3precioDescuento').text('$ <?php echo isset($data_cursos["precio"]) ? number_format($data_cursos["precio"] * 0.9, 0, ',', '.') : '' ?>')
     </script>
     <script src="js/script.js"></script>
     <!-- Footer -->

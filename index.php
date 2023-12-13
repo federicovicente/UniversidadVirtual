@@ -200,20 +200,20 @@
     <div class="wrapperfv">
       <i id="left" class="fa-solid fa-angle-left"></i>
       <ul class="carouselfv">
-      <?php
-      require './controllers/get_cursos.php';
-      $lista_cursos = unserialize(getCursos());
-      foreach ($lista_cursos as $curso) {
-        $idCurso = $curso["idCurso"];
-        echo "<li class='cardfv'>";
-        echo "<div class='img'><img src='" . $curso["img"] . "'alt='img' draggable='false'></div>";
-        echo "<div class='bodyCard'>";
-        echo "<h5>" . $curso["curso"] . "</h5>";
-        echo "<h6>" . $curso["subTitulo"] . "</h6>";
-        echo "</div>";
-        echo "<a href='tecnicasnegociacion.php' class='card-link'>Más información...</a>";
-        echo "</li>";
-      }?> 
+        <?php
+        require './controllers/get_cursos.php';
+        $lista_cursos = unserialize(getCursos());
+        foreach ($lista_cursos as $curso) {
+          $idCurso = $curso["idCurso"];
+          echo "<li class='cardfv'>";
+          echo "<div class='img'><img src='" . $curso["img"] . "'alt='img' draggable='false'></div>";
+          echo "<div class='bodyCard'>";
+          echo "<h5>" . $curso["curso"] . "</h5>";
+          echo "<h6>" . $curso["subTitulo"] . "</h6>";
+          echo "</div>";
+          echo "<a idCurso='$idCurso' href='tecnicasnegociacion.php?id=$idCurso' class='card-link'>Más información...</a>";
+          echo "</li>";
+        } ?>
       </ul>
       <i id="right" class="fa-solid fa-angle-right"></i>
     </div>

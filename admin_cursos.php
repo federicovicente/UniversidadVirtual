@@ -365,7 +365,6 @@
 
         <script src="js/script.js"></script>
         <script src="js/user_list.js"></script>
-
         <script>
             //Guardar tipo de botón: modificar o solo lectura
             $(document).ready(function() {
@@ -380,10 +379,6 @@
                 });
             });
         </script>
-
-
-
-
     </body>
 <?php } else {
     require('./404.php');
