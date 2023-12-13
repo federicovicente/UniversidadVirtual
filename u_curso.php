@@ -227,7 +227,7 @@ $lista_docentes = unserialize(getDocentes());
                                 <label>Precio</label>
                                 <div class="inputGrup">
                                     <span class="input-group-text">$</span>
-                                    <input id="precio" class="" type="text" name="precio" placeholder=" " required value="<?php echo number_format($data_cursos["precio"], 2, ',', '.') ?>">
+                                    <input id="precio" class="" type="text" name="precio" placeholder=" " required value="<?php echo $data_cursos["precio"]?>">
                                 </div>
                             </div>
 
