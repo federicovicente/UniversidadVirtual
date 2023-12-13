@@ -165,10 +165,13 @@
             </div>
         </div>
 
+
         <?php
-        $idCurso = $_GET["id"]; ?>
+        $idCurso = $_GET["id"];
+        ?>
         <?php
         require './controllers/data_curso.php';
+
 
         $data_cursos = unserialize(dataCurso($idCurso));
         $lista_docentes = unserialize(getDocentes());
@@ -224,8 +227,8 @@
                             </div>
 
                             <div class="divMitad">
-                                <div class="divForm3" >
-                                    <div class="form-check" >
+                                <div class="divForm3">
+                                    <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="espanol" value="Español" id="espanol" disabled>
                                         <label class="form-check-label" for="espanol">Español</label>
                                     </div>
@@ -239,7 +242,7 @@
                                 <div class="divForm3">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="portugues" value="Portugués" id="portugues">
-                                        <label class="form-check-label" for="portugues" >Portugués</label>
+                                        <label class="form-check-label" for="portugues">Portugués</label>
                                     </div>
                                 </div>
                             </div>
@@ -272,7 +275,7 @@
                             <div class="divBotones">
                                 <button id="btnCancelar" type="button" class="btn btn-secondary btnCancel" data-bs-toggle='modal' data-bs-target='#cancelCurso'>Cancelar</button>
                                 <button id="btnAceptar" type="submit" class="btn btn-primary btnSubmit">Aceptar</button>
-                                <button id="btnCerrar" onclick="location.href='admin_cursos.php'" type="button" class="btn btn-primary btnSubmit" >Cerrar</button>
+                                <button id="btnCerrar" onclick="location.href='admin_cursos.php'" type="button" class="btn btn-primary btnSubmit">Cerrar</button>
                             </div>
                         </div>
                     </form>
@@ -317,6 +320,7 @@
                 </div>
             </div>
         </div>
+
 
         <!-- Footer -->
         <footer class="footer">
@@ -443,7 +447,7 @@
 
             //Modo visualización
             $(document).ready(() => {
-                if (CryptoJS.AES.decrypt(localStorage.getItem('boton'), 'admin123').toString(CryptoJS.enc.Utf8) == 'btnModificar') {
+                if (CryptoJS.AES.decrypt(sessionStorage.getItem('accion'), 'admin123').toString(CryptoJS.enc.Utf8) == 'Modificar') {
                     $('#curso').removeAttr('readonly');
                     $('#subTitulo').removeAttr('readonly')
                     $('#docente').prop('disabled', false)
@@ -459,7 +463,7 @@
                     $('#btnCancelar').show
                     $('#btnAceptar').show
                     $('#btnCerrar').css('display', 'none')
-                }else {
+                } else if (CryptoJS.AES.decrypt(sessionStorage.getItem('accion'), 'admin123').toString(CryptoJS.enc.Utf8) == 'Ver') {
                     $('#curso').attr('readonly', 'readonly')
                     $('#subTitulo').attr('readonly', 'readonly')
                     $('#docente').prop('disabled', true)
@@ -476,10 +480,7 @@
                     $('#btnCancelar').css('display', 'none')
                     $('#btnAceptar').css('display', 'none')
                     $('#btnCerrar').show
-                }  
-                
-                
-                
+                }
             });
         </script>
 

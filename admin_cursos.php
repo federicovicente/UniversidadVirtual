@@ -377,20 +377,28 @@
                     $('#offcanvasWithBothOptions').offcanvas('show');
                 }
             });
-
-            //Guardar tipo de botón: modificar o solo lectura
-            $('#btnModificar').on('click', () => {
-                localStorage.setItem('boton', CryptoJS.AES.encrypt('btnModificar', 'admin123').toString());
-            });
-
-            $('#btnVer').on('click', () => {
-                localStorage.setItem('boton', CryptoJS.AES.encrypt('btnVer', 'admin123').toString());
-            });
-           
         </script>
 
         <script src="js/script.js"></script>
         <script src="js/user_list.js"></script>
+
+        <script>
+            //Guardar tipo de botón: modificar o solo lectura
+            $(document).ready(function() {
+                $(document).on('click', '#btnModificar', function() {
+                    sessionStorage.removeItem('accion');
+                    sessionStorage.setItem('accion', CryptoJS.AES.encrypt('Modificar', 'admin123').toString());
+                });
+
+                $(document).on('click', '#btnVer', function() {
+                    sessionStorage.removeItem('accion');
+                    sessionStorage.setItem('accion', CryptoJS.AES.encrypt('Ver', 'admin123').toString());
+                });
+            });
+        </script>
+
+
+
 
     </body>
 <?php } else {

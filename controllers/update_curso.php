@@ -47,7 +47,8 @@
         $extensions = ["jpg", "pdf"];
         $ruta = "./files/";
     
-        $newName = str_replace(" ", "_", $_POST['curso']);
+        $newName = str_replace(' ', '_', $_POST['curso']);
+        $newName = preg_replace("/[^a-zA-Z0-9_]/", "", $newName);
     
         $nameFile = explode(".", $_FILES['archivo']['name']);
     

@@ -355,6 +355,10 @@ nav.navbar {
     opacity: 70%;
 }
 
+.bodyCard{
+    height: 110px
+}
+
 .wrapperfv i:active {
     transform: translateY(-50%) scale(0.85);
 }

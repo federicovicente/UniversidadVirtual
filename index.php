@@ -216,42 +216,20 @@
     <div class="wrapperfv">
       <i id="left" class="fa-solid fa-angle-left"></i>
       <ul class="carouselfv">
-        <li class="cardfv">
-          <div class="img"><img src="images/I_tecnicas_negociacion.jpg" alt="img" draggable="false"></div>
-          <h5>Técnicas de negociación</h5>
-          <h6>Breve descripción del curso de Técnicas de negociación</h6>
-          <a href="tecnicasnegociacion.php" class="card-link">Más información...</a>
-        </li>
-        <li class="cardfv">
-          <div class="img"><img src="images/I_big_data.jpg" alt="img" draggable="false"></div>
-          <h5>Big Data: procesamiento y análisis</h5>
-          <h6>Breve descripción del curso Big Data: procesamiento y análisis</h6>
-          <a href="#" class="card-link">Más información...</a>
-        </li>
-        <li class="cardfv">
-          <div class="img"><img src="images/I_disenio_web.jpg" alt="img" draggable="false"></div>
-          <h5>Diseño Web desde cero</h5>
-          <h6>Breve descripción del curso Diseño Web desde cero</h6>
-          <a href="#" class="card-link">Más información...</a>
-        </li>
-        <li class="cardfv">
-          <div class="img"><img src="images/I_administracion_servidores.jpg" alt="img" draggable="false"></div>
-          <h5>Manejo de servidores Linux</h5>
-          <h6>Breve descripción del curso Manejo de servidores Linux</h6>
-          <a href="#" class="card-link">Más información...</a>
-        </li>
-        <li class="cardfv">
-          <div class="img"><img src="images/I_gestion_proyectos.jpg" alt="img" draggable="false"></div>
-          <h5>Gestión de proyectos</h5>
-          <h6>Breve descripción del curso Gestión de proyectos</h6>
-          <a href="#" class="card-link">Más información...</a>
-        </li>
-        <li class="cardfv">
-          <div class="img"><img src="images/I_comunicacion_corporativa.jpg" alt="img" draggable="false"></div>
-          <h5>Comunicación corporativa</h5>
-          <h6>Breve descripción del curso Comunicación corporativa</h6>
-          <a href="#" class="card-link">Más información...</a>
-        </li>
+      <?php
+      require './controllers/get_cursos.php';
+      $lista_cursos = unserialize(getCursos());
+      foreach ($lista_cursos as $curso) {
+        $idCurso = $curso["idCurso"];
+        echo "<li class='cardfv'>";
+        echo "<div class='img'><img src='" . $curso["img"] . "'alt='img' draggable='false'></div>";
+        echo "<div class='bodyCard'>";
+        echo "<h5>" . $curso["curso"] . "</h5>";
+        echo "<h6>" . $curso["subTitulo"] . "</h6>";
+        echo "</div>";
+        echo "<a href='tecnicasnegociacion.php' class='card-link'>Más información...</a>";
+        echo "</li>";
+      }?> 
       </ul>
       <i id="right" class="fa-solid fa-angle-right"></i>
     </div>
