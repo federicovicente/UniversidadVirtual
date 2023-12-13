@@ -242,7 +242,9 @@
                                 <label>Imagen de portada</label>
                                 <input class="form-control mb-3 mt-2" type="file" name="archivo" id="imagenCurso">
                                 <button id="btnImagenCurso" type="button" class="btn btn-primary btnSubmit" data-bs-toggle='modal' data-bs-target='#verImagen'>Ver imagen</button>
+                                <button style="margin-left: 20px;" id="btnTarjetaCurso" type="button" class="btn btn-primary btnSubmit" data-bs-toggle='modal' data-bs-target='#verTarjeta'>Ver Tarjeta</button>
                             </div>
+
 
                             <!-- Alerta tamaño superado -->
                             <div class="alert alert-danger  fade show mb-0 mt-3 position-absolute top0 start-50 translate-middle" id="divMensaje" style="display: none;" role="alert">
@@ -296,6 +298,31 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <img src="<?php echo $data_cursos["img"]; ?>" alt="img">
+                    <div class="modal-body">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btnSubmit" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tajeta modal -->
+        <div class="modal fade" id="verTarjeta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modalTarjetaCurso">
+                <div class="modal-content color-modal-content" >
+                    <ul class="carouselfv" >
+                        <div class="tarjetaCusro">
+                            <li class='cardfv' >
+                                <div class='img'><img src="<?php echo $data_cursos["img"]; ?>" alt='img' draggable='false'></div>
+                                <div class='bodyCard'>
+                                    <h5><?php echo $data_cursos["curso"]; ?></h5>
+                                    <h6><?php echo $data_cursos["subTitulo"]; ?></h6>
+                                </div>
+                                <a class='card-link'>Más información...</a>
+                            </li>
+                        </div>
+                    </ul>
                     <div class="modal-body">
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary btnSubmit" data-bs-dismiss="modal">Cerrar</button>
@@ -399,8 +426,10 @@
             var dirImg = "<?php echo $data_cursos["img"]; ?>";
             if (!dirImg == "") {
                 $('#btnImagenCurso').show;
+                $('#btnTarjetaCurso').show;
             } else {
                 $('#btnImagenCurso').css('display', 'none');
+                $('#btnTarjetaCurso').css('display', 'none');
             }
 
             //Checkear idiomas

@@ -51,10 +51,12 @@ nav.navbar {
     overflow: hidden !important;
 }
 
-.modal-content img{
+.modal-lg img{
     margin: 20px 20px 0px 20px !important;
     object-fit: contain;
     border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px 0px, rgba(0, 0, 0, 0.514) 0px 2px 16px 0px !important;
+
   }
   
 
@@ -301,6 +303,7 @@ nav.navbar {
 }
 /*FIN carrousel Imagenes*/
 
+
 .centrador {
     display: flex !important;
     padding: 0 35 0 35px !important;
@@ -309,17 +312,57 @@ nav.navbar {
     margin-bottom: 40px;
 }
 
+
+
+/*Modal tarjetas curso*/
+.tarjetaCusro{
+    height: 300px !important; 
+    width: 260px !important;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px 0px, rgba(0, 0, 0, 0.514) 0px 2px 16px 0px !important;
+    margin: 40px 0px 0px 0px !important;
+    border-radius: 4px !important;
+}
+
+.modalTarjetaCurso{
+    width: 400px !important;
+}
+
+.modalTarjetaCurso .cardfv{
+    height: 300px !important; 
+    width: 260px !important;
+    object-fit: contain !important;
+    border: solid 1px rgba(0, 0, 0, 0.548) !important;
+    padding: 0px !important;
+}
+
+.modalTarjetaCurso img{
+    padding: 0px !important;
+    margin: 0px !important;
+    height: 140px !important;
+    border-radius: 4px 4px 0px 0px !important;
+}
+
+.modalTarjetaCurso .carouselfv{
+    padding: 0px !important;
+    align-items: center !important;
+    margin-left: 68px !important;
+}
+
+
+
+
+
 /*carrousel Tarjetas*/
 .contenedor-encabezado-carousel{
     display:flex !important;
     width: 100%;
     justify-content: center !important;
+    
 }
 .encabezado-carousel{
     display:flex !important;
     max-width: 1300px;
     width: 100%;
-
 }
 
 .contenedor-carouselt {
