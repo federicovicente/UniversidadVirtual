@@ -11,7 +11,8 @@
     $updateData->bindParam(':nombre', $_POST['nombre']);
     $updateData->bindParam(':apellido', $_POST['apellido']);
     $updateData->bindParam(':email', $_POST['email']);
-    $updateData->bindParam(':activo', $_POST['activo']);
+    $activo = isset($_POST['activo']) ? $_POST['activo'] : 0;
+    $updateData->bindParam(':activo', $activo);
 
     $updateData->execute();
 

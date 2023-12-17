@@ -613,8 +613,6 @@ footer li {
     justify-content: center;
     grid-template-columns: 30% 15% 15% 15%;
     column-gap: 5%;
-    padding-top: 20px;
-    padding-bottom: 20px;
     max-width: 1200px;
 }
 
@@ -650,32 +648,40 @@ footer li {
 
 .footer-creds {
     display: flex;
-    justify-content: space-between;
-    padding: 0 16px;
     color: #576171;
     font-size: .9rem;
-    max-width: 1500px;
-    margin: 0 auto;
+    margin: 20px 10px 20px 10px;
+    width: 100%;
+    justify-content: center;
 }
-
-.copy-creds {
-    margin-right: 40px;
+.legal-creds{
+    display: flex;
+    width: 90%;
+    justify-content: center;
 }
 
 .legal-creds ul {
     display: flex;
-    flex-flow: row;
+    flex-flow: wrap;
+    
+
 }
 
 .legal-creds ul li {
-    padding-right: 40px;
-
+    padding: 0px 20px 0px 20px;
 }
 
 .legal-creds ul a {
     color: #576171;
     font-size: .9rem;
 }
+
+@media (max-width:1300px) {
+    .footer-creds {
+        width: 95%;
+    }
+}
+
 
 @media (max-width:1050px) {
     .wrap-footer {
@@ -699,9 +705,11 @@ footer li {
     .wrap-footer {
         grid-template-columns: repeat(1, auto);
         justify-content: center;
-        margin: 10px 0px 10px 0px;
+        margin: 10px 5px 10px 10px;
+        padding: 0px;
     }
 }
+
 /*FIN Footer*/
 
 /*CURSOS*/

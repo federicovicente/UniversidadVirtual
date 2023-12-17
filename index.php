@@ -260,11 +260,9 @@
       </div>
     </div>
     <div class="footer-creds">
-      <div class="copy-creds">
-        <p>©2023 · Todos los derechos reservados.</p>
-      </div>
       <div class="legal-creds">
         <ul>
+          <li><p>©2023 · Todos los derechos reservados.</p></li>
           <li><a href="#">Política de Privacidad</a></li>
           <li><a href="#">Política de Cookies</a></li>
           <li><a href="#">Aviso Legal</a></li>

@@ -15,21 +15,28 @@
     $updateCurso->bindParam(':duracion', $_POST['duracion']);
     $updateCurso->bindParam(':certificado', $_POST['certificado']);
 
+    $_idioma = '';
     if (isset($_POST['espanol'])) {
         $_idioma .= $_POST['espanol'] . ' ';
+    }else{
+        $_idioma .= ' ';
     }
     if (isset($_POST['ingles'])) {
         $_idioma .= $_POST['ingles'] . ' ';
+    }else{
+        $_idioma .= ' ';
     }
     if (isset($_POST['portugues'])) {
         $_idioma .= $_POST['portugues'] . ' ';
+    }else{
+        $_idioma .= ' ';
     }
     $idioma = trim($_idioma);
     $updateCurso->bindParam(':idioma', $idioma);
 
     $updateCurso->bindParam(':precio', $_POST['precio']);
-    $updateCurso->bindParam(':activo', $_POST['cursoActivo']);
-
+    $activo = isset($_POST['cursoActivo']) ? $_POST['cursoActivo'] : 0;
+    $updateCurso->bindParam(':activo', $activo);
 
     $updateCurso->execute();
 
