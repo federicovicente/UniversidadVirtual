@@ -580,20 +580,20 @@ footer h6 {
 }
 
 
-@media (max-width: 550px) {
+@media (max-width: 500px) {
     .encabezado-carousel h4 {
         font-size: 1.2rem !important;
     }
     .carouselfv .cardfv h5 {
-        font-size: 1rem;
+        font-size: .9rem;
         margin: 5px 5px 5px 5px !important;
         text-align: left;
     }
     .carouselfv .cardfv h6 {
         font-weight: 300;
-        font-size: .9rem;
+        font-size: .8rem;
         margin: 10px 5px 5px 5px !important;
-        text-align: justify;
+        text-align: left;
     }
     .carouselfv .cardfv a {
         margin: 15px 5px 5px 5px !important;
@@ -606,14 +606,14 @@ footer h6 {
         line-height: 40px;
     }
     .cardfv img {
-        height: 100px;
+        height: 120px;
     }
     .bodyCard{
-        height: 140px
+        height: 120px
     }
     .wrapperfv .carouselfv {
         grid-auto-columns: 49%;
-        margin: 0px 5px 10px 5px;
+        margin: 0px 0px 10px 0px;
         gap: 6px;
     }
 }
