@@ -441,29 +441,31 @@ nav.navbar {
     scroll-behavior: auto;
 }
 
-.carouselfv.dragging .card {
+/* .carouselfv.dragging .card {
     cursor: grab;
     user-select: none;
-}
+} */
 
-.carouselfv :where(.card, .img) {
+/* .carouselfv :where(.card, .img) {
     display: flex;
     align-items: center;
-}
+} */
 
 .carouselfv .cardfv {
     scroll-snap-align: start;
     height: 280px;
     list-style: none;
     background: #fff;
-    cursor: pointer;
-    padding-bottom: 10px !important;
-    padding-top: 0%;
+    cursor: context-menu;
     flex-direction: column;
     border-radius: 4px;
 }
 
-.cardfv .img img {
+.carouselfv .cardfv:active {
+    cursor: grabbing;
+}
+
+.cardfv img {
     width: 100%;
     height: 130px;
     border-top-left-radius: 2%;
@@ -481,16 +483,18 @@ nav.navbar {
 .carouselfv .cardfv h5 {
     font-weight: 500;
     font-size: 1.05rem;
-    margin: 5px 15px 5px 15px !important;
+    margin: 5px 12px 5px 12px !important;
     color: #2e2e2e;
+    text-align: justify;
 }
 
 .carouselfv .cardfv h6,
 footer h6 {
     font-weight: 300;
     font-size: 1.00rem;
-    margin: 15px 15px 5px 15px !important;
+    margin: 10px 12px 5px 12px !important;
     color: #2e2e2e;
+    text-align: justify;
 }
 
 .carouselfv .cardfv a {
@@ -516,6 +520,9 @@ footer h6 {
     .wrapperfv i:last-child {
         right: -30px;
     }
+    .encabezado-carousel h4 {
+        margin-left: 20px;
+    }
 }
 
 @media (max-width: 1300px) {
@@ -535,7 +542,7 @@ footer h6 {
     }
     .encabezado-carousel h4 {
         font-weight: 320;
-        margin-left: 10px;
+        margin-left: 20px;
         font-size: 1.6rem !important;
         margin-bottom: 5px;
     }
@@ -550,7 +557,7 @@ footer h6 {
 @media (max-width: 900px) {
     .encabezado-carousel h4{
         font-weight: 270;
-        margin-left: 10px;
+        margin-left: 20px;
         font-size: 1.5rem !important;
     }
 }
@@ -571,6 +578,50 @@ footer h6 {
         font-size: 1.4rem !important;
     }
 }
+
+
+@media (max-width: 550px) {
+    .encabezado-carousel h4 {
+        font-size: 1.2rem !important;
+    }
+    .carouselfv .cardfv h5 {
+        font-size: 1rem;
+        margin: 5px 5px 5px 5px !important;
+        text-align: left;
+    }
+    .carouselfv .cardfv h6 {
+        font-weight: 300;
+        font-size: .9rem;
+        margin: 10px 5px 5px 5px !important;
+        text-align: justify;
+    }
+    .carouselfv .cardfv a {
+        margin: 15px 5px 5px 5px !important;
+    
+    }
+    .wrapperfv i {
+        height: 40px;
+        width: 40px;
+        font-size: 1rem;
+        line-height: 40px;
+    }
+    .cardfv img {
+        height: 100px;
+    }
+    .bodyCard{
+        height: 140px
+    }
+    .wrapperfv .carouselfv {
+        grid-auto-columns: 49%;
+        margin: 0px 5px 10px 5px;
+        gap: 6px;
+    }
+}
+
+
+
+
+
 
 
 /*FIN carrousel Tarjetas*/
@@ -656,14 +707,13 @@ footer li {
 }
 .legal-creds{
     display: flex;
-    width: 90%;
+    /* width: 90%; */
     justify-content: center;
 }
 
 .legal-creds ul {
     display: flex;
     flex-flow: wrap;
-    
 
 }
 
@@ -674,6 +724,10 @@ footer li {
 .legal-creds ul a {
     color: #576171;
     font-size: .9rem;
+}
+
+.copy-creds{
+    margin-right: 20px;
 }
 
 @media (max-width:1300px) {
