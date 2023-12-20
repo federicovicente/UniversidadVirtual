@@ -585,18 +585,18 @@ footer h6 {
         font-size: 1.2rem !important;
     }
     .carouselfv .cardfv h5 {
-        font-size: .9rem;
-        margin: 5px 5px 5px 5px !important;
+        font-size: .95rem;
+        margin: 5px 7px 5px 7px !important;
         text-align: left;
     }
     .carouselfv .cardfv h6 {
         font-weight: 300;
         font-size: .8rem;
-        margin: 10px 5px 5px 5px !important;
+        margin: 10px 8px 5px 8px !important;
         text-align: left;
     }
     .carouselfv .cardfv a {
-        margin: 15px 5px 5px 5px !important;
+        margin: 15px 7px 5px 7px !important;
     
     }
     .wrapperfv i {
