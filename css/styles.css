@@ -580,50 +580,6 @@ footer h6 {
 }
 
 
-@media (max-width: 500px) {
-    .encabezado-carousel h4 {
-        font-size: 1.2rem !important;
-    }
-    .carouselfv .cardfv h5 {
-        font-size: .95rem;
-        margin: 5px 7px 5px 7px !important;
-        text-align: left;
-    }
-    .carouselfv .cardfv h6 {
-        font-weight: 300;
-        font-size: .8rem;
-        margin: 10px 8px 5px 8px !important;
-        text-align: left;
-    }
-    .carouselfv .cardfv a {
-        margin: 15px 7px 5px 7px !important;
-    
-    }
-    .wrapperfv i {
-        height: 40px;
-        width: 40px;
-        font-size: 1rem;
-        line-height: 40px;
-    }
-    .cardfv img {
-        height: 120px;
-    }
-    .bodyCard{
-        height: 120px
-    }
-    .wrapperfv .carouselfv {
-        grid-auto-columns: 49%;
-        margin: 0px 0px 10px 0px;
-        gap: 6px;
-    }
-}
-
-
-
-
-
-
-
 /*FIN carrousel Tarjetas*/
 
 /*Footer*/
@@ -707,7 +663,6 @@ footer li {
 }
 .legal-creds{
     display: flex;
-    /* width: 90%; */
     justify-content: center;
 }
 
@@ -784,7 +739,6 @@ footer li {
     position: relative;
     width: 65%;
     aspect-ratio: 15/9;
-    min-width: 450px;
     max-width: 850px;
     border-radius: 4px;
     overflow: hidden;
@@ -820,7 +774,6 @@ footer li {
     min-width: 100px;
     max-width: 250px;
     height: auto;
-    min-height: 250px;
     max-height: 600px;
     border-radius: 4px;
     background-image: linear-gradient(to bottom right, #ffffff, #f5f2f2);
@@ -925,7 +878,20 @@ footer li {
 
 @media (max-width:600px) {
     .comprar-curso {
-        padding: 10px;
+        padding: 10px 5px 15px 5px;
+        grid-template-columns: 45% 45% !important;
+    }
+
+    .contenedorcupon .btn-link {
+        font-size: 0.9rem !important;
+    }
+    
+    .panel_cupon .btn-primary{
+        font-size: .8rem !important;
+    }
+
+    .inputcupon{
+        font-size: 1rem !important;
     }
 
     .banner-curso {
@@ -975,7 +941,6 @@ footer li {
         display: grid;
         grid-template-columns: 40% 40%;
         width: 100%;
-        min-width: 450px;
         max-width: 700px;
         margin-top: 20px;
         margin-left: 10px;
@@ -985,7 +950,6 @@ footer li {
     .descripcion-curso {
         position: relative;
         width: 100%;
-        min-width: 450px;
         max-width: 700px;
         margin-right: 10px;
         margin-left: 10px;
@@ -1136,3 +1100,58 @@ footer li {
   tbody tr{
     --bs-table-bg:none !important;
   }
+
+
+
+
+  /* CELULAR */
+@media (max-width: 500px) {
+    .encabezado-carousel h4 {
+        font-size: 1.2rem !important;
+    }
+    .carouselfv .cardfv h5 {
+        font-size: .95rem;
+        margin: 5px 7px 5px 7px !important;
+        text-align: left;
+    }
+    .carouselfv .cardfv h6 {
+        font-weight: 300;
+        font-size: .8rem;
+        margin: 10px 8px 5px 8px !important;
+        text-align: left;
+    }
+    .carouselfv .cardfv a {
+        margin: 15px 7px 5px 7px !important;
+    }
+    .wrapperfv i {
+        height: 40px;
+        width: 40px;
+        font-size: 1rem;
+        line-height: 40px;
+        opacity: 50%; 
+    }
+    .cardfv img {
+        height: 120px;
+    }
+    .bodyCard{
+        height: 120px
+    }
+    .wrapperfv .carouselfv {
+        grid-auto-columns: 49%;
+        margin: 0px 0px 10px 0px;
+        gap: 6px;
+    }
+
+    .inputcupon{
+        font-size: .8rem !important;
+    }
+
+    .contenedorcupon .alert-success{
+        font-size: 1.1rem !important;
+    }
+}
+
+
+
+
+/* FIN CELULAR */
