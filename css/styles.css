@@ -579,6 +579,65 @@ footer h6 {
     }
 }
 
+  /* CELULAR */
+  @media (max-width: 500px) {
+    .encabezado-carousel h4 {
+        font-size: 2.2rem !important;
+    }
+    .carouselfv .cardfv h5 {
+        font-size: .95rem;
+        margin: 5px 7px 5px 7px !important;
+        text-align: left;
+    }
+    .carouselfv .cardfv h6 {
+        font-weight: 300;
+        font-size: .8rem;
+        margin: 10px 8px 5px 8px !important;
+        text-align: left;
+    }
+    .carouselfv .cardfv a {
+        margin: 15px 7px 5px 7px !important;
+    }
+    .wrapperfv i {
+        height: 40px;
+        width: 40px;
+        font-size: 1rem;
+        line-height: 40px;
+        opacity: 50%; 
+    }
+    .cardfv img {
+        height: 120px;
+    }
+    .bodyCard{
+        height: 120px;
+    }
+    .wrapperfv .carouselfv {
+        grid-auto-columns: 49%;
+        margin: 0px 0px 10px 0px;
+        gap: 6px;
+    }
+
+    .inputcupon{
+        font-size: .8rem !important;
+    }
+
+    .contenedorcupon .alert-success{
+        font-size: 1.1rem !important;
+    }
+
+    .wrapperfv .carouselfv {
+        grid-auto-columns: 70% 30% !important;
+        margin: 0px 10px 10px 10px;
+        gap:10px;
+    }
+
+}
+
+
+
+
+/* FIN CELULAR */
+
 
 /*FIN carrousel Tarjetas*/
 
@@ -1104,54 +1163,3 @@ footer li {
 
 
 
-  /* CELULAR */
-@media (max-width: 500px) {
-    .encabezado-carousel h4 {
-        font-size: 1.2rem !important;
-    }
-    .carouselfv .cardfv h5 {
-        font-size: .95rem;
-        margin: 5px 7px 5px 7px !important;
-        text-align: left;
-    }
-    .carouselfv .cardfv h6 {
-        font-weight: 300;
-        font-size: .8rem;
-        margin: 10px 8px 5px 8px !important;
-        text-align: left;
-    }
-    .carouselfv .cardfv a {
-        margin: 15px 7px 5px 7px !important;
-    }
-    .wrapperfv i {
-        height: 40px;
-        width: 40px;
-        font-size: 1rem;
-        line-height: 40px;
-        opacity: 50%; 
-    }
-    .cardfv img {
-        height: 120px;
-    }
-    .bodyCard{
-        height: 120px
-    }
-    .wrapperfv .carouselfv {
-        grid-auto-columns: 49%;
-        margin: 0px 0px 10px 0px;
-        gap: 6px;
-    }
-
-    .inputcupon{
-        font-size: .8rem !important;
-    }
-
-    .contenedorcupon .alert-success{
-        font-size: 1.1rem !important;
-    }
-}
-
-
-
-
-/* FIN CELULAR */
