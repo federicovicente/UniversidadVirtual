@@ -582,7 +582,7 @@ footer h6 {
   /* CELULAR */
   @media (max-width: 500px) {
     .encabezado-carousel h4 {
-        font-size: 2.2rem !important;
+        font-size: 1.2rem !important;
     }
     .carouselfv .cardfv h5 {
         font-size: .95rem;
@@ -626,7 +626,7 @@ footer h6 {
     }
 
     .wrapperfv .carouselfv {
-        grid-auto-columns: 70% 30% !important;
+        grid-auto-columns: 70% !important;
         margin: 0px 10px 10px 10px;
         gap:10px;
     }
