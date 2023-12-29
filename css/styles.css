@@ -636,10 +636,14 @@ footer h6 {
 
 /* FIN CELULAR */
 td a:first-child{
-    margin: 0px 30px 0px 0px !important;
+    margin: 0px!important;
 }
-td a:last-child{
+td a{
     margin: 0px 0px 0px 30px !important;
+}
+
+.botoneraG{
+    min-width: 130px !important;
 }
 
 
