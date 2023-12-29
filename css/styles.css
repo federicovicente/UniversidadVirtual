@@ -635,9 +635,11 @@ footer h6 {
 
 
 /* FIN CELULAR */
-
-a .bi{
+td a:first-child{
     margin: 0px 30px 0px 0px !important;
+}
+td a:last-child{
+    margin: 0px 0px 0px 30px !important;
 }
 
 
