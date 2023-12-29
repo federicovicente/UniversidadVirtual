@@ -253,9 +253,9 @@
                                 echo "</td>";
 
                                 echo "<td>";
-                                echo "<a href='#' data-bs-toggle='modal' data-bs-target='#deleteModal' idCurso='$idCurso' curso='$nombre'><i class='bi bi-trash3-fill mx-1'></i></a>";
-                                echo "<a id='btnModificar' href='u_curso.php?id=$idCurso' idCurso='$idCurso' ><i class='bi bi-pencil-fill mx-1'></i></a>";
-                                echo "<a id='btnVer' href='u_curso.php?id=$idCurso' idCurso='$idCurso'><i class='bi bi-eye-fill mx-1'></i></a>";
+                                echo "<a href='#' data-bs-toggle='modal' data-bs-target='#deleteModal' idCurso='$idCurso' curso='$nombre'><i class='bi bi-trash3-fill'></i></a>";
+                                echo "<a id='btnModificar' href='u_curso.php?id=$idCurso' idCurso='$idCurso' ><i class='bi bi-pencil-fill'></i></a>";
+                                echo "<a id='btnVer' href='u_curso.php?id=$idCurso' idCurso='$idCurso'><i class='bi bi-eye-fill'></i></a>";
                                 echo "</td>";
                                 echo "</tr>";
                             }

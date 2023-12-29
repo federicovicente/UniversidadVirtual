@@ -623,12 +623,26 @@ footer h6 {
         gap:10px;
     }
 
+    .encabezado-b .display-6 {
+        font-size: 1.6rem !important;
+        margin-bottom: 0px !important;
+    }
+
+    a .bi{
+        margin: 0px 10px 0px 10px !important;
+    }
+
 }
 
 
 
 
 /* FIN CELULAR */
+
+a .bi{
+    margin: 0px 30px 0px 0px !important;
+}
+
 
 
 /*FIN carrousel Tarjetas*/
@@ -812,7 +826,6 @@ footer li {
     width: 100%;
     background-image: linear-gradient(to top, #000000, #00000073);
     bottom: 0;
-    text-align: justify;
 }
 
 .comprar-curso {

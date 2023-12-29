@@ -236,8 +236,8 @@
                                 echo "</td>";
 
                                 echo "<td>";
-                                echo "<a href='#' data-bs-toggle='modal' data-bs-target='#deleteModal' idUsuario='$idUsuario' nombre='$nombre' apellido='$apellido'><i class='bi bi-trash3-fill mx-1'></i></a>";
-                                echo "<a href='#' data-bs-toggle='modal' data-bs-target='#updateModal' idUsuario='$idUsuario' nombre='$nombre' apellido='$apellido' email='$email' administrador='$administrador' activo='$activo'><i class='bi bi-pencil-fill mx-1'></i></a>";
+                                echo "<a href='#' data-bs-toggle='modal' data-bs-target='#deleteModal' idUsuario='$idUsuario' nombre='$nombre' apellido='$apellido'><i class='bi bi-trash3-fill'></i></a>";
+                                echo "<a href='#' data-bs-toggle='modal' data-bs-target='#updateModal' idUsuario='$idUsuario' nombre='$nombre' apellido='$apellido' email='$email' administrador='$administrador' activo='$activo'><i class='bi bi-pencil-fill'></i></a>";
                                 echo "</td>";
                                 echo "</tr>";
                             }
